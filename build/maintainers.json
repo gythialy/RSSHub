@@ -384,6 +384,9 @@
   "/ally/rail/:category?/:topic?": [
     "Rongronggg9"
   ],
+  "/alpinelinux/pkgs/:name/:routeParams?": [
+    "CaoMeiYouRen"
+  ],
   "/alternativeto/platform/:name/:routeParams?": [
     "JimenezLi"
   ],
@@ -414,7 +417,7 @@
   "/apkpure/versions/:pkg/:region?": [
     "maple3142"
   ],
-  "/apnews/rss/:rss?": [
+  "/apnews/rss/:category?": [
     "zoenglinghou",
     "mjysci",
     "TonyRL"
@@ -878,6 +881,9 @@
   "/bt0/mv/:number/:domain?": [
     "miemieYaho"
   ],
+  "/bt0/tlist/:sc/:domain?": [
+    "miemieYaho"
+  ],
   "/btzj/:category?": [
     "nczitzk"
   ],
@@ -1022,6 +1028,9 @@
   ],
   "/ccac/news/:type/:lang?": [
     "linbuxiao"
+  ],
+  "/cccfna/:category/:type?": [
+    "hualiong"
   ],
   "/ccf/news/:category?": [
     "nczitzk"
@@ -1940,6 +1949,9 @@
     "nczitzk"
   ],
   "/fda/cdrh/:titleOnly?": [],
+  "/fediverse/timeline/:account": [
+    "DIYgod"
+  ],
   "/feng/forum/:id/:type?": [
     "TonyRL"
   ],
@@ -3729,6 +3741,9 @@
     "hoilc",
     "DIYgod"
   ],
+  "/microsoft/mcr/product/*": [
+    "margani"
+  ],
   "/mihoyo/bbs/follow-list/:uid": [
     "CaoMeiYouRen"
   ],
@@ -3819,6 +3834,9 @@
   "/modrinth/project/:id/versions/:routeParams?": [
     "SettingDust"
   ],
+  "/moduzy/:type/:hours?": [
+    "hualiong"
+  ],
   "/mohw/clarification": [
     "nczitzk"
   ],
@@ -3849,6 +3867,9 @@
   "/mydrivers/:category{.+}?": [],
   "/mydrivers/rank/:range?": [
     "nczitzk"
+  ],
+  "/myfans/user/:username": [
+    "TonyRL"
   ],
   "/myfigurecollection/activity/:category?/:language?/:latestAdditions?/:latestEdits?/:latestAlerts?/:latestPictures?": [
     "nczitzk"
@@ -4346,7 +4367,8 @@
     "fang63625"
   ],
   "/ollama/library": [
-    "Nick22nd"
+    "Nick22nd",
+    "gavrilov"
   ],
   "/oncc/:language/:channel?": [
     "Fatpandac"
@@ -4951,6 +4973,9 @@
   ],
   "/sakurazaka46/news": [
     "nczitzk"
+  ],
+  "/samdnews/:typeId": [
+    "hualiong"
   ],
   "/samsung/research/blog": [
     "nczitzk"
