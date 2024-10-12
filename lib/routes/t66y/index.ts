@@ -98,7 +98,7 @@ async function handler(ctx) {
                 return item;
             })
         )
-    );
+    ).then((items) => items.filter((item) => item.description && item.description.trim() !== ''));
 
     return {
         title: (isValidType ? `[${$('.t .fn b').text()}] ` : '') + (search ? `[${SEARCH_NAMES[search]}] ` : '') + $('head title').text(),
