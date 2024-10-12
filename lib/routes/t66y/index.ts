@@ -98,7 +98,9 @@ async function handler(ctx) {
                 return item;
             })
         )
-    );
+    )
+        .then((items) => items.filter((item) => item.description && item.description.trim() !== ''))
+        .then((items) => items.sort((a, b) => b.pubDate - a.pubDate));
 
     return {
         title: (isValidType ? `[${$('.t .fn b').text()}] ` : '') + (search ? `[${SEARCH_NAMES[search]}] ` : '') + $('head title').text(),
