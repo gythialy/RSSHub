@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio';
 import got from '@/utils/got';
 import cache from '@/utils/cache';
 import { parseDate } from '@/utils/parse-date';
-import { baseUrl, parseContent } from './utils';
+import { baseUrl, parseContent, removeInvalidChars } from './utils';
 
 export const route: Route = {
     path: '/:id/:type?/:search?',
@@ -82,7 +82,7 @@ async function handler(ctx) {
             const td3 = element.find('td:nth-child(3)');
 
             return {
-                title: `${catalog} ${a.text()}`,
+                title: removeInvalidChars(`${catalog} ${a.text()}`),
                 link: `${baseUrl}/${a.attr('href')}`,
                 author: td3.find('a').text(),
                 pubDate: parseDate(String(td3.find('span[data-timestamp]').data('timestamp')).slice(0, -1), 'X'),
@@ -99,7 +99,9 @@ async function handler(ctx) {
                 return item;
             })
         )
-    );
+    )
+        .then((items) => items.filter((item) => item.description && item.description.trim() !== ''))
+        .then((items) => items.sort((a, b) => b.pubDate - a.pubDate));
 
     return {
         title: (isValidType ? `[${$('.t .fn b').text()}] ` : '') + (search ? `[${SEARCH_NAMES[search]}] ` : '') + $('head title').text(),
