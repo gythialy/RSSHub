@@ -67,30 +67,58 @@ async function handler(ctx) {
     const rootUrl = 'https://hjd2048.com';
     // 获取地址发布页指向的 URL
     const domainInfo = (await cache.tryGet('2048:domainInfo', async () => {
-        const response = await ofetch('https://2048.info');
+        const response = await ofetch('https://2048.bio');
         const $ = load(response);
-        const onclickValue = $('.button').first().attr('onclick');
-        const targetUrl = onclickValue.match(/window\.open\('([^']+)'/)[1];
+        const linkElement = $('div.address-list a:contains("论坛临时高速线路")');
+        const targetUrl = linkElement.attr('href');
 
         return { url: targetUrl };
     })) as { url: string };
     // 获取重定向后的url和safeid
     const redirectResponse = await ofetch.raw(domainInfo.url);
-    const currentUrl = `${redirectResponse.url}thread.php?fid-${id}.html`;
     const redirectPageContent = load(redirectResponse._data);
     const safeId =
         redirectPageContent('script')
             .text()
             .match(/var safeid='(.*?)',/)?.[1] ?? '';
 
-    const response = await ofetch.raw(currentUrl, {
+    // First, get the domain
+    const currentDomain = redirectResponse.url;
+    const currentUrl = `${currentDomain}thread.php?fid-${id}.html`;
+
+    // Check if we need to handle the age verification
+    const initialResponse = await ofetch.raw(currentUrl, {
         headers: {
             cookie: `_safe=${safeId}`,
         },
     });
 
-    const $ = load(response._data);
-    const currentHost = `https://${new URL(response.url).host}`; // redirected host
+    let finalResponse = initialResponse;
+    const initialContent = load(initialResponse._data);
+
+    // Check if the page contains the age verification button
+    if (initialContent('.enter-btn').length > 0) {
+        // Extract any necessary info from the initial page
+        // Get the URL or form data needed for the verification step
+        const formActionUrl = initialContent('form').attr('action') || currentDomain;
+
+        // Make a request to simulate clicking the "enter" button
+        finalResponse = await ofetch.raw(formActionUrl, {
+            method: 'POST',
+            headers: {
+                cookie: `_safe=${safeId}`,
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            // You might need to adjust the form data based on the actual form
+            body: new URLSearchParams({
+                forward: '1',
+                step: '2',
+            }).toString(),
+        });
+    }
+
+    const $ = load(finalResponse._data);
+    const currentHost = `https://${new URL(finalResponse.url).host}`; // redirected host
 
     $('#shortcut').remove();
     $('tr[onmouseover="this.className=\'tr3 t_two\'"]').remove();

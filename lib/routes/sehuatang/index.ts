@@ -102,56 +102,58 @@ async function handler(ctx) {
         list.map((info) =>
             cache.tryGet(info.link, async () => {
                 const page = await browser.newPage();
-                await page.setRequestInterception(true);
-                page.on('request', (request) => {
-                    request.resourceType() === 'document' || request.resourceType() === 'script' ? request.continue() : request.abort();
-                });
+                try {
+                    await page.setRequestInterception(true);
+                    page.on('request', (request) => {
+                        request.resourceType() === 'document' || request.resourceType() === 'script' ? request.continue() : request.abort();
+                    });
 
-                await page.goto(info.link, {
-                    // 指定页面等待载入的时间
-                    waitUntil: 'domcontentloaded',
-                });
-                const response = await page.content();
-                await page.close();
-                const $ = load(response);
-                const postMessage = $("td[id^='postmessage']").slice(0, 1);
-                const images = $(postMessage).find('img');
-                for (const image of images) {
-                    const file = $(image).attr('file');
-                    if (!file || file === 'undefined') {
-                        $(image).replaceWith('');
-                    } else {
-                        $(image).replaceWith($(`<img src="${file}">`));
+                    await page.goto(info.link, {
+                        waitUntil: 'domcontentloaded',
+                    });
+                    const response = await page.content();
+                    const $ = load(response);
+                    const postMessage = $("td[id^='postmessage']").slice(0, 1);
+                    const images = $(postMessage).find('img');
+                    for (const image of images) {
+                        const file = $(image).attr('file');
+                        if (!file || file === 'undefined') {
+                            $(image).replaceWith('');
+                        } else {
+                            $(image).replaceWith($(`<img src="${file}">`));
+                        }
                     }
-                }
-                // also parse image url from `.pattl`
-                const pattl = $('.pattl');
-                const pattlImages = $(pattl).find('img');
-                for (const pattlImage of pattlImages) {
-                    const file = $(pattlImage).attr('file');
-                    if (!file || file === 'undefined') {
-                        $(pattlImage).replaceWith('');
-                    } else {
-                        $(pattlImage).replaceWith($(`<img src="${file}" />`));
+                    // also parse image url from `.pattl`
+                    const pattl = $('.pattl');
+                    const pattlImages = $(pattl).find('img');
+                    for (const pattlImage of pattlImages) {
+                        const file = $(pattlImage).attr('file');
+                        if (!file || file === 'undefined') {
+                            $(pattlImage).replaceWith('');
+                        } else {
+                            $(pattlImage).replaceWith($(`<img src="${file}" />`));
+                        }
                     }
+                    postMessage.append($(pattl));
+                    $('em[onclick]').remove();
+
+                    info.description = (postMessage.html() || '抓取原帖失败').replaceAll('ignore_js_op', 'div');
+                    info.pubDate = timezone(parseDate($('.authi em span').attr('title')), 8);
+
+                    const magnet = postMessage.find('div.blockcode li').first().text();
+                    const isMag = magnet.startsWith('magnet');
+                    const torrent = postMessage.find('p.attnm a').attr('href');
+
+                    const hasEnclosureUrl = isMag || torrent !== undefined;
+                    if (hasEnclosureUrl) {
+                        const enclosureUrl = isMag ? magnet : new URL(torrent, host).href;
+                        info.enclosure_url = enclosureUrl;
+                        info.enclosure_type = isMag ? 'application/x-bittorrent' : 'application/octet-stream';
+                    }
+                    return info;
+                } finally {
+                    await page.close();
                 }
-                postMessage.append($(pattl));
-                $('em[onclick]').remove();
-
-                info.description = (postMessage.html() || '抓取原帖失败').replaceAll('ignore_js_op', 'div');
-                info.pubDate = timezone(parseDate($('.authi em span').attr('title')), 8);
-
-                const magnet = postMessage.find('div.blockcode li').first().text();
-                const isMag = magnet.startsWith('magnet');
-                const torrent = postMessage.find('p.attnm a').attr('href');
-
-                const hasEnclosureUrl = isMag || torrent !== undefined;
-                if (hasEnclosureUrl) {
-                    const enclosureUrl = isMag ? magnet : new URL(torrent, host).href;
-                    info.enclosure_url = enclosureUrl;
-                    info.enclosure_type = isMag ? 'application/x-bittorrent' : 'application/octet-stream';
-                }
-                return info;
             })
         )
     );
@@ -159,6 +161,6 @@ async function handler(ctx) {
     return {
         title: `色花堂 - ${$('#pt > div:nth-child(1) > a:last-child').text()}`,
         link,
-        item: out,
+        item: out.filter((item) => item.description && item.description !== '抓取原帖失败'),
     };
 }
