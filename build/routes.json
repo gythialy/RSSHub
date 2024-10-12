@@ -39823,6 +39823,34 @@
     ],
     "description": "TAIWAN KADOKAWA"
   },
+  "kaiyan": {
+    "routes": {
+      "/index": {
+        "path": "/index",
+        "categories": [
+          "video"
+        ],
+        "example": "/kaiyan/index",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Kaiyan Daily Selection",
+        "maintainers": [
+          "xyqfer"
+        ],
+        "description": "Kaiyan app daily video selection",
+        "location": "index.ts"
+      }
+    },
+    "name": "Kaiyan",
+    "url": "eyepetizer.net"
+  },
   "kakuyomu": {
     "routes": {
       "/works/:id": {
