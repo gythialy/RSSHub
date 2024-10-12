@@ -39828,7 +39828,7 @@
       "/index": {
         "path": "/index",
         "categories": [
-          "video"
+          "multimedia"
         ],
         "example": "/kaiyan/index",
         "parameters": {},
@@ -39844,7 +39844,7 @@
         "maintainers": [
           "xyqfer"
         ],
-        "description": "Kaiyan app daily video selection",
+        "description": "开眼每日精选",
         "location": "index.ts"
       }
     },
