@@ -327,6 +327,15 @@
   "/ahjzu/news": [
     "Yuk-0v0"
   ],
+  "/aibase/discover/:id?": [
+    "nczitzk"
+  ],
+  "/aibase/news": [
+    "zreo0"
+  ],
+  "/aibase/topic/:id?/:filter?": [
+    "nczitzk"
+  ],
   "/aicaijing/:category?/:id?": [],
   "/aiea/seminars/:period": [
     "zxx-457"
@@ -764,7 +773,9 @@
   ],
   "/bilibili/user/video-all/:uid/:disableEmbed?": [],
   "/bilibili/user/video/:uid/:disableEmbed?": [
-    "DIYgod"
+    "DIYgod",
+    "Konano",
+    "pseudoyu"
   ],
   "/bilibili/vsearch/:kw/:order?/:disableEmbed?/:tid?": [
     "pcrtool",
@@ -1283,6 +1294,9 @@
   "/ciidbnu/:id?": [
     "nczitzk"
   ],
+  "/cisia/:id?": [
+    "nczitzk"
+  ],
   "/civitai/discussions/:modelId": [
     "DIYgod"
   ],
@@ -1291,6 +1305,9 @@
   ],
   "/ciweimao/chapter/:id": [
     "keocheung"
+  ],
+  "/cjlu/yjsy/:cate": [
+    "chrisis58"
   ],
   "/clickme/:site/:grouping/:name": [
     "hoilc"
@@ -1570,7 +1587,8 @@
     "TonyRL"
   ],
   "/damai/activity/:city/:category/:subcategory/:keyword?": [
-    "hoilc"
+    "hoilc",
+    "Konano"
   ],
   "/dangdang/notice/:type?": [
     "353325487"
@@ -1719,13 +1737,13 @@
   "/dlsite/campaign/:type/:free?": [
     "cssxsh"
   ],
-  "/dlsite*": [],
   "/dlsite/new/:type": [
     "cssxsh"
   ],
   "/dlsite/ci-en/:id/article": [
     "nczitzk"
   ],
+  "/dlsite*": [],
   "/dmzj/news/:category?": [
     "vzz64"
   ],
@@ -2453,6 +2471,9 @@
   "/globallawreview/": [
     "nczitzk"
   ],
+  "/gmcmonline/chinacustoms": [
+    "nczitzk"
+  ],
   "/go/mhlw/pdf/:category{.+}?": [
     "nczitzk"
   ],
@@ -2998,7 +3019,14 @@
   ],
   "/hex-rays/news": [
     "hellodword ",
-    "TonyRL"
+    "TonyRL",
+    "Mas0n"
+  ],
+  "/hfut/hf/notice/:type?": [
+    "batemax"
+  ],
+  "/hfut/xc/notice/:type?": [
+    "batemax"
   ],
   "/hicairo/": [
     "cnkmmk"
@@ -3052,6 +3080,12 @@
   ],
   "/hkjunkcall/": [
     "nczitzk"
+  ],
+  "/hko/earthquake": [
+    "after9"
+  ],
+  "/hko/weather": [
+    "calpa"
   ],
   "/hljucm/yjsy/:category?": [
     "nczitzk"
@@ -3250,6 +3284,9 @@
   "/hypergryph/arknights/news/:group?": [
     "Astrian"
   ],
+  "/i-cable/news/:category?": [
+    "quiniapiezoelectricity"
+  ],
   "/ianspriggs/:category?": [
     "nczitzk"
   ],
@@ -3393,6 +3430,9 @@
   ],
   "/ipsw/index/:ptype/:pname": [
     "Jeason0228"
+  ],
+  "/ipsw.dev/index/:productID": [
+    "RieN7"
   ],
   "/iqilu/v/:category{.+}?": [],
   "/iqiyi/album/:id": [
@@ -3737,6 +3777,9 @@
   ],
   "/kpmg/insights/:lang?": [
     "LogicJake"
+  ],
+  "/ktown4u/artistBrandlist/:grpNo/:grpNo2?": [
+    "JamesWDGu"
   ],
   "/kuaidi100/track/:number/:id/:phone?": [
     "NeverBehave"
@@ -4878,6 +4921,12 @@
   "/parliament/section77/:type?": [
     "itpcc"
   ],
+  "/parliament.uk/commonslibrary/type/:topic?": [
+    "AntiKnot"
+  ],
+  "/parliament.uk/lordslibrary/type/:topic?": [
+    "AntiKnot"
+  ],
   "/patagonia/new-arrivals/:category": [],
   "/paulgraham/articles": [
     "Maecenas",
@@ -4924,10 +4973,11 @@
     "TonyRL",
     "micheal-death"
   ],
-  "/picuki/profile/:id/:functionalFlag?": [
+  "/picuki/profile/:id/:type?/:functionalFlag?": [
     "hoilc",
     "Rongronggg9",
-    "devinmugen"
+    "devinmugen",
+    "NekoAria"
   ],
   "/pikabu/:type/:name": [],
   "/pikabu/user/:name": [
@@ -5357,7 +5407,8 @@
     "DIYgod"
   ],
   "/rsshub/transform/html/:url/:routeParams": [
-    "ttttmr"
+    "ttttmr",
+    "hyoban"
   ],
   "/rsshub/transform/json/:url/:routeParams": [
     "ttttmr"
@@ -5756,6 +5807,33 @@
   "/sjtu/yzb/zkxx/:type": [
     "stdrc"
   ],
+  "/skeb/following_creators/:username": [
+    "SnowAgar25"
+  ],
+  "/skeb/following_works/:username": [
+    "SnowAgar25"
+  ],
+  "/skeb/friend_works/:username": [
+    "SnowAgar25"
+  ],
+  "/skeb/:category": [
+    "SnowAgar25"
+  ],
+  "/skeb/search/:keyword": [
+    "SnowAgar25"
+  ],
+  "/skeb/works/:username": [
+    "SnowAgar25"
+  ],
+  "/skebetter/illust/:type": [
+    "SnowAgar25"
+  ],
+  "/skebetter/:type": [
+    "SnowAgar25"
+  ],
+  "/skebetter/manga/:order": [
+    "SnowAgar25"
+  ],
   "/sketis/isabelle-dev/blog/:blog": [
     "Ritsuka314"
   ],
@@ -5969,6 +6047,9 @@
   ],
   "/storyfm/index": [
     "sanmmm"
+  ],
+  "/straitstimes/:category?/:section?": [
+    "quiniapiezoelectricity"
   ],
   "/stratechery/": [
     "chazeon"
@@ -6530,7 +6611,7 @@
     "truobel",
     "mobyw"
   ],
-  "/uestc/gr": [
+  "/uestc/gr/:type?": [
     "huyyi",
     "mobyw"
   ],
@@ -6824,7 +6905,8 @@
   "/weibo/user/:uid/:routeParams?": [
     "DIYgod",
     "iplusx",
-    "Rongronggg9"
+    "Rongronggg9",
+    "Konano"
   ],
   "/weibo/oasis/user/:userid": [
     "kt286"
