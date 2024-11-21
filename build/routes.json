@@ -44725,7 +44725,12 @@
           "multimedia"
         ],
         "example": "/kaiyan/index",
-        "parameters": {},
+        "parameters": {
+          "speed": {
+            "description": "Video playback speed (optional, default: 1)",
+            "default": "1"
+          }
+        },
         "features": {
           "requireConfig": false,
           "requirePuppeteer": false,
