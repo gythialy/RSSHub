@@ -516,6 +516,9 @@
   "/anthropic/news": [
     "etShaw-zh"
   ],
+  "/anytxt/release-notes": [
+    "nczitzk"
+  ],
   "/apache/apisix/blog": [
     "aneasystone"
   ],
@@ -1423,6 +1426,9 @@
   "/chinacdc/:category{.+}?": [
     "nczitzk"
   ],
+  "/chinadaily/language/:category{.+}?": [
+    "nczitzk"
+  ],
   "/chinadegrees/:province?": [
     "TonyRL"
   ],
@@ -1672,9 +1678,6 @@
   "/coomer/:source?/:id?": [
     "nczitzk",
     "AiraNadih"
-  ],
-  "/copernicium/:category?": [
-    "dzx-dzx"
   ],
   "/copymanga/comic/:id/:chapterCnt?": [
     "btdwv",
@@ -3430,7 +3433,10 @@
   "/hameln/chapter/:id": [
     "huangliangshusheng"
   ],
-  "/hanime1/previews/:date": [
+  "/hanime1/previews/:date?": [
+    "kjasn"
+  ],
+  "/hanime1/search/:params": [
     "kjasn"
   ],
   "/harvard/health/blog": [
@@ -3892,7 +3898,8 @@
     "TonyRL"
   ],
   "/imhcg/": [
-    "ZiHao256"
+    "ZiHao256",
+    "qzydustin"
   ],
   "/imiker/ask/jinghua": [
     "nczitzk"
@@ -4161,8 +4168,22 @@
   "/jiaoliudao/": [
     "TonyRL"
   ],
-  "/jiemian/list/:id": [],
-  "/jiemian/:category{.+}?": [],
+  "/jiemian/account/main/1": [
+    "nczitzk"
+  ],
+  "/jiemian/lists/:id": [
+    "WenhuWee",
+    "nczitzk"
+  ],
+  "/jiemian/special/1192": [
+    "nczitzk"
+  ],
+  "/jiemian/video/lists/258_1": [
+    "nczitzk"
+  ],
+  "/jiemian/pro/lists/12": [
+    "nczitzk"
+  ],
   "/jike/topic/text/:id": [
     "HenryQW"
   ],
@@ -4319,6 +4340,9 @@
   ],
   "/juejin/trending/:category/:type": [
     "moaix"
+  ],
+  "/jumeili/home/:column?": [
+    "kjasn"
   ],
   "/jump/discount/:platform/:filter?/:countries?": [
     "zytomorrow"
@@ -4967,9 +4991,13 @@
   "/mycard520/category/:category?": [
     "nczitzk"
   ],
-  "/mydrivers/cid/:id?": [],
-  "/mydrivers/zhibo": [],
-  "/mydrivers/:category{.+}?": [],
+  "/mydrivers/cid/:id?": [
+    "nczitzk"
+  ],
+  "/mydrivers/:category{.+}?": [
+    "kt286",
+    "nczitzk"
+  ],
   "/mydrivers/rank/:range?": [
     "nczitzk"
   ],
@@ -5560,13 +5588,14 @@
   "/oo-software/changelog/:id": [
     "nczitzk"
   ],
-  "/openai/blog/:tag?": [
-    "StevenRCE0",
-    "nczitzk"
-  ],
   "/openai/chatgpt/release-notes": [],
   "/openai/cookbook": [
     "liyaozhong"
+  ],
+  "/openai/news": [
+    "goestav",
+    "StevenRCE0",
+    "nczitzk"
   ],
   "/openai/research": [
     "yuguorui"
@@ -5738,7 +5767,10 @@
   "/penguin-random-house/the-read-down": [
     "StevenRCE0"
   ],
-  "/people/:site?/:category{.+}?": [],
+  "/people/:site?/:category{.+}?": [
+    "nczitzk",
+    "pseudoyu"
+  ],
   "/people/liuyan/:id/:state?": [
     "nczitzk"
   ],
@@ -6798,6 +6830,9 @@
   "/sogou/search/:keyword": [
     "CaoMeiYouRen"
   ],
+  "/sohu/mobile": [
+    "asqwe1"
+  ],
   "/sohu/mp/:xpt": [
     "HenryQW"
   ],
@@ -7470,9 +7505,6 @@
   ],
   "/transformer-circuits/": [
     "shinmohuang"
-  ],
-  "/trending/:keywords/:numberOfDays?": [
-    "Jkker"
   ],
   "/trendingpapers/papers/:category?/:time?/:cited?": [
     "CookiePieWw"
@@ -8518,7 +8550,8 @@
     "pseudoyu"
   ],
   "/zhihu/hot/:category?": [
-    "nczitzk"
+    "nczitzk",
+    "pseudoyu"
   ],
   "/zhihu/posts/:usertype/:id": [
     "whtsky",
@@ -8665,6 +8698,9 @@
   ],
   "/zuvio/student5/:board?": [
     "TonyRL"
+  ],
+  "/zxcs/novel/:type": [
+    "liaochuan"
   ],
   "/zyshow*": [],
   "/zyw/hot/:site?": [

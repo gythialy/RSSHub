@@ -4815,6 +4815,19 @@
       }
     ]
   },
+  "anytxt.net": {
+    "_name": "Anytxt Searcher",
+    ".": [
+      {
+        "title": "Release Notes",
+        "docs": "https://docs.rsshub.app/routes/program-update",
+        "source": [
+          "/"
+        ],
+        "target": "/anytxt/anytxt/release-notes"
+      }
+    ]
+  },
   "apnews.com": {
     "_name": "AP News",
     ".": [
@@ -9142,6 +9155,107 @@
       }
     ]
   },
+  "chinadaily.com.cn": {
+    "_name": "中国日报网",
+    "language": [
+      {
+        "title": "英语点津",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/:category"
+        ],
+        "target": "/chinadailyparams=>{const category=params.category;return`/chinadaily/language${category?`/${category}`:\"\"}`}"
+      },
+      {
+        "title": "精彩推荐",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/thelatest"
+        ],
+        "target": "/chinadaily/language/thelatest"
+      },
+      {
+        "title": "每日一词",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/news_hotwords/word_of_the_day"
+        ],
+        "target": "/chinadaily/language/news_hotwords/word_of_the_day"
+      },
+      {
+        "title": "双语新闻",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/news_bilingual"
+        ],
+        "target": "/chinadaily/language/news_bilingual"
+      },
+      {
+        "title": "新闻热词",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/news_hotwords"
+        ],
+        "target": "/chinadaily/language/news_hotwords"
+      },
+      {
+        "title": "实用口语",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/practice_tongue"
+        ],
+        "target": "/chinadaily/language/practice_tongue"
+      },
+      {
+        "title": "译词课堂",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/trans_collect"
+        ],
+        "target": "/chinadaily/language/trans_collect"
+      },
+      {
+        "title": "图片新闻",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/news_photo"
+        ],
+        "target": "/chinadaily/language/news_photo"
+      },
+      {
+        "title": "视频精选",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/video_links"
+        ],
+        "target": "/chinadaily/language/video_links"
+      },
+      {
+        "title": "新闻播报",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/audio_cd"
+        ],
+        "target": "/chinadaily/language/audio_cd"
+      },
+      {
+        "title": "专栏作家",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/columnist"
+        ],
+        "target": "/chinadaily/language/columnist"
+      },
+      {
+        "title": "权威发布",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/5af95d44a3103f6866ee845c"
+        ],
+        "target": "/chinadaily/language/5af95d44a3103f6866ee845c"
+      }
+    ]
+  },
   "chinafactcheck.com": {
     "_name": "有据",
     ".": [
@@ -10155,19 +10269,6 @@
           "/"
         ],
         "target": "/coomer/:source?/:id?"
-      }
-    ]
-  },
-  "copernicium.tw": {
-    "_name": "日新说",
-    "www": [
-      {
-        "title": "分类",
-        "docs": "https://docs.rsshub.app/routes/new-media",
-        "source": [
-          "/"
-        ],
-        "target": "/copernicium/:category?"
       }
     ]
   },
@@ -17188,10 +17289,11 @@
     "_name": "Hanime1",
     ".": [
       {
-        "title": "新番预告",
+        "title": "每月新番",
         "docs": "https://docs.rsshub.app/routes/anime",
         "source": [
-          "/previews/:date"
+          "/previews/:date",
+          "/previews"
         ],
         "target": "/hanime1/previews/:date"
       }
@@ -19346,7 +19448,7 @@
     ],
     "jlpt": [
       {
-        "title": "日本语能力测试JLPT通知",
+        "title": "日本语能力测试 JLPT 通知",
         "docs": "https://docs.rsshub.app/routes/study",
         "source": [
           "/"
@@ -20729,9 +20831,9 @@
       }
     ]
   },
-  "12356782.xyz": {
+  "mei5.vip": {
     "_name": "极品性感美女",
-    "www": [
+    ".": [
       {
         "title": "分类",
         "docs": "https://docs.rsshub.app/routes/picture",
@@ -20831,6 +20933,20 @@
           "/tag/:tag"
         ],
         "target": "/juejin/tag/:tag"
+      }
+    ]
+  },
+  "jumeili.cn": {
+    "_name": "聚美丽",
+    "www": [
+      {
+        "title": "首页资讯",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/",
+          "/"
+        ],
+        "target": "/jumeili/home/:column?"
       }
     ]
   },
@@ -25342,6 +25458,22 @@
     "_name": "快科技",
     "m": [
       {
+        "title": "更多分类",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/"
+        ],
+        "target": "/mydrivers/zhibo"
+      },
+      {
+        "title": "分类",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/"
+        ],
+        "target": "/mydrivers/zhibo"
+      },
+      {
         "title": "排行",
         "docs": "https://docs.rsshub.app/routes/new-media",
         "source": [
@@ -29185,9 +29317,9 @@
       }
     ]
   },
-  "pixwox.com": {
+  "pixnoy.com": {
     "_name": "Instagram",
-    ".": [
+    "www": [
       {
         "title": "User Profile - Picnob",
         "docs": "https://docs.rsshub.app/routes/social-media",
@@ -32533,6 +32665,16 @@
   },
   "sohu.com": {
     "_name": "搜狐号",
+    "m": [
+      {
+        "title": "首页新闻",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/limit"
+        ],
+        "target": "/sohu/mobile"
+      }
+    ],
     "mp": [
       {
         "title": "最新",
@@ -38793,6 +38935,19 @@
           "/notice/list.htm"
         ],
         "target": "/zuel/notice"
+      }
+    ]
+  },
+  "zxcs.info": {
+    "_name": "知轩藏书",
+    ".": [
+      {
+        "title": "小说列表",
+        "docs": "https://docs.rsshub.app/routes/reading",
+        "source": [
+          "/:type"
+        ],
+        "target": "/zxcs/novel/:type"
       }
     ]
   }
