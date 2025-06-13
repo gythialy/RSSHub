@@ -58978,7 +58978,8 @@ export default {
       "/:source?/:id?/:type?": {
         "path": "/:source?/:id?/:type?",
         "categories": [
-          "anime"
+          "anime",
+          "popular"
         ],
         "example": "/kemono",
         "parameters": {
@@ -109642,8 +109643,7 @@ export default {
       "/crowdfunding": {
         "path": "/crowdfunding",
         "categories": [
-          "shopping",
-          "popular"
+          "shopping"
         ],
         "example": "/xiaomiyoupin/crowdfunding",
         "parameters": {},
