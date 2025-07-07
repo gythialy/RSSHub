@@ -37691,8 +37691,7 @@ export default {
       "/kx": {
         "path": "/kx",
         "categories": [
-          "finance",
-          "popular"
+          "finance"
         ],
         "view": 5,
         "example": "/fx678/kx",
@@ -61044,7 +61043,8 @@ export default {
       "/:proma?": {
         "path": "/:proma?",
         "categories": [
-          "new-media"
+          "new-media",
+          "popular"
         ],
         "example": "/latepost",
         "parameters": {
