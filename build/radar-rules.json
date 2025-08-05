@@ -10794,7 +10794,7 @@
       }
     ]
   },
-  "coomer.su": {
+  "coomer.st": {
     "_name": "Coomer",
     ".": [
       {
@@ -11382,7 +11382,7 @@
   },
   "cursor.com": {
     "_name": "Cursor",
-    "www": [
+    ".": [
       {
         "title": "Changelog",
         "docs": "https://docs.rsshub.app/routes/program-update",
@@ -22283,7 +22283,7 @@
       }
     ]
   },
-  "kemono.su": {
+  "kemono.cr": {
     "_name": "Kemono",
     ".": [
       {
@@ -22371,6 +22371,15 @@
           "/blog/"
         ],
         "target": "/kiro/blog"
+      },
+      {
+        "title": "Changelog",
+        "docs": "https://docs.rsshub.app/routes/program-update",
+        "source": [
+          "/",
+          "/changelog/"
+        ],
+        "target": "/kiro/changelog"
       }
     ]
   },
