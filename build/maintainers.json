@@ -2,6 +2,9 @@
   "/81/81rc/:category{.+}?": [
     "nczitzk"
   ],
+  "/121/weatherLive": [
+    "nczitzk"
+  ],
   "/163/ds/:id": [
     "luyuhuang"
   ],
@@ -3367,6 +3370,9 @@
   "/gov/shenzhen/hrss/szksy/:caty/:page?": [
     "zlasd"
   ],
+  "/gov/shenzhen/szlh/zwfw/zffw/:caty": [
+    "lonn"
+  ],
   "/gov/shenzhen/xxgk/zfxxgj/:caty": [
     "laoxua"
   ],
@@ -3718,6 +3724,9 @@
   ],
   "/hkushop/vinyl/:cat?": [
     "gideonsenku"
+  ],
+  "/hlju/news/:category?": [
+    "LCMs-YoRHa"
   ],
   "/hljucm/yjsy/:category?": [
     "nczitzk"
