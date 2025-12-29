@@ -48,6 +48,16 @@
         "target": "/163/exclusive/:id?"
       }
     ],
+    "vip.open": [
+      {
+        "title": "精品课程",
+        "docs": "https://docs.rsshub.app/routes/study",
+        "source": [
+          "/"
+        ],
+        "target": "/163/open/vip"
+      }
+    ],
     "renjian": [
       {
         "title": "人间",
@@ -68,16 +78,6 @@
           "/"
         ],
         "target": "/163/today"
-      }
-    ],
-    "vip.open": [
-      {
-        "title": "精品课程",
-        "docs": "https://docs.rsshub.app/routes/study",
-        "source": [
-          "/"
-        ],
-        "target": "/163/open/vip"
       }
     ]
   },
@@ -7473,27 +7473,6 @@
   },
   "bit.edu.cn": {
     "_name": "北京理工大学",
-    "rszhaopin": [
-      {
-        "title": "人才招聘",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/"
-        ],
-        "target": "/bit/rszhaopin"
-      }
-    ],
-    "grd": [
-      {
-        "title": "研究生院招生信息",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/zsgz/zsxx/index.htm",
-          "/"
-        ],
-        "target": "/bit/yjs"
-      }
-    ],
     "cs": [
       {
         "title": "计院通知",
@@ -7514,6 +7493,27 @@
           "/"
         ],
         "target": "/bit/jwc"
+      }
+    ],
+    "rszhaopin": [
+      {
+        "title": "人才招聘",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/"
+        ],
+        "target": "/bit/rszhaopin"
+      }
+    ],
+    "grd": [
+      {
+        "title": "研究生院招生信息",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/zsgz/zsxx/index.htm",
+          "/"
+        ],
+        "target": "/bit/yjs"
       }
     ]
   },
@@ -7569,16 +7569,6 @@
         "target": "/bjfu/grs"
       }
     ],
-    "kyc": [
-      {
-        "title": "科技处通知公告",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/"
-        ],
-        "target": "/bjfu/kjc"
-      }
-    ],
     "it": [
       {
         "title": "信息学院通知",
@@ -7597,6 +7587,16 @@
           "/:type/index.html"
         ],
         "target": "/bjfu/jwc/:type"
+      }
+    ],
+    "kyc": [
+      {
+        "title": "科技处通知公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/"
+        ],
+        "target": "/bjfu/kjc"
       }
     ],
     "news": [
@@ -8451,6 +8451,44 @@
       }
     ]
   },
+  "canada.ca": {
+    "_name": "Canada.ca",
+    "www": [
+      {
+        "title": "News by Department",
+        "docs": "https://docs.rsshub.app/routes/government",
+        "source": [
+          "/:lang/department-finance.html",
+          "/:lang/ministere-finances.html",
+          "/:lang/department-finance/news/*",
+          "/:lang/ministere-finances/nouvelles/*"
+        ],
+        "target": "/canada.ca/news/:lang/departmentfinance"
+      },
+      {
+        "title": "News by Department",
+        "docs": "https://docs.rsshub.app/routes/government",
+        "source": [
+          "/:lang/news/advanced-news-search/news-results.html",
+          "/:lang/nouvelles/recherche-avancee-de-nouvelles/resultats-de-nouvelles.html"
+        ],
+        "target": "/canada.ca/news/:lang"
+      }
+    ],
+    "ised-isde": [
+      {
+        "title": "News by Department",
+        "docs": "https://docs.rsshub.app/routes/government",
+        "source": [
+          "/site/ised/:lang",
+          "/site/isde/:lang",
+          "/:lang/innovation-science-economic-development/news/*",
+          "/:lang/innovation-sciences-developpement-economique/nouvelles/*"
+        ],
+        "target": "/canada.ca/news/:lang/departmentofindustry"
+      }
+    ]
+  },
   "capitalmind.in": {
     "_name": "Capitalmind",
     ".": [
@@ -8501,6 +8539,111 @@
           "/:user/*"
         ],
         "target": "/cara/timeline/:user"
+      }
+    ]
+  },
+  "carousell.com": {
+    "_name": "Carousell",
+    "au": [
+      {
+        "title": "Keyword Search",
+        "docs": "https://docs.rsshub.app/routes/shopping",
+        "source": [
+          "/search/:keyword"
+        ],
+        "target": "/carousell/au/:keyword"
+      }
+    ],
+    "ca": [
+      {
+        "title": "Keyword Search",
+        "docs": "https://docs.rsshub.app/routes/shopping",
+        "source": [
+          "/search/:keyword"
+        ],
+        "target": "/carousell/ca/:keyword"
+      }
+    ],
+    "id": [
+      {
+        "title": "Keyword Search",
+        "docs": "https://docs.rsshub.app/routes/shopping",
+        "source": [
+          "/search/:keyword"
+        ],
+        "target": "/carousell/id/:keyword"
+      }
+    ],
+    "nz": [
+      {
+        "title": "Keyword Search",
+        "docs": "https://docs.rsshub.app/routes/shopping",
+        "source": [
+          "/search/:keyword"
+        ],
+        "target": "/carousell/nz/:keyword"
+      }
+    ],
+    "tw": [
+      {
+        "title": "Keyword Search",
+        "docs": "https://docs.rsshub.app/routes/shopping",
+        "source": [
+          "/search/:keyword"
+        ],
+        "target": "/carousell/tw/:keyword"
+      }
+    ]
+  },
+  "carousell.com.hk": {
+    "_name": "Carousell",
+    "www": [
+      {
+        "title": "Keyword Search",
+        "docs": "https://docs.rsshub.app/routes/shopping",
+        "source": [
+          "/search/:keyword"
+        ],
+        "target": "/carousell/hk/:keyword"
+      }
+    ]
+  },
+  "carousell.com.my": {
+    "_name": "Carousell",
+    "www": [
+      {
+        "title": "Keyword Search",
+        "docs": "https://docs.rsshub.app/routes/shopping",
+        "source": [
+          "/search/:keyword"
+        ],
+        "target": "/carousell/my/:keyword"
+      }
+    ]
+  },
+  "carousell.ph": {
+    "_name": "Carousell",
+    "www": [
+      {
+        "title": "Keyword Search",
+        "docs": "https://docs.rsshub.app/routes/shopping",
+        "source": [
+          "/search/:keyword"
+        ],
+        "target": "/carousell/ph/:keyword"
+      }
+    ]
+  },
+  "carousell.sg": {
+    "_name": "Carousell",
+    "www": [
+      {
+        "title": "Keyword Search",
+        "docs": "https://docs.rsshub.app/routes/shopping",
+        "source": [
+          "/search/:keyword"
+        ],
+        "target": "/carousell/sg/:keyword"
       }
     ]
   },
@@ -14024,6 +14167,75 @@
       }
     ]
   },
+  "denonbu.jp": {
+    "_name": "電音部",
+    ".": [
+      {
+        "title": "新闻",
+        "docs": "https://docs.rsshub.app/routes/anime",
+        "source": [
+          "/news"
+        ],
+        "target": "/denonbu/news"
+      },
+      {
+        "title": "新闻",
+        "docs": "https://docs.rsshub.app/routes/anime",
+        "source": [
+          "/event"
+        ],
+        "target": "/denonbu/news/event"
+      },
+      {
+        "title": "新闻",
+        "docs": "https://docs.rsshub.app/routes/anime",
+        "source": [
+          "/goods"
+        ],
+        "target": "/denonbu/news/goods"
+      },
+      {
+        "title": "新闻",
+        "docs": "https://docs.rsshub.app/routes/anime",
+        "source": [
+          "/comic"
+        ],
+        "target": "/denonbu/news/comic"
+      },
+      {
+        "title": "新闻",
+        "docs": "https://docs.rsshub.app/routes/anime",
+        "source": [
+          "/movie"
+        ],
+        "target": "/denonbu/news/movie"
+      },
+      {
+        "title": "新闻",
+        "docs": "https://docs.rsshub.app/routes/anime",
+        "source": [
+          "/music"
+        ],
+        "target": "/denonbu/news/music"
+      },
+      {
+        "title": "新闻",
+        "docs": "https://docs.rsshub.app/routes/anime",
+        "source": [
+          "/livearchives"
+        ],
+        "target": "/denonbu/news/livearchives"
+      },
+      {
+        "title": "新闻",
+        "docs": "https://docs.rsshub.app/routes/anime",
+        "source": [
+          "/area/:area"
+        ],
+        "target": "/denonbu/news/:area"
+      }
+    ]
+  },
   "dev.to": {
     "_name": "DEV Community",
     ".": [
@@ -14321,6 +14533,14 @@
           "/news"
         ],
         "target": "/dgtle/news/388"
+      },
+      {
+        "title": "标签",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/$tag-:id-/d+.html"
+        ],
+        "target": "/dgtle/tag/:id"
       },
       {
         "title": "视频",
@@ -14835,6 +15055,123 @@
       }
     ]
   },
+  "duozhi.com": {
+    "_name": "多知网",
+    "www": [
+      {
+        "title": "分类",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/:category"
+        ],
+        "target": "/duozhi/:category"
+      },
+      {
+        "title": "行业",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/industry/"
+        ],
+        "target": "/duozhi/industry"
+      },
+      {
+        "title": "多知商学院",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/DBS/"
+        ],
+        "target": "/duozhi/DBS"
+      },
+      {
+        "title": "OpenTalk",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/opentalk/"
+        ],
+        "target": "/duozhi/opentalk"
+      },
+      {
+        "title": "行业 - 观察",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/industry/insight/"
+        ],
+        "target": "/duozhi/industry/insight"
+      },
+      {
+        "title": "行业 - 早幼教",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/industry/preschool/"
+        ],
+        "target": "/duozhi/industry/preschool"
+      },
+      {
+        "title": "行业 - 家庭教育",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/industry/jiatingjiaoyu/"
+        ],
+        "target": "/duozhi/industry/jiatingjiaoyu"
+      },
+      {
+        "title": "行业 - K12",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/industry/K12/"
+        ],
+        "target": "/duozhi/industry/K12"
+      },
+      {
+        "title": "行业 - 素质教育",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/industry/qualityedu/"
+        ],
+        "target": "/duozhi/industry/qualityedu"
+      },
+      {
+        "title": "行业 - 职教/大学生",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/industry/adult/"
+        ],
+        "target": "/duozhi/industry/adult"
+      },
+      {
+        "title": "行业 - 教育信息化",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/industry/EduInformatization/"
+        ],
+        "target": "/duozhi/industry/EduInformatization"
+      },
+      {
+        "title": "行业 - 财报",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/industry/earnings/"
+        ],
+        "target": "/duozhi/industry/earnings"
+      },
+      {
+        "title": "行业 - 民办学校",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/industry/privateschools/"
+        ],
+        "target": "/duozhi/industry/privateschools"
+      },
+      {
+        "title": "行业 - 留学",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/industry/overseas/"
+        ],
+        "target": "/duozhi/industry/overseas"
+      }
+    ]
+  },
   "duozhuayu.com": {
     "_name": "多抓鱼",
     ".": [
@@ -15201,6 +15538,16 @@
         "target": "/ecnu/cs"
       }
     ],
+    "cxcy": [
+      {
+        "title": "本科创新创业教育网",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/"
+        ],
+        "target": "/ecnu/cxcy"
+      }
+    ],
     "dase": [
       {
         "title": "数据科学与工程学院通知公告",
@@ -15269,6 +15616,16 @@
           "/"
         ],
         "target": "/ecnu/history"
+      }
+    ],
+    "www.jiaoliu": [
+      {
+        "title": "本科生交流通知",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/"
+        ],
+        "target": "/ecnu/jiaoliu"
       }
     ],
     "www.jwc": [
@@ -16498,12 +16855,20 @@
     "_name": "FoodTalks全球食品资讯网",
     "www": [
       {
-        "title": "FoodTalks global food information network",
+        "title": "最新资讯",
         "docs": "https://docs.rsshub.app/routes/new-media",
         "source": [
           "/"
         ],
         "target": "/foodtalks/"
+      },
+      {
+        "title": "标签",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/news/tag/:tagId"
+        ],
+        "target": "/foodtalks/news/tag/:tagId"
       }
     ]
   },
@@ -22377,6 +22742,16 @@
     "_name": "湖南农业大学",
     "xky": [
       {
+        "title": "公共管理与法学学院",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/",
+          "/tzgg_8472",
+          "/:category"
+        ],
+        "target": "/hunau/:category"
+      },
+      {
         "title": "国际交流与合作处、国际教育学院、港澳台事务办公室",
         "docs": "https://docs.rsshub.app/routes/university",
         "source": [
@@ -22388,16 +22763,6 @@
       },
       {
         "title": "教务处",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/",
-          "/tzgg_8472",
-          "/:category"
-        ],
-        "target": "/hunau/:category"
-      },
-      {
-        "title": "公共管理与法学学院",
         "docs": "https://docs.rsshub.app/routes/university",
         "source": [
           "/",
@@ -22470,6 +22835,26 @@
   },
   "hust.edu.cn": {
     "_name": "华中科技大学",
+    "aia": [
+      {
+        "title": "人工智能和自动化学院新闻",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/xyxw.htm",
+          "/"
+        ],
+        "target": "/hust/aia/news"
+      },
+      {
+        "title": "人工智能和自动化学院新闻",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/xyxw.htm",
+          "/"
+        ],
+        "target": "/hust/auto/news"
+      }
+    ],
     "gs": [
       {
         "title": "研究生院",
@@ -23267,26 +23652,6 @@
           "/"
         ],
         "target": "/hust/yjs"
-      }
-    ],
-    "aia": [
-      {
-        "title": "人工智能和自动化学院新闻",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/xyxw.htm",
-          "/"
-        ],
-        "target": "/hust/aia/news"
-      },
-      {
-        "title": "人工智能和自动化学院新闻",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/xyxw.htm",
-          "/"
-        ],
-        "target": "/hust/auto/news"
       }
     ]
   },
@@ -26318,17 +26683,6 @@
   },
   "jlu.edu.cn": {
     "_name": "吉林大学",
-    "jwc": [
-      {
-        "title": "教务通知",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/",
-          "/index.htm"
-        ],
-        "target": "/jlu/jwc"
-      }
-    ],
     "ccst": [
       {
         "title": "吉林大学计算机科学与技术学院 - 新闻中心",
@@ -26341,6 +26695,17 @@
           "/xwzx/zsjy.htm"
         ],
         "target": "/jlu/ccst/xwzx/:category"
+      }
+    ],
+    "jwc": [
+      {
+        "title": "教务通知",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/",
+          "/index.htm"
+        ],
+        "target": "/jlu/jwc"
       }
     ],
     "phy": [
@@ -33048,17 +33413,6 @@
   },
   "nikkei.com": {
     "_name": "The Nikkei 日本経済新聞",
-    "www": [
-      {
-        "title": "News",
-        "docs": "https://docs.rsshub.app/routes/traditional-media",
-        "source": [
-          "/:category/archive",
-          "/:category"
-        ],
-        "target": "/nikkei/:category"
-      }
-    ],
     "asia": [
       {
         "title": "Nikkei Asia Latest News",
@@ -33091,6 +33445,17 @@
           "/"
         ],
         "target": "/nikkeiparams=>{if(params.category&&params.type){return`/nikkei/cn/zh/${params.category}/${params.type.replace(\".html\",\"\")}`}else if(params.category&&!params.type){return`/nikkei/cn/zh/${params.category.replace(\".html\",\"\")}`}else{return`/nikkei/cn/zh`}}"
+      }
+    ],
+    "www": [
+      {
+        "title": "News",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/:category/archive",
+          "/:category"
+        ],
+        "target": "/nikkei/:category"
       }
     ]
   },
@@ -33403,6 +33768,602 @@
   },
   "nmc.cn": {
     "_name": "中央气象台",
+    "www": [
+      {
+        "title": "产品",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/$:path(.*)/.(:ext(html|htm))"
+        ],
+        "target": "/nmcparams=>{const path=params.path;const ext=params.ext;const id=path&&ext?`${path}/${ext}`:void 0;return`/nmc/publish${id?`/${id}`:\"\"}`}"
+      },
+      {
+        "title": "首页 - 卫星云图",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/satellite/fy4b-visible.htm"
+        ],
+        "target": "/nmc/publish/satellite/fy4b-visible/htm"
+      },
+      {
+        "title": "首页 - 气象灾害预警",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/country/warning/index.html"
+        ],
+        "target": "/nmc/publish/country/warning/index/html"
+      },
+      {
+        "title": "首页 - 环境气象公报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/observations/environmental.html"
+        ],
+        "target": "/nmc/publish/observations/environmental/html"
+      },
+      {
+        "title": "首页 - 降水量预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/precipitation/1-day.html"
+        ],
+        "target": "/nmc/publish/precipitation/1-day/html"
+      },
+      {
+        "title": "首页 - 天气公报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/weather-bulletin/index.htm"
+        ],
+        "target": "/nmc/publish/weather-bulletin/index/htm"
+      },
+      {
+        "title": "首页 - 每日天气提示",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/weatherperday/index.htm"
+        ],
+        "target": "/nmc/publish/weatherperday/index/htm"
+      },
+      {
+        "title": "首页 - 城市天气预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/forecast.html"
+        ],
+        "target": "/nmc/publish/forecast/html"
+      },
+      {
+        "title": "天气实况 - 天气图",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/observations/china/dm/weatherchart-h000.htm"
+        ],
+        "target": "/nmc/publish/observations/china/dm/weatherchart-h000/htm"
+      },
+      {
+        "title": "天气实况 - 卫星云图",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/satellite/fy4b-visible.htm"
+        ],
+        "target": "/nmc/publish/satellite/fy4b-visible/htm"
+      },
+      {
+        "title": "天气实况 - 雷达图",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/radar/chinaall.html"
+        ],
+        "target": "/nmc/publish/radar/chinaall/html"
+      },
+      {
+        "title": "天气实况 - 降水量",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/observations/hourly-precipitation.html"
+        ],
+        "target": "/nmc/publish/observations/hourly-precipitation/html"
+      },
+      {
+        "title": "天气实况 - 气温",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/observations/hourly-temperature.html"
+        ],
+        "target": "/nmc/publish/observations/hourly-temperature/html"
+      },
+      {
+        "title": "天气实况 - 风",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/observations/hourly-winds.html"
+        ],
+        "target": "/nmc/publish/observations/hourly-winds/html"
+      },
+      {
+        "title": "天气实况 - 能见度",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/sea/seaplatform1.html"
+        ],
+        "target": "/nmc/publish/sea/seaplatform1/html"
+      },
+      {
+        "title": "天气实况 - 强对流",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/observations/lighting.html"
+        ],
+        "target": "/nmc/publish/observations/lighting/html"
+      },
+      {
+        "title": "天气实况 - 土壤水分",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/soil-moisture/10cm.html"
+        ],
+        "target": "/nmc/publish/soil-moisture/10cm/html"
+      },
+      {
+        "title": "城市预报 - 城市预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/forecast.html"
+        ],
+        "target": "/nmc/publish/forecast/html"
+      },
+      {
+        "title": "天气预报 - 天气公报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/weather-bulletin/index.htm"
+        ],
+        "target": "/nmc/publish/weather-bulletin/index/htm"
+      },
+      {
+        "title": "天气预报 - 每日天气提示",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/weatherperday/index.htm"
+        ],
+        "target": "/nmc/publish/weatherperday/index/htm"
+      },
+      {
+        "title": "天气预报 - 春运气象服务专报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/weather_forecast/swssr.htm"
+        ],
+        "target": "/nmc/publish/weather_forecast/swssr/htm"
+      },
+      {
+        "title": "天气预报 - 气象灾害预警",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/country/warning/fog.html"
+        ],
+        "target": "/nmc/publish/country/warning/fog/html"
+      },
+      {
+        "title": "天气预报 - 重要天气提示",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/news/weather_new.html"
+        ],
+        "target": "/nmc/publish/news/weather_new/html"
+      },
+      {
+        "title": "天气预报 - 重要天气盘点",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/tianqiyubao/zhongyaotianqipandian/index.html"
+        ],
+        "target": "/nmc/publish/tianqiyubao/zhongyaotianqipandian/index/html"
+      },
+      {
+        "title": "天气预报 - 降水量预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/precipitation/1-day.html"
+        ],
+        "target": "/nmc/publish/precipitation/1-day/html"
+      },
+      {
+        "title": "天气预报 - 冻雨预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/tianqiyubao/dongyuyubao/index.html"
+        ],
+        "target": "/nmc/publish/tianqiyubao/dongyuyubao/index/html"
+      },
+      {
+        "title": "天气预报 - 气温预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/temperature/hight/24hour.html"
+        ],
+        "target": "/nmc/publish/temperature/hight/24hour/html"
+      },
+      {
+        "title": "天气预报 - 大风预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/wind/24h.html"
+        ],
+        "target": "/nmc/publish/wind/24h/html"
+      },
+      {
+        "title": "天气预报 - 强对流天气预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/bulletin/swpc.html"
+        ],
+        "target": "/nmc/publish/bulletin/swpc/html"
+      },
+      {
+        "title": "天气预报 - 中期天气",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/bulletin/mid-range.htm"
+        ],
+        "target": "/nmc/publish/bulletin/mid-range/htm"
+      },
+      {
+        "title": "天气预报 - 全球天气预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/bulletin/abroadweather.html"
+        ],
+        "target": "/nmc/publish/bulletin/abroadweather/html"
+      },
+      {
+        "title": "天气预报 - 全球灾害性天气监测月报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/tianqiyubao/quanqiuzaihaixingtianqijianceyuebao/index.html"
+        ],
+        "target": "/nmc/publish/tianqiyubao/quanqiuzaihaixingtianqijianceyuebao/index/html"
+      },
+      {
+        "title": "天气预报 - 环境气象公报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/observations/environmental.html"
+        ],
+        "target": "/nmc/publish/observations/environmental/html"
+      },
+      {
+        "title": "天气预报 - 山洪灾害气象预警",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/mountainflood.html"
+        ],
+        "target": "/nmc/publish/mountainflood/html"
+      },
+      {
+        "title": "天气预报 - 地质灾害气象风险预警",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/geohazard.html"
+        ],
+        "target": "/nmc/publish/geohazard/html"
+      },
+      {
+        "title": "天气预报 - 中小河流洪水气象风险预警",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/swdz/zxhlhsqxyj.html"
+        ],
+        "target": "/nmc/publish/swdz/zxhlhsqxyj/html"
+      },
+      {
+        "title": "天气预报 - 渍涝风险气象预警",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/waterlogging.html"
+        ],
+        "target": "/nmc/publish/waterlogging/html"
+      },
+      {
+        "title": "天气预报 - 交通气象预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/traffic.html"
+        ],
+        "target": "/nmc/publish/traffic/html"
+      },
+      {
+        "title": "天气预报 - 森林火险预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/environment/forestfire-doc.html"
+        ],
+        "target": "/nmc/publish/environment/forestfire-doc/html"
+      },
+      {
+        "title": "天气预报 - 草原火险预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/environment/glassland-fire.html"
+        ],
+        "target": "/nmc/publish/environment/glassland-fire/html"
+      },
+      {
+        "title": "台风海洋 - 台风快讯与报文",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/typhoon/typhoon_new.html"
+        ],
+        "target": "/nmc/publish/typhoon/typhoon_new/html"
+      },
+      {
+        "title": "台风海洋 - 台风路径预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/typhoon/probability-img2.html"
+        ],
+        "target": "/nmc/publish/typhoon/probability-img2/html"
+      },
+      {
+        "title": "台风海洋 - 台风公报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/typhoon/warning.html"
+        ],
+        "target": "/nmc/publish/typhoon/warning/html"
+      },
+      {
+        "title": "台风海洋 - 台风预警",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/typhoon/warning_index.html"
+        ],
+        "target": "/nmc/publish/typhoon/warning_index/html"
+      },
+      {
+        "title": "台风海洋 - 海区预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/marine/newcoastal.html"
+        ],
+        "target": "/nmc/publish/marine/newcoastal/html"
+      },
+      {
+        "title": "台风海洋 - 海事公报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/marine/maritime.html"
+        ],
+        "target": "/nmc/publish/marine/maritime/html"
+      },
+      {
+        "title": "台风海洋 - 海洋天气预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/marine/forecast.htm"
+        ],
+        "target": "/nmc/publish/marine/forecast/htm"
+      },
+      {
+        "title": "台风海洋 - 近海海雾预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/taifenghaiyang/jinhaihaiwuyubao/index.html"
+        ],
+        "target": "/nmc/publish/taifenghaiyang/jinhaihaiwuyubao/index/html"
+      },
+      {
+        "title": "台风海洋 - 海区风力预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/taifenghaiyang/haiqufengliyubao/index.html"
+        ],
+        "target": "/nmc/publish/taifenghaiyang/haiqufengliyubao/index/html"
+      },
+      {
+        "title": "台风海洋 - 北太平洋分析与预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/marine/h000.html"
+        ],
+        "target": "/nmc/publish/marine/h000/html"
+      },
+      {
+        "title": "台风海洋 - 全球热带气旋监测公报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/typhoon/totalcyclone.htm"
+        ],
+        "target": "/nmc/publish/typhoon/totalcyclone/htm"
+      },
+      {
+        "title": "台风海洋 - 台风命名",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/typhoon/typhoon-name/index.html"
+        ],
+        "target": "/nmc/publish/typhoon/typhoon-name/index/html"
+      },
+      {
+        "title": "全球预报 - 全球天气公报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/quanqiuyubao/quanqiutianqigongbao/index.html"
+        ],
+        "target": "/nmc/publish/quanqiuyubao/quanqiutianqigongbao/index/html"
+      },
+      {
+        "title": "全球预报 - 全球热带气旋监测公报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/quanqiuyubao/quanqiuredaiqixuanjiancegongbao/index.html"
+        ],
+        "target": "/nmc/publish/quanqiuyubao/quanqiuredaiqixuanjiancegongbao/index/html"
+      },
+      {
+        "title": "全球预报 - WMO第XI海区海事天气公报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/quanqiuyubao/WMOdiXIhaiquhaishitianqigongbao/index.html"
+        ],
+        "target": "/nmc/publish/quanqiuyubao/WMOdiXIhaiquhaishitianqigongbao/index/html"
+      },
+      {
+        "title": "全球预报 - 全球灾害性天气监测月报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/quanqiuyubao/quanqiuzaihaixingtianqijianceyuebao/index.html"
+        ],
+        "target": "/nmc/publish/quanqiuyubao/quanqiuzaihaixingtianqijianceyuebao/index/html"
+      },
+      {
+        "title": "全球预报 - 全球雨雪落区预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/quanqiuyubao/quanqiuyuxueluoquyubao/yazhou/24xiaoshi/index.html"
+        ],
+        "target": "/nmc/publish/quanqiuyubao/quanqiuyuxueluoquyubao/yazhou/24xiaoshi/index/html"
+      },
+      {
+        "title": "环境气象 - 雾预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/fog.html"
+        ],
+        "target": "/nmc/publish/fog/html"
+      },
+      {
+        "title": "环境气象 - 霾预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/haze.html"
+        ],
+        "target": "/nmc/publish/haze/html"
+      },
+      {
+        "title": "环境气象 - 沙尘天气预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/severeweather/dust.html"
+        ],
+        "target": "/nmc/publish/severeweather/dust/html"
+      },
+      {
+        "title": "环境气象 - 空气污染气象条件预报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/environment/air_pollution-24.html"
+        ],
+        "target": "/nmc/publish/environment/air_pollution-24/html"
+      },
+      {
+        "title": "环境气象 - 环境气象公报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/observations/environmental.html"
+        ],
+        "target": "/nmc/publish/observations/environmental/html"
+      },
+      {
+        "title": "环境气象 - 大气环境气象公报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/environment/National-Bulletin-atmospheric-environment.htm"
+        ],
+        "target": "/nmc/publish/environment/National-Bulletin-atmospheric-environment/htm"
+      },
+      {
+        "title": "农业气象 - 土壤水分监测",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/agro/soil-moisture-monitoring-10cm.html"
+        ],
+        "target": "/nmc/publish/agro/soil-moisture-monitoring-10cm/html"
+      },
+      {
+        "title": "农业气象 - 农业干旱综合监测",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/agro/disastersmonitoring/Agricultural_Drought_Monitoring.htm"
+        ],
+        "target": "/nmc/publish/agro/disastersmonitoring/Agricultural_Drought_Monitoring/htm"
+      },
+      {
+        "title": "农业气象 - 关键农时农事",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/agro/weatherservices/harvest_in_autumn.html"
+        ],
+        "target": "/nmc/publish/agro/weatherservices/harvest_in_autumn/html"
+      },
+      {
+        "title": "农业气象 - 农业气象周报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/agro/ten-week/index.html"
+        ],
+        "target": "/nmc/publish/agro/ten-week/index/html"
+      },
+      {
+        "title": "农业气象 - 农业气象月报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/agro/monthly/index.html"
+        ],
+        "target": "/nmc/publish/agro/monthly/index/html"
+      },
+      {
+        "title": "农业气象 - 生态气象监测评估",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/nongyeqixiang/shengtaiqixiangjiance/caodishengtaiqixiangjiance/index.html"
+        ],
+        "target": "/nmc/publish/nongyeqixiang/shengtaiqixiangjiance/caodishengtaiqixiangjiance/index/html"
+      },
+      {
+        "title": "农业气象 - 农业气象专报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/crop/index.htm"
+        ],
+        "target": "/nmc/publish/crop/index/htm"
+      },
+      {
+        "title": "农业气象 - 作物发育期监测",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/agro/information/winter-wheat.html"
+        ],
+        "target": "/nmc/publish/agro/information/winter-wheat/html"
+      },
+      {
+        "title": "农业气象 - 农业气象灾害风险预警",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/nongyeqixiang/quanguonongyeqixiangzaihaifengxianyujing/index.html"
+        ],
+        "target": "/nmc/publish/nongyeqixiang/quanguonongyeqixiangzaihaifengxianyujing/index/html"
+      },
+      {
+        "title": "农业气象 - 国外农业气象月报",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/publish/nongyeqixiang/guowainongyeqixiangyuebao/index.html"
+        ],
+        "target": "/nmc/publish/nongyeqixiang/guowainongyeqixiangyuebao/index/html"
+      }
+    ],
+    "typhoon": [
+      {
+        "title": "台风海洋 - 台风综合信息",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/"
+        ],
+        "target": "/nmc/publish/http://typhoon/nmc.cn"
+      }
+    ],
     ".": [
       {
         "title": "全国气象预警",
@@ -33688,6 +34649,17 @@
         "target": "/nuist/bulletin/:category"
       }
     ],
+    "lib": [
+      {
+        "title": "Unknown",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/",
+          "/index/tzgg.htm"
+        ],
+        "target": "/nuist/lib"
+      }
+    ],
     "scs": [
       {
         "title": "NUIST CS（南信大计软院）",
@@ -33707,17 +34679,6 @@
           "/419/list.htm"
         ],
         "target": "/nuist/xgc"
-      }
-    ],
-    "lib": [
-      {
-        "title": "Unknown",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/",
-          "/index/tzgg.htm"
-        ],
-        "target": "/nuist/lib"
       }
     ]
   },
@@ -36922,37 +37883,6 @@
   },
   "pku.edu.cn": {
     "_name": "北京大学",
-    "hr": [
-      {
-        "title": "人事处",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/"
-        ],
-        "target": "/pku/hr/:category?"
-      }
-    ],
-    "nsd": [
-      {
-        "title": "观点 - 国家发展研究院",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/"
-        ],
-        "target": "/pku/nsd/gd"
-      }
-    ],
-    "admission": [
-      {
-        "title": "研究生招生网",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/zsxx/sszs/index.htm",
-          "/"
-        ],
-        "target": "/pku/admission/sszs"
-      }
-    ],
     "bbs": [
       {
         "title": "北大未名 BBS 全站十大",
@@ -36982,6 +37912,37 @@
           "/"
         ],
         "target": "/pku/cls/lecture"
+      }
+    ],
+    "hr": [
+      {
+        "title": "人事处",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/"
+        ],
+        "target": "/pku/hr/:category?"
+      }
+    ],
+    "nsd": [
+      {
+        "title": "观点 - 国家发展研究院",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/"
+        ],
+        "target": "/pku/nsd/gd"
+      }
+    ],
+    "admission": [
+      {
+        "title": "研究生招生网",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/zsxx/sszs/index.htm",
+          "/"
+        ],
+        "target": "/pku/admission/sszs"
       }
     ],
     "www.rccp": [
@@ -38336,6 +39297,19 @@
       }
     ]
   },
+  "readsomethingwonderful.com": {
+    "_name": "Read Something Wonderful",
+    ".": [
+      {
+        "title": "Articles",
+        "docs": "https://docs.rsshub.app/routes/blog",
+        "source": [
+          "/"
+        ],
+        "target": "/readsomethingwonderful/"
+      }
+    ]
+  },
   "readwise.io": {
     "_name": "Readwise",
     "read": [
@@ -38895,6 +39869,17 @@
   },
   "scnu.edu.cn": {
     "_name": "华南师范大学",
+    "cs": [
+      {
+        "title": "计算机学院竞赛通知",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/xueshenggongzuo/chengchangfazhan/kejichuangxin/",
+          "/"
+        ],
+        "target": "/scnu/cs/match"
+      }
+    ],
     "jw": [
       {
         "title": "教务处通知",
@@ -38937,17 +39922,6 @@
           "/"
         ],
         "target": "/scnu/yjs"
-      }
-    ],
-    "cs": [
-      {
-        "title": "计算机学院竞赛通知",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/xueshenggongzuo/chengchangfazhan/kejichuangxin/",
-          "/"
-        ],
-        "target": "/scnu/cs/match"
       }
     ]
   },
@@ -38995,20 +39969,20 @@
     "_name": "华南理工大学",
     "www2": [
       {
-        "title": "研究生院通知公告",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/graduate/14562/list.htm"
-        ],
-        "target": "/scut/yjs"
-      },
-      {
         "title": "电子与信息学院 - 新闻速递",
         "docs": "https://docs.rsshub.app/routes/university",
         "source": [
           "/ee/16285/list.htm"
         ],
         "target": "/scut/seie/news_center"
+      },
+      {
+        "title": "研究生院通知公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/graduate/14562/list.htm"
+        ],
+        "target": "/scut/yjs"
       }
     ]
   },
@@ -39151,6 +40125,19 @@
       }
     ]
   },
+  "semiconductors.org": {
+    "_name": "Semiconductor Industry Association",
+    "www": [
+      {
+        "title": "Latest News",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/:category"
+        ],
+        "target": "/semiconductors/:category"
+      }
+    ]
+  },
   "sensortower.com": {
     "_name": "Sensor Tower",
     ".": [
@@ -39184,17 +40171,6 @@
   },
   "seu.edu.cn": {
     "_name": "东南大学",
-    "seugs": [
-      {
-        "title": "研究生院全部公告",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/26671/list.htm",
-          "/"
-        ],
-        "target": "/seu/yjs"
-      }
-    ],
     "cse": [
       {
         "title": "计算机技术与工程学院",
@@ -39226,6 +40202,17 @@
           "/"
         ],
         "target": "/seu/radio/academic"
+      }
+    ],
+    "seugs": [
+      {
+        "title": "研究生院全部公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/26671/list.htm",
+          "/"
+        ],
+        "target": "/seu/yjs"
       }
     ],
     "yzb": [
@@ -42004,6 +42991,16 @@
   },
   "swjtu.edu.cn": {
     "_name": "西南交通大学",
+    "gsee": [
+      {
+        "title": "地球科学与工程学院",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/"
+        ],
+        "target": "/swjtu/gsee/yjs"
+      }
+    ],
     "jwc": [
       {
         "title": "教务网",
@@ -42058,16 +43055,6 @@
           "/"
         ],
         "target": "/swjtu/xg"
-      }
-    ],
-    "gsee": [
-      {
-        "title": "地球科学与工程学院",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/"
-        ],
-        "target": "/swjtu/gsee/yjs"
       }
     ]
   },
@@ -42632,40 +43619,15 @@
   },
   "szse.cn": {
     "_name": "深圳证券交易所",
-    ".": [
-      {
-        "title": "问询函件",
-        "docs": "https://docs.rsshub.app/routes/finance",
-        "source": [
-          "/disclosure/supervision/inquire/index.html",
-          "/"
-        ],
-        "target": "/szse/inquire"
-      },
-      {
-        "title": "上市公告 - 可转换债券",
-        "docs": "https://docs.rsshub.app/routes/finance",
-        "source": [
-          "/disclosure/notice/company/index.html",
-          "/"
-        ],
-        "target": "/szse/notice"
-      }
-    ],
-    "listing": [
-      {
-        "title": "创业板项目动态",
-        "docs": "https://docs.rsshub.app/routes/finance",
-        "source": [
-          "/projectdynamic/1/index.html",
-          "/projectdynamic/2/index.html",
-          "/projectdynamic/3/index.html",
-          "/"
-        ],
-        "target": "/szse/projectdynamic/:type?/:stage?/:status?"
-      }
-    ],
     "www": [
+      {
+        "title": "上市公司公告",
+        "docs": "https://docs.rsshub.app/routes/finance",
+        "source": [
+          "/disclosure/listed/notice/index.html"
+        ],
+        "target": "/szse/disclosure/listed/notice"
+      },
       {
         "title": "本所业务规则",
         "docs": "https://docs.rsshub.app/routes/finance",
@@ -42937,14 +43899,39 @@
           "/www/lawrules/rule/repeal/rules/index.html"
         ],
         "target": "/szse/rule/repeal/rules"
-      },
+      }
+    ],
+    ".": [
       {
-        "title": "上市公司公告",
+        "title": "问询函件",
         "docs": "https://docs.rsshub.app/routes/finance",
         "source": [
-          "/disclosure/listed/notice/index.html"
+          "/disclosure/supervision/inquire/index.html",
+          "/"
         ],
-        "target": "/szse/disclosure/listed/notice"
+        "target": "/szse/inquire"
+      },
+      {
+        "title": "上市公告 - 可转换债券",
+        "docs": "https://docs.rsshub.app/routes/finance",
+        "source": [
+          "/disclosure/notice/company/index.html",
+          "/"
+        ],
+        "target": "/szse/notice"
+      }
+    ],
+    "listing": [
+      {
+        "title": "创业板项目动态",
+        "docs": "https://docs.rsshub.app/routes/finance",
+        "source": [
+          "/projectdynamic/1/index.html",
+          "/projectdynamic/2/index.html",
+          "/projectdynamic/3/index.html",
+          "/"
+        ],
+        "target": "/szse/projectdynamic/:type?/:stage?/:status?"
       }
     ]
   },
@@ -43093,6 +44080,14 @@
           "/newsletter/index.html"
         ],
         "target": "/techflowpost/express"
+      },
+      {
+        "title": "精选",
+        "docs": "https://docs.rsshub.app/routes/finance",
+        "source": [
+          "/article/index.html"
+        ],
+        "target": "/techflowpost/featured/:category?"
       },
       {
         "title": "首页",
@@ -43340,6 +44335,19 @@
       }
     ]
   },
+  "thebrain.com": {
+    "_name": "TheBrain",
+    "www": [
+      {
+        "title": "Blog",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/blog"
+        ],
+        "target": "/thebrain/blog"
+      }
+    ]
+  },
   "thegadgetflow.com": {
     "_name": "Gadget Flow",
     ".": [
@@ -43426,22 +44434,17 @@
       }
     ]
   },
-  "factpaper.cn": {
+  "thepaper.cn": {
     "_name": "澎湃新闻",
     ".": [
       {
-        "title": "明查",
+        "title": "澎湃美数课作品集 - 分类",
         "docs": "https://docs.rsshub.app/routes/new-media",
         "source": [
           "/"
         ],
-        "target": "/thepaper/factpaper/:status"
-      }
-    ]
-  },
-  "thepaper.cn": {
-    "_name": "澎湃新闻",
-    ".": [
+        "target": "/thepaper/839studio/:id"
+      },
       {
         "title": "首页头条",
         "docs": "https://docs.rsshub.app/routes/new-media",
@@ -43457,14 +44460,19 @@
           "/"
         ],
         "target": "/thepaper/sidebar"
-      },
+      }
+    ]
+  },
+  "factpaper.cn": {
+    "_name": "澎湃新闻",
+    ".": [
       {
-        "title": "澎湃美数课作品集 - 分类",
+        "title": "明查",
         "docs": "https://docs.rsshub.app/routes/new-media",
         "source": [
           "/"
         ],
-        "target": "/thepaper/839studio/:id"
+        "target": "/thepaper/factpaper/:status"
       }
     ]
   },
@@ -44270,16 +45278,6 @@
   },
   "tsinghua.edu.cn": {
     "_name": "清华大学",
-    "www": [
-      {
-        "title": "清华新闻",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/news/:category"
-        ],
-        "target": "/tsinghua(_,url)=>`/tsinghua/news/${new URL(url).pathname.split(\"/\").pop()?.replace(\".htm\",\"\")}`"
-      }
-    ],
     "lib": [
       {
         "title": "图书馆通知公告",
@@ -44320,6 +45318,16 @@
           "/zydt/sy"
         ],
         "target": "/tsinghua/lib/zydt/sy"
+      }
+    ],
+    "www": [
+      {
+        "title": "清华新闻",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/news/:category"
+        ],
+        "target": "/tsinghua(_,url)=>`/tsinghua/news/${new URL(url).pathname.split(\"/\").pop()?.replace(\".htm\",\"\")}`"
       }
     ]
   },
@@ -45956,16 +46964,6 @@
         "target": "/weibo/user/:uid"
       }
     ],
-    "www": [
-      {
-        "title": "博主",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/u/:uid"
-        ],
-        "target": "/weibo/user/:uid"
-      }
-    ],
     "s": [
       {
         "title": "热搜榜",
@@ -45975,13 +46973,23 @@
         ],
         "target": "/weibo/search/hot/:fulltext?"
       }
+    ],
+    "www": [
+      {
+        "title": "博主",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/u/:uid"
+        ],
+        "target": "/weibo/user/:uid"
+      }
     ]
   },
   "weibo.cn": {
     "_name": "微博",
     "m": [
       {
-        "title": "博主",
+        "title": "绿洲用户",
         "docs": "https://docs.rsshub.app/routes/social-media",
         "source": [
           "/u/:uid",
@@ -45990,7 +46998,7 @@
         "target": "/weibo/user/:uid"
       },
       {
-        "title": "绿洲用户",
+        "title": "博主",
         "docs": "https://docs.rsshub.app/routes/social-media",
         "source": [
           "/u/:uid",
@@ -46095,6 +47103,17 @@
   },
   "whu.edu.cn": {
     "_name": "武汉大学",
+    "gs": [
+      {
+        "title": "研究生院",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/index.htm",
+          "/"
+        ],
+        "target": "/whu/gs"
+      }
+    ],
     "rsgis": [
       {
         "title": "武汉大学遥感信息工程学院",
@@ -46113,17 +47132,6 @@
           "/:type"
         ],
         "target": "/whu/swrh/:type"
-      }
-    ],
-    "gs": [
-      {
-        "title": "研究生院",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/index.htm",
-          "/"
-        ],
-        "target": "/whu/gs"
       }
     ]
   },
@@ -46353,6 +47361,19 @@
       }
     ]
   },
+  "x410.dev": {
+    "_name": "x410",
+    ".": [
+      {
+        "title": "News",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/"
+        ],
+        "target": "/x410/news"
+      }
+    ]
+  },
   "xboxfan.com": {
     "_name": "盒心光环",
     ".": [
@@ -46512,6 +47533,16 @@
         "target": "/xjtu/ee/:id?"
       }
     ],
+    "gs": [
+      {
+        "title": "研究生院通知公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/"
+        ],
+        "target": "/xjtu/gs/tzgg"
+      }
+    ],
     "yz": [
       {
         "title": "研究生招生信息网",
@@ -46530,16 +47561,6 @@
           "/:category"
         ],
         "target": "/xjtuparams=>{const category=params.category;return`/xjtu/zs${category?`/${category}`:\"\"}`}"
-      }
-    ],
-    "gs": [
-      {
-        "title": "研究生院通知公告",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/"
-        ],
-        "target": "/xjtu/gs/tzgg"
       }
     ]
   },
@@ -47435,6 +48456,22 @@
         "target": "/zhihu/collection/:id"
       },
       {
+        "title": "知乎想法热榜",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/zhihu/bookstore/newest"
+        ],
+        "target": "/zhihu/pin/hotlist"
+      },
+      {
+        "title": "用户想法",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/people/:id/pins"
+        ],
+        "target": "/zhihu/people/pins/:id"
+      },
+      {
         "title": "用户文章",
         "docs": "https://docs.rsshub.app/routes/social-media",
         "source": [
@@ -47466,22 +48503,6 @@
           "/pub/weekly"
         ],
         "target": "/zhihu/weekly"
-      },
-      {
-        "title": "知乎想法热榜",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/zhihu/bookstore/newest"
-        ],
-        "target": "/zhihu/pin/hotlist"
-      },
-      {
-        "title": "用户想法",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/people/:id/pins"
-        ],
-        "target": "/zhihu/people/pins/:id"
       },
       {
         "title": "xhu - 用户动态",
@@ -47552,7 +48573,7 @@
     ],
     "zhuanlan": [
       {
-        "title": "专栏",
+        "title": "xhu- 专栏",
         "docs": "https://docs.rsshub.app/routes/social-media",
         "source": [
           "/:id"
@@ -47560,7 +48581,7 @@
         "target": "/zhihu/zhuanlan/:id"
       },
       {
-        "title": "xhu- 专栏",
+        "title": "专栏",
         "docs": "https://docs.rsshub.app/routes/social-media",
         "source": [
           "/:id"
@@ -47700,16 +48721,6 @@
   },
   "zjut.edu.cn": {
     "_name": "浙江工业大学",
-    "www.news": [
-      {
-        "title": "浙工大新闻",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/:type/list.htm"
-        ],
-        "target": "/zjut/news/:type"
-      }
-    ],
     "cs": [
       {
         "title": "浙江工业大学计算机科学与技术学院、软件学院",
@@ -47728,6 +48739,16 @@
           "/:type/list.htm"
         ],
         "target": "/zjut/jwc/:type"
+      }
+    ],
+    "www.news": [
+      {
+        "title": "浙工大新闻",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/:type/list.htm"
+        ],
+        "target": "/zjut/news/:type"
       }
     ],
     "www": [
