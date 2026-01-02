@@ -329,7 +329,7 @@ export type RoutePath =
   | `/bilibili/vsearch/:kw/:order?/:embed?/:tid?`
   | `/bilibili/watchlater/:uid/:embed?`
   | `/bilibili/weekly/:embed?`
-  | `/binance/announcement/:type?/:lang?`
+  | `/binance/announcement/:type`
   | `/binance/launchpool`
   | `/bing/:routeParams?`
   | `/bing/search/:keyword`
@@ -626,7 +626,6 @@ export type RoutePath =
   | `/cosplaytele/category/:category`
   | `/cosplaytele/popular/:period`
   | `/cosplaytele/tag/:tag`
-  | `/costar/press-releases/:filter{.+}?`
   | `/counter-strike/news/:category?/:language?`
   | `/cpcaauto/news/:type?/:id?`
   | `/cpcey/:type?`
