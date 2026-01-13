@@ -107,7 +107,9 @@
   "/18comic/:category?/:time?/:order?/:keyword?": [
     "nczitzk"
   ],
-  "/18comic/search/:option?/:category?/:keyword?/:time?/:order?": [],
+  "/18comic/search/:option?/:category?/:keyword?/:time?/:order?": [
+    "nczitzk"
+  ],
   "/199it/:category{.+}?": [
     "nczitzk"
   ],
@@ -4311,20 +4313,19 @@
   "/hust/yjs": [
     "shengmaosu"
   ],
-  "/huxiu/briefcolumn/:id": [
-    "Fatpandac",
-    "nczitzk"
-  ],
   "/huxiu/article": [
     "HenryQW",
-    "nczitzk"
+    "nczitzk",
+    "TimoYoung"
   ],
   "/huxiu/channel/:id?": [
     "HenryQW",
-    "nczitzk"
+    "nczitzk",
+    "TimoYoung"
   ],
   "/huxiu/club/:id": [
-    "nczitzk"
+    "nczitzk",
+    "TimoYoung"
   ],
   "/huxiu/collection/:id": [
     "AlexdanerZe",
@@ -4347,7 +4348,8 @@
   "/huxiu/tag/:id": [
     "xyqfer",
     "HenryQW",
-    "nczitzk"
+    "nczitzk",
+    "TimoYoung"
   ],
   "/hyperdash/top-traders": [
     "pseudoyu"
@@ -4502,9 +4504,6 @@
   ],
   "/infoq/topic/:id": [
     "brilon"
-  ],
-  "/informedainews/zh-Hans/docs/:type": [
-    "guicaiyue"
   ],
   "/informs/:category?": [
     "Fatpandac"
@@ -5413,6 +5412,9 @@
   "/matters/tags/:tid": [
     "Cerebrater"
   ],
+  "/maven/central/:group/:artifact": [
+    "chrisis58"
+  ],
   "/mckinsey/cn/:category?": [
     "laampui"
   ],
@@ -6246,6 +6248,9 @@
     "Lava-Swimmer",
     "noname1776",
     "camera-2018"
+  ],
+  "/nyc/mayors-office-news/:types?/:categories?": [
+    "hkamran80"
   ],
   "/nycu/aa/:id?": [
     "simbafs"
@@ -7918,6 +7923,9 @@
   "/subhd/:type?/:category?": [],
   "/substack/subscribe/:user": [
     "pseudoyu"
+  ],
+  "/sukebei/:category?/:filter?": [
+    "nobody"
   ],
   "/supchina/": [
     "nczitzk"

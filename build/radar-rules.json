@@ -2030,12 +2030,12 @@
   },
   "50forum.org.cn": {
     "_name": "经济 50 人论坛",
-    ".": [
+    "www": [
       {
         "title": "Unknown",
         "docs": "https://docs.rsshub.app/routes/other",
         "source": [
-          "/home/article/index/category/zhuanjia.html",
+          "/portal/list/index.html?id=6",
           "/"
         ],
         "target": "/50forum/"
@@ -24285,21 +24285,6 @@
       }
     ]
   },
-  "informedainews.com": {
-    "_name": "Informed AI News",
-    ".": [
-      {
-        "title": "知闻AI",
-        "docs": "https://docs.rsshub.app/routes/new-media",
-        "source": [
-          "/",
-          "/zh-Hans/docs/:type",
-          "/docs/:type"
-        ],
-        "target": "/informedainews/zh-Hans/docs/:type"
-      }
-    ]
-  },
   "infzm.com": {
     "_name": "南方周末",
     ".": [
@@ -28982,6 +28967,20 @@
           "/tags/:tid"
         ],
         "target": "/matters/tags/:tid"
+      }
+    ]
+  },
+  "sonatype.com": {
+    "_name": "Maven",
+    "central": [
+      {
+        "title": "Maven Central Feed",
+        "docs": "https://docs.rsshub.app/routes/programming",
+        "source": [
+          "/artifact/:group/:artifact/:suffix",
+          "/artifact/:group/:artifact"
+        ],
+        "target": "/maven/maven/central/:group/:artifact"
       }
     ]
   },
@@ -34758,6 +34757,22 @@
           "/:column/list.htm"
         ],
         "target": "/nwnu/department/postgraduate/:column"
+      }
+    ]
+  },
+  "nyc.gov": {
+    "_name": "New York City Government",
+    ".": [
+      {
+        "title": "Mayor's Office News",
+        "docs": "https://docs.rsshub.app/routes/government",
+        "source": [
+          "/",
+          "/mayors-office",
+          "/mayors-office/news/",
+          "/mayors-office/news/*"
+        ],
+        "target": "/nyc/mayors-office-news/:types?/:categories?"
       }
     ]
   },
@@ -42873,6 +42888,19 @@
           "/"
         ],
         "target": "/studygolang/go/:id?"
+      }
+    ]
+  },
+  "nyaa.si": {
+    "_name": "Sukebei",
+    "sukebei": [
+      {
+        "title": "Latest Torrents",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/"
+        ],
+        "target": "/sukebei/sukebei"
       }
     ]
   },

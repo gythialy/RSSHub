@@ -1417,7 +1417,6 @@ export type RoutePath =
   | `/hust/yjs`
   | `/huxiu/article`
   | `/huxiu/author/:id/:type?`
-  | `/huxiu/briefcolumn/:id`
   | `/huxiu/channel/:id?`
   | `/huxiu/club/:id`
   | `/huxiu/collection/:id`
@@ -1476,7 +1475,6 @@ export type RoutePath =
   | `/infoq/presentations/:conference?`
   | `/infoq/recommend`
   | `/infoq/topic/:id`
-  | `/informedainews/zh-Hans/docs/:type`
   | `/informs/:category?`
   | `/infzm/:id`
   | `/infzm/hot`
@@ -1781,6 +1779,7 @@ export type RoutePath =
   | `/matters/author/:uid`
   | `/matters/latest/:type?`
   | `/matters/tags/:tid`
+  | `/maven/central/:group/:artifact`
   | `/mckinsey/cn/:category?`
   | `/mcmod/:type`
   | `/mdpi/:journal`
@@ -2047,6 +2046,7 @@ export type RoutePath =
   | `/nyaa/sukebei/user/:username?`
   | `/nyaa/user/:username/search/:query?`
   | `/nyaa/user/:username?`
+  | `/nyc/mayors-office-news/:types?/:categories?`
   | `/nycu/aa/:id?`
   | `/nycu/announcement/:type`
   | `/nycu/cs/:category?`
@@ -2584,6 +2584,7 @@ export type RoutePath =
   | `/studygolang/weekly`
   | `/subhd/:type?/:category?`
   | `/substack/subscribe/:user`
+  | `/sukebei/:category?/:filter?`
   | `/supchina/`
   | `/supchina/podcasts`
   | `/supercell/:game/blog/:locale?`
