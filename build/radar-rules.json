@@ -3442,6 +3442,17 @@
         "target": "/agora0/pen0"
       }
     ],
+    "mrinalxdev": [
+      {
+        "title": "Blog",
+        "docs": "https://docs.rsshub.app/routes/blog",
+        "source": [
+          "/mrinalxblogs/blogs/blog.html",
+          "/mrinalxblogs/"
+        ],
+        "target": "/mrinalxdev/blog"
+      }
+    ],
     "njuferret": [
       {
         "title": "Blogs",
@@ -3671,6 +3682,20 @@
           "/20/list.htm"
         ],
         "target": "/ahjzu/news"
+      }
+    ]
+  },
+  "ai-bot.cn": {
+    "_name": "AI工具集",
+    ".": [
+      {
+        "title": "每日AI资讯",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/daily-ai-news",
+          "/daily-ai-news/"
+        ],
+        "target": "/ai-bot/daily-ai-news"
       }
     ]
   },
@@ -14677,6 +14702,19 @@
       }
     ]
   },
+  "digg.com": {
+    "_name": "Digg",
+    ".": [
+      {
+        "title": "Community Posts",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/:community"
+        ],
+        "target": "/digg/community/:community"
+      }
+    ]
+  },
   "digitalcameraworld.com": {
     "_name": "Digital Camera World",
     ".": [
@@ -14727,6 +14765,14 @@
           "/channels/:guildId/:channelId"
         ],
         "target": "/discord/channel/:channelId"
+      },
+      {
+        "title": "Quests",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/quest-home"
+        ],
+        "target": "/discord/quests"
       }
     ]
   },
@@ -27751,6 +27797,20 @@
       }
     ]
   },
+  "lancedb.com": {
+    "_name": "LanceDB",
+    ".": [
+      {
+        "title": "Blog",
+        "docs": "https://docs.rsshub.app/routes/programming",
+        "source": [
+          "/blog",
+          "/blog/category/:category"
+        ],
+        "target": "/lancedb/blog/:category"
+      }
+    ]
+  },
   "landiannews.com": {
     "_name": "蓝点网",
     "www": [
@@ -34561,6 +34621,26 @@
           "/"
         ],
         "target": "/nowcoder/schedule"
+      }
+    ],
+    "mnowpick": [
+      {
+        "title": "牛客热榜",
+        "docs": "https://docs.rsshub.app/routes/bbs",
+        "source": [
+          "/m/discuss/hot"
+        ],
+        "target": "/nowcoder/hots/:type?"
+      }
+    ],
+    "www": [
+      {
+        "title": "牛客面试经验",
+        "docs": "https://docs.rsshub.app/routes/bbs",
+        "source": [
+          "/interview/"
+        ],
+        "target": "/nowcoder/interview/:jobId"
       }
     ]
   },

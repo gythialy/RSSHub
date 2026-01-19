@@ -403,6 +403,9 @@
   "/ahjzu/news": [
     "Yuk-0v0"
   ],
+  "/ai-bot/daily-ai-news": [
+    "redwood9"
+  ],
   "/aiaa/journal/:journalID": [
     "HappyZhu99"
   ],
@@ -954,6 +957,24 @@
   ],
   "/bilibili/manga/update/:comicid": [
     "hoilc"
+  ],
+  "/bilibili/message/at/:uid": [
+    "pilgrimlyieu"
+  ],
+  "/bilibili/message/like/:uid": [
+    "pilgrimlyieu"
+  ],
+  "/bilibili/message/reply/:uid": [
+    "pilgrimlyieu"
+  ],
+  "/bilibili/message/sessions/:uid": [
+    "pilgrimlyieu"
+  ],
+  "/bilibili/message/system/:uid": [
+    "pilgrimlyieu"
+  ],
+  "/bilibili/message/unread/:uid": [
+    "pilgrimlyieu"
   ],
   "/bilibili/video/page/:bvid/:embed?": [
     "sxzz"
@@ -2251,6 +2272,9 @@
   "/diershoubing/news": [
     "wushijishan"
   ],
+  "/digg/community/:community": [
+    "TonyRL"
+  ],
   "/digitalcameraworld/news": [
     "EthanWng97"
   ],
@@ -2261,6 +2285,9 @@
     "TonyRL"
   ],
   "/discord/channel/:channelId": [
+    "TonyRL"
+  ],
+  "/discord/quests": [
     "TonyRL"
   ],
   "/discord/search/:guildId/:routeParams": [
@@ -5067,6 +5094,9 @@
   "/lala/": [
     "cnkmmk"
   ],
+  "/lancedb/blog/:category?": [
+    "HUSTERGS"
+  ],
   "/landiannews/category/:slug": [
     "cscnk52"
   ],
@@ -5654,6 +5684,9 @@
   "/mrdx/today": [
     "Dustin-Jiang"
   ],
+  "/mrinalxdev/blog": [
+    "jack-110"
+  ],
   "/mrm/:category?": [
     "TonyRL"
   ],
@@ -6124,6 +6157,12 @@
   ],
   "/nowcoder/experience/:tagId": [
     "huyyi"
+  ],
+  "/nowcoder/hots/:type?": [
+    "xia0ne"
+  ],
+  "/nowcoder/interview/:jobId": [
+    "xia0ne"
   ],
   "/nowcoder/jobcenter/:recruitType?/:city?/:type?/:order?/:latest?": [
     "nczitzk"
