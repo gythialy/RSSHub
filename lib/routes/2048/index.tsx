@@ -67,47 +67,48 @@ async function handler(ctx) {
     const rootUrl = 'https://hjd2048.com';
     // 获取地址发布页指向的 URL
     const domainInfo = await cache.tryGet('2048:domainInfo', async () => {
-        const response = await ofetch('https://2048.info');
+        const u = 'https://2048.info';
+        const response = await ofetch(u);
         const $ = load(response);
         const onclickValue = $('.button').first().attr('onclick');
-        const targetUrl = onclickValue?.match(/window\.open\('([^']+)'/)?.[1];
+        let targetUrl = onclickValue?.match(/window\.open\('([^']+)'/)?.[1];
 
-        return { url: new URL(targetUrl, 'https://2048.info').href };
+        if (targetUrl) {
+            try {
+                new URL(targetUrl);
+            } catch {
+                targetUrl = `${u}${targetUrl.startsWith('/') ? '' : '/'}${targetUrl}`;
+            }
+        }
+
+        return { url: new URL(targetUrl, u).href };
     });
     // 获取重定向后的url
     const redirectResponse = await ofetch.raw(domainInfo.url);
     const redirected = await cache.tryGet(
         `2048:redirected:${new URL(redirectResponse.url).host}`,
         async () => {
-            const captchaPage = await ofetch(redirectResponse.url);
-            const $captcha = load(captchaPage);
+            const ageVerifyPage = await ofetch(redirectResponse.url);
+            const $ageVerify = load(ageVerifyPage);
 
-            const cookieResponse = await ofetch.raw(redirectResponse.url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    Cookie: `safe18_tok=${$captcha('form#s18f input[name="tok"]').attr('value') || ''}`,
-                },
-                body: new URLSearchParams(
-                    Object.fromEntries(
-                        $captcha('form#s18f input')
-                            .toArray()
-                            .map((el) => [el.attribs.name, el.attribs.value])
-                            .filter(([name, value]) => name !== null && value !== null)
-                    )
-                ).toString(),
-                redirect: 'manual',
-            });
+            const safeid = $ageVerify('script')
+                .toArray()
+                .map((el) => {
+                    const src = el.attribs.src;
+                    if (src) {
+                        return '';
+                    }
+                    const scriptContent = $ageVerify(el).text();
+                    const match = scriptContent.match(/safeid=['"]([^'"]+)['"]/);
+                    return match ? match[1] : '';
+                })
+                .find((id) => id.length > 0);
 
-            const safe18Pass = cookieResponse.headers
-                .getSetCookie()
-                ?.find((cookie) => cookie.startsWith('safe18_pass='))
-                ?.split(';')[0]
-                .split('=')[1];
+            const _safeCookie = safeid || '';
 
             return {
                 url: redirectResponse.url,
-                safe18Pass,
+                _safeCookie,
             };
         },
         86400, // fixed cookie duration: 24 hours
@@ -117,7 +118,7 @@ async function handler(ctx) {
 
     const response = await ofetch.raw(currentUrl, {
         headers: {
-            cookie: `safe18_pass=${redirected.safe18Pass}`,
+            cookie: `_safe=${redirected._safeCookie}`,
         },
     });
 
@@ -147,7 +148,7 @@ async function handler(ctx) {
             cache.tryGet(item.guid, async () => {
                 const detailResponse = await ofetch(item.link, {
                     headers: {
-                        cookie: `safe18_pass=${redirected.safe18Pass}`,
+                        cookie: `_safe=${redirected._safeCookie}`,
                     },
                 });
 
@@ -168,8 +169,9 @@ async function handler(ctx) {
                 item.pubDate = timezone(parseDate(content('span.fl.gray').first().attr('title')), +8);
 
                 const downloadLink = content('#read_tpc').first().find('a').last();
+                const linkText = downloadLink?.text();
                 const copyLink = content('#copytext')?.first()?.text();
-                if (new URL(downloadLink.text()).hostname === 'bt.azvmw.com') {
+                if (linkText && new URL(downloadLink.text()).hostname === 'bt.azvmw.com') {
                     const torrentResponse = await ofetch(downloadLink.text());
 
                     const torrent = load(torrentResponse);
