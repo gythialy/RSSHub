@@ -66,12 +66,21 @@ async function handler(ctx) {
     const rootUrl = 'https://hjd2048.com';
     // 获取地址发布页指向的 URL
     const domainInfo = await cache.tryGet('2048:domainInfo', async () => {
-        const response = await ofetch('https://2048.info');
+        const u = 'https://2048.info';
+        const response = await ofetch(u);
         const $ = load(response);
         const onclickValue = $('.button').first().attr('onclick');
-        const targetUrl = onclickValue?.match(/window\.open\('([^']+)'/)?.[1];
+        let targetUrl = onclickValue?.match(/window\.open\('([^']+)'/)?.[1];
 
-        return { url: new URL(targetUrl, 'https://2048.info').href };
+        if (targetUrl) {
+            try {
+                new URL(targetUrl);
+            } catch {
+                targetUrl = `${u}${targetUrl.startsWith('/') ? '' : '/'}${targetUrl}`;
+            }
+        }
+
+        return { url: new URL(targetUrl, u).href };
     });
     // 获取重定向后的url
     const redirectResponse = await ofetch.raw(domainInfo.url);
