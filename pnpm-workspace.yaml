@@ -1,0 +1,11 @@
+allowBuilds:
+    bufferutil: true
+    core-js: true
+    es5-ext: true
+    esbuild: true
+    msw: true
+    protobufjs: true
+    utf-8-validate: true
+    workerd: true
+overrides:
+    difflib: 'npm:difflib@*'

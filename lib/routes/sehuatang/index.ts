@@ -1,10 +1,10 @@
 import { load } from 'cheerio';
 
-import { config } from '@/config';
 import type { DataItem, Route } from '@/types';
 import cache from '@/utils/cache';
-import ofetch from '@/utils/ofetch';
+import logger from '@/utils/logger';
 import { parseDate } from '@/utils/parse-date';
+import { getPlaywrightPage } from '@/utils/playwright';
 import timezone from '@/utils/timezone';
 
 const host = 'https://www.sehuatang.net/';
@@ -66,20 +66,8 @@ export const route: Route = {
 | yczp     | ztzp     | hrjp     | yzxa     | omxa     | ktdm     | ttxz     |`,
 };
 
-const getSafeId = () =>
-    cache.tryGet(
-        'sehuatang:safeid',
-        async () => {
-            const response = await ofetch(host);
-            const $ = load(response);
-            const safeId = $('script:contains("safeid")')
-                .text()
-                .match(/safeid\s*=\s*'(.+)';/)?.[1];
-            return safeId ?? '';
-        },
-        config.cache.routeExpire,
-        false
-    );
+// 10 minutes is the safety-net close timer; `destroy()` closes the browser right after all pages are fetched
+const browserCloseTimeout = 10 * 60 * 1000;
 
 async function handler(ctx) {
     const subformName = ctx.req.param('subforumid') ?? 'gqzwzm';
@@ -87,83 +75,123 @@ async function handler(ctx) {
     const type = ctx.req.param('type');
     const typefilter = type ? `&filter=typeid&typeid=${type}` : '';
     const link = `${host}forum.php?mod=forumdisplay&orderby=dateline&fid=${subformId}${typefilter}`;
-    const headers = {
-        Cookie: `_safe=${await getSafeId()};`,
-    };
 
-    const response = await ofetch(link, {
-        headers,
+    // The site is behind a Cloudflare challenge and requires a `_safe` cookie (generated on the homepage)
+    // to render the thread list, so plain HTTP requests are rejected with 403. Fetch pages with playwright instead.
+    const { context, destroy, page } = await getPlaywrightPage(host, {
+        closeTimeout: browserCloseTimeout,
+        onBeforeLoad: async (page) => {
+            await page.route('**/*', (route) => {
+                const request = route.request();
+                request.resourceType() === 'document' ? route.continue() : route.abort();
+            });
+        },
     });
-    const $ = load(response);
 
-    const list = $('#threadlisttableid tbody[id^=normalthread]')
-        .slice(0, ctx.req.query('limit') ? Number.parseInt(ctx.req.query('limit')) : 25)
-        .toArray()
-        .map((item): DataItem => {
-            const $item = $(item);
-            const hasCategory = $item.find('th em a').length;
-            return {
-                title: `${hasCategory ? `[${$item.find('th em a').text()}]` : ''} ${$item.find('a.xst').text()}`,
-                link: host + $item.find('a.xst').attr('href'),
-                pubDate: parseDate($item.find('td.by').find('em span span').attr('title')!),
-                author: $item.find('td.by cite a').first().text(),
-            };
-        });
+    try {
+        // Wait for the Cloudflare challenge to resolve, then extract `safeid` from the homepage
+        try {
+            await page.waitForFunction(() => document.body.getHTML().includes('safeid'), null, { timeout: 30000 });
+        } catch {
+            logger.warn(`Timed out waiting for the Cloudflare challenge to resolve on ${host}`);
+        }
 
-    const out = await Promise.all(
-        list.map((info) =>
-            cache.tryGet(info.link!, async () => {
-                const response = await ofetch(info.link!, {
-                    headers,
-                });
+        const homepageHtml = await page.content();
+        const safeId = load(homepageHtml)('script:contains("safeid")')
+            .text()
+            .match(/safeid\s*=\s*'(.+)';/)?.[1];
+        if (safeId) {
+            await context.addCookies([{ name: '_safe', value: safeId, domain: 'www.sehuatang.net', path: '/' }]);
+        } else {
+            logger.warn(`Failed to extract safeid from ${host}, the thread list may be empty`);
+        }
 
-                const $ = load(response);
-                const postMessage = $('div[id^="postmessage"], td[id^="postmessage"]').slice(0, 1);
-                const images = $(postMessage).find('img');
-                for (const image of images) {
-                    const file = $(image).attr('file');
-                    if (!file || file === 'undefined') {
-                        $(image).replaceWith('');
-                    } else {
-                        $(image).replaceWith($(`<img src="${file}">`));
-                    }
-                }
-                // also parse image url from `.pattl`
-                const pattl = $('.pattl');
-                const pattlImages = $(pattl).find('img');
-                for (const pattlImage of pattlImages) {
-                    const file = $(pattlImage).attr('file');
-                    if (!file || file === 'undefined') {
-                        $(pattlImage).replaceWith('');
-                    } else {
-                        $(pattlImage).replaceWith($(`<img src="${file}" />`));
-                    }
-                }
-                postMessage.append($(pattl));
-                $('em[onclick]').remove();
+        await page.goto(link, { waitUntil: 'domcontentloaded' });
+        try {
+            await page.waitForSelector('#threadlisttableid', { timeout: 30000 });
+        } catch {
+            logger.warn(`Timed out waiting for the thread list on ${link}`);
+        }
+        const forumHtml = await page.content();
+        const $ = load(forumHtml);
 
-                info.description = (postMessage.html() || '抓取原帖失败').replaceAll('ignore_js_op', 'div');
-                info.pubDate = timezone(parseDate($('.authi em span').attr('title')!), 8);
-
-                const magnet = postMessage.find('div.blockcode li').first().text();
-                const isMag = magnet.startsWith('magnet');
-                const torrent = postMessage.find('p.attnm a').attr('href');
-
-                const hasEnclosureUrl = isMag || torrent !== undefined;
-                if (hasEnclosureUrl) {
-                    const enclosureUrl = isMag ? magnet : new URL(torrent!, host).href;
-                    info.enclosure_url = enclosureUrl;
-                    info.enclosure_type = isMag ? 'application/x-bittorrent' : 'application/octet-stream';
-                }
-
-                return info;
+        const list = $('#threadlisttableid tbody[id^=normalthread]')
+            .slice(0, ctx.req.query('limit') ? Number.parseInt(ctx.req.query('limit')) : 25)
+            .toArray()
+            .map((item): DataItem => {
+                const $item = $(item);
+                const hasCategory = $item.find('th em a').length;
+                return {
+                    title: `${hasCategory ? `[${$item.find('th em a').text()}]` : ''} ${$item.find('a.xst').text()}`,
+                    link: host + $item.find('a.xst').attr('href'),
+                    pubDate: parseDate($item.find('td.by').find('em span span').attr('title') ?? ''),
+                    author: $item.find('td.by cite a').first().text(),
+                };
             })
-        )
-    );
+            .filter((item): item is DataItem & { link: string } => item.link !== undefined);
 
-    return {
-        title: `色花堂 - ${$('#pt > div:nth-child(1) > a:last-child').text()}`,
-        link,
-        item: out,
-    };
+        const out = await Promise.all(
+            list.map((info) =>
+                cache.tryGet(info.link, async () => {
+                    const detailPage = await context.newPage();
+                    try {
+                        await detailPage.goto(info.link, { waitUntil: 'domcontentloaded' });
+
+                        const detailHtml = await detailPage.content();
+                        const $ = load(detailHtml);
+                        const postMessage = $('div[id^="postmessage"], td[id^="postmessage"]').slice(0, 1);
+                        const images = $(postMessage).find('img');
+                        for (const image of images) {
+                            const file = $(image).attr('file');
+                            if (!file || file === 'undefined') {
+                                $(image).replaceWith('');
+                            } else {
+                                $(image).replaceWith($(`<img src="${file}">`));
+                            }
+                        }
+                        // also parse image url from `.pattl`
+                        const pattl = $('.pattl');
+                        const pattlImages = $(pattl).find('img');
+                        for (const pattlImage of pattlImages) {
+                            const file = $(pattlImage).attr('file');
+                            if (!file || file === 'undefined') {
+                                $(pattlImage).replaceWith('');
+                            } else {
+                                $(pattlImage).replaceWith($(`<img src="${file}" />`));
+                            }
+                        }
+                        postMessage.append($(pattl));
+                        $('em[onclick]').remove();
+
+                        info.description = (postMessage.html() || '抓取原帖失败').replaceAll('ignore_js_op', 'div');
+                        info.pubDate = timezone(parseDate($('.authi em span').attr('title') ?? ''), 8);
+
+                        const magnet = postMessage.find('div.blockcode li').first().text();
+                        const isMag = magnet.startsWith('magnet');
+                        const torrent = postMessage.find('p.attnm a').attr('href');
+
+                        if (isMag) {
+                            info.enclosure_url = magnet;
+                            info.enclosure_type = 'application/x-bittorrent';
+                        } else if (torrent) {
+                            info.enclosure_url = new URL(torrent, host).href;
+                            info.enclosure_type = 'application/octet-stream';
+                        }
+
+                        return info;
+                    } finally {
+                        await detailPage.close();
+                    }
+                })
+            )
+        );
+
+        return {
+            title: `色花堂 - ${$('#pt > div:nth-child(1) > a:last-child').text()}`,
+            link,
+            item: out,
+        };
+    } finally {
+        await destroy();
+    }
 }
