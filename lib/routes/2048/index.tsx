@@ -1,10 +1,110 @@
 import { load } from 'cheerio';
+import pMap from 'p-map';
 
+import { config } from '@/config';
 import type { DataItem, Route } from '@/types';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
+import { getPlaywrightPage } from '@/utils/playwright';
 import timezone from '@/utils/timezone';
+
+const rootUrl = 'https://hjd2048.com/2048/';
+const host = 'https://hjd2048.com';
+
+// The site sits behind a JS challenge (`/_guard/auto.js`): the first plain HTTP
+// response is a ~40-byte stub page that only loads the challenge script and
+// sets a `guard` cookie. Running the challenge in a real browser yields a
+// `guardok` cookie; afterwards every page is served normally over plain HTTP.
+// So we bootstrap cookies with Playwright once, then fetch list + details
+// without a browser. Cookies are cached process-wide (and via `cache`) to
+// avoid launching a browser on every request.
+const GUARD_COOKIE_CACHE_KEY = '2048:guard-cookie';
+// The guardok cookie lives for hours; refresh well before it can go stale.
+const GUARD_COOKIE_TTL_S = 6 * 60 * 60;
+
+const hasGuardChallenge = (html: string) => html.includes('/_guard/auto.js');
+
+/**
+ * Resolve the `guardok` anti-crawler cookie by loading the site in a real
+ * browser and letting `/_guard/auto.js` run its challenge + reload.
+ */
+async function resolveGuardCookie(): Promise<string> {
+    const { context, destroy, page } = await getPlaywrightPage(rootUrl, {
+        closeTimeout: 60000,
+        gotoConfig: { waitUntil: 'domcontentloaded', timeout: 45000 },
+    });
+
+    try {
+        // Wait until the challenge script has done its job: either the page no
+        // longer references /_guard/auto.js or thread links appeared.
+        await page.waitForFunction(() => !document.body.getHTML().includes('/_guard/auto.js') && /read\.php\?tid=\d+/.test(document.body.getHTML()), null, { timeout: 45000 });
+
+        const cookies = await context.cookies(host);
+        const guardCookie = cookies.find((cookie) => cookie.name === 'guardok');
+        if (!guardCookie) {
+            throw new Error('Failed to obtain guardok cookie after resolving the JS challenge');
+        }
+        return `${guardCookie.name}=${guardCookie.value}`;
+    } finally {
+        await destroy();
+    }
+}
+
+const getGuardCookie = async (): Promise<string> => {
+    const cached = await cache.get(GUARD_COOKIE_CACHE_KEY);
+    if (cached && !hasGuardChallenge(cached) && /^guardok=.+/.test(cached)) {
+        return cached;
+    }
+    return refreshGuardCookie();
+};
+
+/**
+ * Force-resolve a fresh guard cookie through the browser and overwrite the
+ * cached value. Used both on cache miss and when a cached cookie gets
+ * rejected by the site, so a poisoned cache entry can never outlive the
+ * request that detected it.
+ */
+const refreshGuardCookie = async (): Promise<string> => {
+    const cookie = await resolveGuardCookie();
+    // Overwrite (there is no cache.del); short TTL so stale cookies age out.
+    cache.set(GUARD_COOKIE_CACHE_KEY, cookie, GUARD_COOKIE_TTL_S);
+    return cookie;
+};
+
+/**
+ * Fetch an hjd2048 page over plain HTTP, attaching the guardok cookie.
+ * The guard cookie is validated against the User-Agent that earned it in the
+ * browser (config.ua — the same UA `getPlaywrightPage` uses), so it must be
+ * sent here as well. If the response is another challenge stub (cookie
+ * expired/rotated), force-resolve a fresh cookie through the browser and
+ * retry once.
+ */
+async function fetchWithGuard(path: string): Promise<string> {
+    let cookie = await getGuardCookie();
+
+    for (let attempt = 0; attempt < 2; attempt++) {
+        // oxlint-disable no-await-in-loop — sequential challenge-retry on purpose
+        const html = await ofetch(`${rootUrl}${path.replace(/^\//, '')}`, {
+            headers: {
+                cookie,
+                'user-agent': config.ua,
+            },
+            responseType: 'text' as const,
+        });
+        if (!hasGuardChallenge(html)) {
+            return html;
+        }
+        if (attempt === 1) {
+            throw new Error(`hjd2048: still blocked by the JS challenge after refreshing cookies: ${path}`);
+        }
+        // Cookie rejected — bypass any cached value and force-resolve a fresh one.
+        cookie = await refreshGuardCookie();
+        // oxlint-enable no-await-in-loop
+    }
+
+    throw new Error(`hjd2048: failed to bypass the JS challenge: ${path}`);
+}
 
 export const route: Route = {
     path: '/:id?',
@@ -12,9 +112,15 @@ export const route: Route = {
     example: '/2048/2',
     parameters: { id: '板块 ID, 见下表，默认为最新合集，即 `3`，亦可在 URL 中找到, 例如, `thread.php?fid-3.html`中, 板块 ID 为`3`' },
     features: {
-        requireConfig: false,
-        requirePuppeteer: false,
-        antiCrawler: false,
+        requireConfig: [
+            {
+                name: 'CHROMIUM_EXECUTABLE_PATH',
+                optional: true,
+                description: 'Path to a Chromium executable, used by Playwright to resolve the JS challenge; alternatively set PLAYWRIGHT_WS_ENDPOINT or PLAYWRIGHT_CDP_ENDPOINT',
+            },
+        ],
+        requirePuppeteer: true,
+        antiCrawler: true,
         supportBT: true,
         supportPodcast: false,
         supportScihub: false,
@@ -60,130 +166,124 @@ export const route: Route = {
 | 57       | 136      |`,
 };
 
+type ListItem = {
+    title: string;
+    link: string;
+    guid: string;
+};
+
+/**
+ * Parse one thread detail page into description/magnet/pubDate.
+ */
+const parseDetail = async (item: ListItem): Promise<DataItem> => {
+    const html = await fetchWithGuard(item.link.replace(rootUrl, ''));
+    const content = load(html);
+
+    content('.ads, .tips').remove();
+
+    content('ignore_js_op').each((_, el) => {
+        const img = content(el).find('img');
+        const originalSrc = img.attr('data-original');
+        const fallbackSrc = img.attr('src');
+        // 判断是否有 data-original 属性，若有则使用其值，否则使用 src 属性值
+        const imgSrc = originalSrc || fallbackSrc;
+        if (imgSrc) {
+            content(el).replaceWith(`<img src="${imgSrc}">`);
+        }
+    });
+
+    const author = content('.fl.black').first().text();
+
+    const result: DataItem = {
+        ...item,
+        author,
+    };
+    const pubDateStr = content('span.fl.gray').first().attr('title');
+    if (pubDateStr) {
+        result.pubDate = timezone(parseDate(pubDateStr), 8);
+    }
+
+    const readTpc = content('#read_tpc').first();
+    const copyLink = content('#copytext')?.first()?.text();
+    const readTpcHtml = readTpc.html() ?? '';
+    const magnetText = readTpc.find('.magnet-text').first().text().trim();
+
+    // Extract enclosure: rmdown.com (fetch page for magnet) | magnet from 哈希校验 | copyLink
+    const rmdownLink = readTpc.find('a[href*="rmdown.com/link.php"]').first().attr('href');
+    const enclosureHref = rmdownLink?.startsWith('http') ? rmdownLink : rmdownLink ? `https://www.rmdown.com/${rmdownLink}` : undefined;
+
+    if (enclosureHref) {
+        try {
+            const rmdownPage = await cache.tryGet(`2048:rmdown:${enclosureHref}`, () => ofetch(enclosureHref));
+            const btihMatch = rmdownPage.match(/Code:\s*([a-fA-F0-9]{40})/);
+            const magnetUrl = btihMatch ? `magnet:?xt=urn:btih:${btihMatch[1]}` : undefined;
+            if (magnetUrl) {
+                result.enclosure_url = magnetUrl;
+                result.enclosure_type = 'x-scheme-handler/magnet';
+            }
+        } catch {
+            // rmdown is flaky — fall through to the other extraction methods
+        }
+    }
+    if (!result.enclosure_url) {
+        const hashMatch = readTpcHtml.match(/哈希校验[^;]*;\s*([a-f0-9]{40})\s*[;；]/i);
+        const magnetFromHash = hashMatch ? `magnet:?xt=urn:btih:${hashMatch[1]}` : undefined;
+        const magnetFromText = magnetText.match(/magnet:\?xt=urn:btih:[^\s"'<>]+/)?.[0];
+        const magnetLink = magnetFromText ?? readTpcHtml.match(/magnet:\?xt=urn:btih:[^\s"'<>]+/)?.[0] ?? magnetFromHash ?? copyLink;
+        if (magnetLink?.startsWith('magnet')) {
+            result.enclosure_url = magnetLink;
+            result.enclosure_type = 'x-scheme-handler/magnet';
+        }
+    }
+
+    content('.showhide img').each((_, el) => {
+        readTpc.append(`<br><img style="max-width: 100%;" src="${content(el).attr('src')}">`);
+    });
+
+    result.description = readTpc.html() ?? undefined;
+
+    return result;
+};
+
 async function handler(ctx) {
     const id = ctx.req.param('id') ?? '3';
 
-    const rootUrl = 'https://hjd2048.com';
-    // 获取地址发布页指向的 URL
-    const domainInfo = await cache.tryGet('2048:domainInfo', async () => {
-        const response = await ofetch('https://2048.info');
-        const $ = load(response);
-        const onclickValue = $('.button').first().attr('onclick');
-        const targetUrl = onclickValue?.match(/window\.open\('([^']+)'/)?.[1];
+    const currentUrl = `${rootUrl}thread.php?fid-${id}.html`;
 
-        return { url: new URL(targetUrl!, 'https://2048.info').href };
-    });
-    // 获取重定向后的url
-    const redirectResponse = await ofetch.raw(domainInfo.url);
-    const redirected = await cache.tryGet(
-        `2048:redirected:${new URL(redirectResponse.url).host}`,
-        async () => {
-            const captchaPage = await ofetch(redirectResponse.url);
-            const $captcha = load(captchaPage);
-            // Extract the value of safeid from the $captcha HTML content
-            const safeidMatch = $captcha.html()?.match(/var\s+safeid\s*=\s*'([^']+)'/);
-            const safeid = safeidMatch ? safeidMatch[1] : undefined;
-            return {
-                url: redirectResponse.url,
-                safeid,
-            };
-        },
-        86400, // fixed cookie duration: 24 hours
-        false
-    );
-    const currentUrl = `${redirected.url}thread.php?fid-${id}.html`;
-
-    const response = await ofetch.raw(currentUrl, {
-        headers: {
-            cookie: `_safe=${redirected.safeid}`,
-        },
-    });
-
-    const $ = load(response._data);
-    const currentHost = `https://${new URL(response.url).host}`; // redirected host
+    const response = await fetchWithGuard(`thread.php?fid-${id}.html`);
+    const $ = load(response);
 
     $('#shortcut').remove();
-    $('tr[onmouseover="this.className=\'tr3 t_two\'"]').remove();
 
-    const list = $('#ajaxtable tbody .tr2')
-        .last()
-        .nextAll('.tr3')
+    // Thread rows are `tr.tr3` rows whose subject link points at
+    // `read.php?tid=<digits>`; requiring that pattern keeps out ad/promo rows
+    // (which previously leaked garbage URLs like `https://fby.jinmings.com/<a class="link"...>`).
+    const tidPattern = /^read\.php\?tid=\d+/;
+    const seen = new Set<string>();
+    const list: ListItem[] = $('tr.tr3')
         .toArray()
-        .map((item): DataItem & { link: string; guid: string } => {
-            const $item = $(item).find('a.subject');
-
+        .flatMap((row) => $(row).find('a.subject').toArray())
+        .map((subjectEl) => {
+            const href = $(subjectEl).attr('href') ?? '';
+            if (!tidPattern.test(href)) {
+                return null;
+            }
+            const link = `${host}/2048/${href}`;
+            if (seen.has(link)) {
+                return null;
+            }
+            seen.add(link);
             return {
-                title: $item.text(),
-                link: `${currentHost}/${$item.attr('href')}`,
-                guid: `${rootUrl}/2048/${$item.attr('href')}`,
+                title: $(subjectEl).text().trim(),
+                link,
+                guid: link,
             };
         })
-        .filter((item) => !item.link.includes('undefined'));
+        .filter((item): item is ListItem => item !== null)
+        .slice(0, ctx.req.query('limit') ? Number.parseInt(ctx.req.query('limit')) : 30);
 
-    const items = await Promise.all(
-        list.map((item) =>
-            cache.tryGet(item.guid, async () => {
-                const detailResponse = await ofetch(item.link, {
-                    headers: {
-                        cookie: `_safe=${redirected.safeid}`,
-                    },
-                });
-
-                const content = load(detailResponse);
-
-                content('.ads, .tips').remove();
-
-                content('ignore_js_op').each((_, el) => {
-                    const img = content(el).find('img');
-                    const originalSrc = img.attr('data-original');
-                    const fallbackSrc = img.attr('src');
-                    // 判断是否有 data-original 属性，若有则使用其值，否则使用 src 属性值
-                    const imgSrc = originalSrc || fallbackSrc;
-                    content(el).replaceWith(`<img src="${imgSrc}">`);
-                });
-
-                item.author = content('.fl.black').first().text();
-                item.pubDate = timezone(parseDate(content('span.fl.gray').first().attr('title')!), 8);
-
-                const readTpc = content('#read_tpc').first();
-                const copyLink = content('#copytext')?.first()?.text();
-                const readTpcHtml = readTpc.html() ?? '';
-                const magnetText = readTpc.find('.magnet-text').first().text().trim();
-
-                // Extract enclosure: rmdown.com (fetch page for magnet) | magnet from 哈希校验 | copyLink
-                const rmdownLink = readTpc.find('a[href*="rmdown.com/link.php"]').first().attr('href');
-                const enclosureHref = rmdownLink?.startsWith('http') ? rmdownLink : rmdownLink ? `https://www.rmdown.com/${rmdownLink}` : null;
-
-                if (enclosureHref) {
-                    const rmdownPage = await cache.tryGet(`2048:rmdown:${enclosureHref}`, () => ofetch(enclosureHref));
-                    const btihMatch = rmdownPage.match(/Code:\s*([a-fA-F0-9]{40})/);
-                    const magnetUrl = btihMatch ? `magnet:?xt=urn:btih:${btihMatch[1]}` : null;
-                    if (magnetUrl) {
-                        item.enclosure_url = magnetUrl;
-                        item.enclosure_type = 'x-scheme-handler/magnet';
-                    }
-                }
-                if (!item.enclosure_url) {
-                    const hashMatch = readTpcHtml.match(/哈希校验[^;]*;\s*([a-f0-9]{40})\s*[;；]/i);
-                    const magnetFromHash = hashMatch ? `magnet:?xt=urn:btih:${hashMatch[1]}` : null;
-                    const magnetFromText = magnetText.match(/magnet:\?xt=urn:btih:[^\s"'<>]+/)?.[0];
-                    const magnetLink = magnetFromText ?? readTpcHtml.match(/magnet:\?xt=urn:btih:[^\s"'<>]+/)?.[0] ?? magnetFromHash ?? copyLink;
-                    if (magnetLink?.startsWith('magnet')) {
-                        item.enclosure_url = magnetLink;
-                        item.enclosure_type = 'x-scheme-handler/magnet';
-                    }
-                }
-
-                content('.showhide img').each((_, el) => {
-                    readTpc.append(`<br><img style="max-width: 100%;" src="${content(el).attr('src')}">`);
-                });
-
-                item.description = readTpc.html();
-
-                return item;
-            })
-        )
-    );
+    // Bounded concurrency: gentle on the source site, fast enough to avoid timeouts.
+    const items = await pMap(list, parseDetail, { concurrency: 3 });
 
     return {
         title: `${$('#main #breadCrumb a').last().text()} - 2048核基地`,

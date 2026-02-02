@@ -1,6 +1,7 @@
 import type { Route } from '@/types';
 import cache from '@/utils/cache';
-import got from '@/utils/got';
+import logger from '@/utils/logger';
+import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {
@@ -20,21 +21,22 @@ export const route: Route = {
 };
 
 async function handler() {
-    const rootUrl = 'https://www2021.cbnweek.com';
-    const apiRootUrl = 'https://api2021.cbnweek.com';
-    const currentUrl = `${apiRootUrl}/v4/first_page_infos?per=1`;
+    const rootUrl = 'https://www.cbnweek.com';
+    const apiRootUrl = 'https://api.cbnweek.com';
+    const currentUrl = `${apiRootUrl}/v5/first_page_infos?per=1&page=1`;
 
-    const response = await got({
-        method: 'get',
-        url: currentUrl,
+    const response = await ofetch(currentUrl, {
+        headers: {
+            Referer: rootUrl,
+        },
     });
 
-    let items = response.data.data.map((item) => {
+    let items = response.data.map((item) => {
         const post = item.data[0];
         return {
             guid: post.id,
             title: post.title,
-            link: `${rootUrl}/#/article_detail/${post.id}`,
+            link: `${rootUrl}/article_detail/${post.id}`,
             pubDate: parseDate(post.display_time),
             author: post.authors?.map((a) => a.name).join(', '),
             category: post.topics?.map((t) => t.name),
@@ -44,12 +46,18 @@ async function handler() {
     items = await Promise.all(
         items.map((item) =>
             cache.tryGet(item.link, async () => {
-                const detailResponse = await got({
-                    method: 'get',
-                    url: `${apiRootUrl}/v4/articles/${item.guid}`,
-                });
-
-                item.description = detailResponse.data.data.content;
+                try {
+                    const detailResponse = await ofetch(`${apiRootUrl}/v5/articles/${item.guid}`, {
+                        headers: {
+                            Referer: rootUrl,
+                        },
+                    });
+                    item.description = detailResponse.data.content;
+                } catch (error) {
+                    logger.warn(`Failed to fetch article ${item.guid}: ${error instanceof Error ? error.message : String(error)}`);
+                    // Fallback to a simpler description if API call fails
+                    item.description = `无法获取文章内容: ${item.title}`;
+                }
 
                 return item;
             })
