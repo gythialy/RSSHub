@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+// oxlint-disable-next-line n/no-extraneous-import
 import type { Plugin } from 'rolldown';
 import { defineConfig } from 'tsdown';
 

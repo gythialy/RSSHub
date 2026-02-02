@@ -53,5 +53,17 @@ export const parseContent = (htmlString) => {
         }
     });
 
-    return content.html();
+    return removeInvalidChars(content.html());
+};
+
+export const removeInvalidChars = (str) => {
+    if (typeof str !== 'string') {
+        return str;
+    }
+    // oxlint-disable-next-line no-control-regex unicorn-js/prefer-unicode-code-point-escapes
+    const controlCharsRe = /[\u0000-\u0008\v\f\u000E-\u001F]/g;
+    return str
+        .replaceAll(controlCharsRe, '') // 移除控制字符
+        .replaceAll(/&#x1[0-9A-Fa-f];/g, '') // 移除十六进制控制字符实体
+        .replaceAll('\u{202E}', ''); // 移除特定Unicode控制字符
 };
