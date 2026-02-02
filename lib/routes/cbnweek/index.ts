@@ -1,6 +1,7 @@
 import type { Route } from '@/types';
 import cache from '@/utils/cache';
-import got from '@/utils/got';
+import logger from '@/utils/logger';
+import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 import { getRouteLimit } from '@/utils/route-limit';
 
@@ -26,12 +27,13 @@ async function handler(ctx) {
     const limit = getRouteLimit(ctx, 1);
     const currentUrl = `${apiRootUrl}/v5/first_page_infos?per=${limit}&page=1`;
 
-    const response = await got({
-        method: 'get',
-        url: currentUrl,
+    const response = await ofetch(currentUrl, {
+        headers: {
+            Referer: rootUrl,
+        },
     });
 
-    let items = response.data.data.slice(0, limit).map((item) => {
+    let items = response.data.slice(0, limit).map((item) => {
         const post = item.data[0];
         return {
             guid: post.id,
@@ -46,15 +48,18 @@ async function handler(ctx) {
     items = await Promise.all(
         items.map((item) =>
             cache.tryGet(item.link, async () => {
-                const detailResponse = await got({
-                    method: 'get',
-                    url: `${apiRootUrl}/v5/articles/${item.guid}`,
-                });
-
-                const detail = detailResponse.data.data;
-                item.description = detail.content;
-                item.author = detail.authors?.map((a) => a.name).join(', ');
-                item.category = detail.topics?.map((t) => t.name);
+                try {
+                    const detailResponse = await ofetch(`${apiRootUrl}/v5/articles/${item.guid}`, {
+                        headers: {
+                            Referer: rootUrl,
+                        },
+                    });
+                    item.description = detailResponse.data.content;
+                } catch (error) {
+                    logger.warn(`Failed to fetch article ${item.guid}: ${error instanceof Error ? error.message : String(error)}`);
+                    // Fallback to a simpler description if API call fails
+                    item.description = `无法获取文章内容: ${item.title}`;
+                }
 
                 return item;
             })
