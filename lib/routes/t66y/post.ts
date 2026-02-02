@@ -6,7 +6,7 @@ import cache from '@/utils/cache';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
 
-import { baseUrl, parseContent } from './utils';
+import { baseUrl, parseContent, removeInvalidChars } from './utils';
 
 function parseItems(tid: string, $: CheerioAPI) {
     return $('.tr1:nth-child(1)')
@@ -14,7 +14,7 @@ function parseItems(tid: string, $: CheerioAPI) {
         .map((item) => {
             const $item = $(item);
 
-            const content = parseContent($item.html());
+            const content = removeInvalidChars(parseContent($item.html()));
             const footer = $item.next();
             const pid = footer.find('.tipad a[title]').attr('id')?.slice(2);
 
