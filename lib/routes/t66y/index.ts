@@ -5,7 +5,7 @@ import cache from '@/utils/cache';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
 
-import { baseUrl, parseContent } from './utils';
+import { baseUrl, parseContent, removeInvalidChars } from './utils';
 
 export const route: Route = {
     path: '/:id/:type?/:search?',
@@ -70,6 +70,9 @@ async function handler(ctx) {
     const $ = load(res);
     const list = $('#ajaxtable > tbody:nth-child(2) .tr3')
         .not('.tr2.tac')
+        // 排除置顶帖（t66y 置顶行通常带有 .tr4 或 data-stick 属性）
+        .not('.tr4')
+        .not('[data-stick]')
         .toArray()
         .map((item): DataItem => {
             const element = $(item);
@@ -83,13 +86,19 @@ async function handler(ctx) {
             const a = tal.find('h3 a');
             const td3 = element.find('td:nth-child(3)');
 
+            // t66y data-timestamp 可能是毫秒（13位）或秒（10位）
+            const ts = Number(td3.find('span[data-timestamp]').data('timestamp'));
+            const unixTs = ts > 1e12 ? Math.floor(ts / 1000) : ts;
+
             return {
-                title: `${catalog} ${a.text()}`,
+                title: removeInvalidChars(`${catalog} ${a.text()}`),
                 link: `${baseUrl}/${a.attr('href')}`,
                 author: td3.find('a').text(),
-                pubDate: parseDate(String(td3.find('span[data-timestamp]').data('timestamp')).slice(0, -1), 'X'),
+                pubDate: parseDate(unixTs, 'X'),
             };
-        });
+        })
+        // 去重：相同 link 只保留第一个
+        .filter((item, index, self) => index === self.findIndex((t) => t.link === item.link));
 
     const out = await Promise.all(
         list.map((item) =>
@@ -102,11 +111,13 @@ async function handler(ctx) {
             })
         )
     );
+    const filtered = out.filter((item) => item.description && item.description.trim() !== '');
+    filtered.sort((a, b) => Number(b.pubDate) - Number(a.pubDate));
 
     return {
         title: (isValidType ? `[${$('.t .fn b').text()}] ` : '') + (search ? `[${SEARCH_NAMES[search]}] ` : '') + $('head title').text(),
         link: url.href,
-        item: out,
+        item: filtered,
         allowEmpty: true,
     };
 }
