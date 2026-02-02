@@ -53,5 +53,15 @@ export const parseContent = (htmlString) => {
         }
     });
 
-    return content.html();
+    return removeInvalidChars(content.html());
+};
+
+export const removeInvalidChars = (str) => {
+    if (typeof str !== 'string') {
+        return str;
+    }
+    return str
+        .replaceAll(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, '') // 移除控制字符
+        .replaceAll(/&#x1[0-9A-Fa-f];/g, '') // 移除十六进制控制字符实体
+        .replaceAll('\u202E', ''); // 移除特定Unicode控制字符
 };
