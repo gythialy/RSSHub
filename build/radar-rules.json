@@ -9989,6 +9989,75 @@
       }
     ]
   },
+  "ccmn.cn": {
+    "_name": "长江有色网",
+    "copper": [
+      {
+        "title": "调价动态",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/:suffix",
+          "/:suffix/:subsuffix"
+        ],
+        "target": "/ccmn/price-adjustment/copper"
+      }
+    ],
+    "alu": [
+      {
+        "title": "调价动态",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/:suffix",
+          "/:suffix/:subsuffix"
+        ],
+        "target": "/ccmn/price-adjustment/alu"
+      }
+    ],
+    "zn": [
+      {
+        "title": "调价动态",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/:suffix",
+          "/:suffix/:subsuffix"
+        ],
+        "target": "/ccmn/price-adjustment/zn"
+      }
+    ],
+    "sn": [
+      {
+        "title": "调价动态",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/:suffix",
+          "/:suffix/:subsuffix"
+        ],
+        "target": "/ccmn/price-adjustment/sn"
+      }
+    ],
+    "pb": [
+      {
+        "title": "调价动态",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/:suffix",
+          "/:suffix/:subsuffix"
+        ],
+        "target": "/ccmn/price-adjustment/pb"
+      }
+    ],
+    "ni": [
+      {
+        "title": "调价动态",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/:suffix",
+          "/:suffix/:subsuffix"
+        ],
+        "target": "/ccmn/price-adjustment/ni"
+      }
+    ]
+  },
   "91wllm.com": {
     "_name": "华中师范大学",
     "ccnu": [
@@ -16444,6 +16513,19 @@
       }
     ]
   },
+  "f95zone.to": {
+    "_name": "F95zone",
+    ".": [
+      {
+        "title": "Thread",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/threads/:thread/*"
+        ],
+        "target": "/f95zone/thread/:thread"
+      }
+    ]
+  },
   "famitsu.com": {
     "_name": "ファミ通",
     "www": [
@@ -18388,6 +18470,29 @@
           "/:owner/:gistId"
         ],
         "target": "/github/gist/:gistId"
+      }
+    ]
+  },
+  "gitkraken.com": {
+    "_name": "GitKraken",
+    "help": [
+      {
+        "title": "Release Notes",
+        "docs": "https://docs.rsshub.app/routes/program-update",
+        "source": [
+          "/gitkraken-desktop/current/"
+        ],
+        "target": "/gitkraken/release-note"
+      }
+    ],
+    "www": [
+      {
+        "title": "Release Notes",
+        "docs": "https://docs.rsshub.app/routes/program-update",
+        "source": [
+          "/"
+        ],
+        "target": "/gitkraken/release-note"
       }
     ]
   },
@@ -35222,6 +35327,19 @@
       }
     ]
   },
+  "openalex.org": {
+    "_name": "OpenAlex",
+    ".": [
+      {
+        "title": "Works",
+        "docs": "https://docs.rsshub.app/routes/journal",
+        "source": [
+          "/works"
+        ],
+        "target": "/openalex/:journals/:type?/:ids?"
+      }
+    ]
+  },
   "openwrt.org": {
     "_name": "OpenWrt",
     ".": [
@@ -39435,6 +39553,19 @@
       }
     ]
   },
+  "quantamagazine.org": {
+    "_name": "Quanta Magazine",
+    ".": [
+      {
+        "title": "Archive",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/"
+        ],
+        "target": "/quantamagazine/archive"
+      }
+    ]
+  },
   "questn.com": {
     "_name": "QuestN",
     "app": [
@@ -41949,6 +42080,55 @@
       }
     ]
   },
+  "snnu.edu.cn": {
+    "_name": "Shaanxi Normal University",
+    "ccs": [
+      {
+        "title": "计算机科学学院",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/tzgg/zhgl1.htm"
+        ],
+        "target": "/snnu/ccs/tzgg"
+      },
+      {
+        "title": "计算机科学学院",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/xydt/zhxw1.htm"
+        ],
+        "target": "/snnu/ccs/news"
+      },
+      {
+        "title": "计算机科学学院",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/xssq/xshd.htm"
+        ],
+        "target": "/snnu/ccs/xshd"
+      }
+    ],
+    "www": [
+      {
+        "title": "学校官网 - 通知公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/tzgg.htm"
+        ],
+        "target": "/snnu/"
+      }
+    ],
+    "newyjs": [
+      {
+        "title": "研究生院通知公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/tzgg1.htm"
+        ],
+        "target": "/snnu/yjs"
+      }
+    ]
+  },
   "snowpeak.com": {
     "_name": "Snow Peak",
     ".": [
@@ -44449,6 +44629,19 @@
           "/:category"
         ],
         "target": "/tass/:category"
+      }
+    ]
+  },
+  "tctmd.com": {
+    "_name": "TCTMD",
+    "www": [
+      {
+        "title": "Conference News",
+        "docs": "https://docs.rsshub.app/routes/journal",
+        "source": [
+          "/news/conference-news"
+        ],
+        "target": "/tctmd/conference-news"
       }
     ]
   },

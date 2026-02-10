@@ -1448,6 +1448,9 @@
   "/ccg/:category?": [
     "nczitzk"
   ],
+  "/ccmn/price-adjustment/:category": [
+    "chrisis58"
+  ],
   "/ccnu/career": [
     "jackyu1996"
   ],
@@ -2893,6 +2896,12 @@
   "/f-droid/apprelease/:app": [
     "garywill"
   ],
+  "/f95zone/post/:thread/:postId": [
+    "wsmbsbbz"
+  ],
+  "/f95zone/thread/:thread": [
+    "wsmbsbbz"
+  ],
   "/famitsu/category/:category?": [
     "TonyRL"
   ],
@@ -3453,6 +3462,9 @@
     "mslxl"
   ],
   "/github/wiki/:user/:repo/:page?": [
+    "TonyRL"
+  ],
+  "/gitkraken/release-note": [
     "TonyRL"
   ],
   "/gitpod/blog": [
@@ -4317,6 +4329,9 @@
   ],
   "/huijin-inv/news": [
     "la3rence"
+  ],
+  "/huitun/xiaohongshu/:user_id": [
+    "Skylwn"
   ],
   "/hunanpea/rsks/:guid": [
     "TonyRL"
@@ -6466,6 +6481,9 @@
   "/openai/research": [
     "yuguorui"
   ],
+  "/openalex/:journals/:type?/:ids?": [
+    "emdoe"
+  ],
   "/openrice/:lang/hongkong/explore/chart/:category": [
     "after9"
   ],
@@ -7064,6 +7082,9 @@
   "/qstheory/magazine/:magazine": [
     "TonyRL",
     "cscnk52"
+  ],
+  "/quantamagazine/archive": [
+    "emdoe"
   ],
   "/questmobile/report/:industry?/:label?": [
     "nczitzk"
@@ -7784,6 +7805,15 @@
   "/smzdm/ranking/:rank_type/:rank_id/:hour": [
     "DIYgod"
   ],
+  "/snnu/ccs/:type?": [
+    "alterkeyy"
+  ],
+  "/snnu/": [
+    "alterkeyy"
+  ],
+  "/snnu/yjs": [
+    "alterkeyy"
+  ],
   "/snowpeak/us/new-arrivals": [
     "EthanWng97"
   ],
@@ -8198,6 +8228,9 @@
   ],
   "/tass/:category?": [
     "TonyRL"
+  ],
+  "/tctmd/conference-news": [
+    "ChuYinan2023"
   ],
   "/techcrunch/category/:categoryId": [
     "MilliumOrion"
