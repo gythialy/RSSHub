@@ -57,6 +57,7 @@ export type RoutePath =
   | `/3dmgame/news/:category?`
   | `/3kns/:filters?/:order?`
   | `/423down/:category{.+}?`
+  | `/4chan/:board/catalog/:routeParams?`
   | `/4gamers/`
   | `/4gamers/category/:category`
   | `/4gamers/tag/:tag`
@@ -90,7 +91,7 @@ export type RoutePath =
   | `/81/81rc/:category{.+}?`
   | `/8264/list/:id?`
   | `/8kcos/`
-  | `/8kcos/cat/:cat{.+}?`
+  | `/8kcos/cat/:cat?`
   | `/8kcos/tag/:tag`
   | `/8world*`
   | `/91porn/:lang?`
@@ -279,6 +280,9 @@ export type RoutePath =
   | `/bast*`
   | `/bbc/:site?/:channel?`
   | `/bbc/learningenglish/:channel?`
+  | `/bbc/sport/:sport`
+  | `/bbc/topics/:topic`
+  | `/bbc/zhongwen/topics/:topic/:variant?`
   | `/bbcnewslabs/news`
   | `/bc3ts/post/list/:sort?`
   | `/bdys/:caty?/:type?/:area?/:year?/:order?`
@@ -287,6 +291,7 @@ export type RoutePath =
   | `/bellroy/new-releases`
   | `/bendibao/news/:city`
   | `/bestblogs/feeds/:category?`
+  | `/bestblogs/newsletter`
   | `/bestofjs/rankings/monthly`
   | `/bfl/announcements`
   | `/bgmlist/onair/:lang?`
@@ -617,6 +622,8 @@ export type RoutePath =
   | `/collabo-cafe/`
   | `/collabo-cafe/category/:category`
   | `/collabo-cafe/tag/:tag`
+  | `/comic-fuz/magazine/:id`
+  | `/comic-fuz/manga/:id`
   | `/comicat/search/:keyword`
   | `/comicskingdom/:name`
   | `/commonhealth/`
@@ -831,6 +838,7 @@ export type RoutePath =
   | `/douban/replied/:uid`
   | `/douban/replies/:uid`
   | `/douban/topic/:id/:sort?`
+  | `/douban/tv/coming/:sortBy?/:count?`
   | `/douyin/hashtag/:cid/:routeParams?`
   | `/douyin/live/:rid`
   | `/douyin/user/:uid/:routeParams?`
@@ -916,6 +924,7 @@ export type RoutePath =
   | `/ehentai/search/:params?/:page?/:routeParams?`
   | `/ehentai/tag/:tag/:page?/:routeParams?`
   | `/ekantipur/:channel?`
+  | `/elamigos/games`
   | `/elasticsearch-cn/:params?`
   | `/elecfans/article/:atype`
   | `/elecfans/soft/:atype`
@@ -1533,6 +1542,7 @@ export type RoutePath =
   | `/ithome/tag/:name`
   | `/ithome/tw/feeds/:category`
   | `/ithome/zt/:id?`
+  | `/iwara/ranking/:type?/:sort?/:rating?`
   | `/iwara/subscriptions`
   | `/iwara/users/:username/:type?`
   | `/ixigua/user/video/:uid/:disableEmbed?`
@@ -1711,6 +1721,7 @@ export type RoutePath =
   | `/lemmy/:community/:sort?`
   | `/lenovo/drive/:selName`
   | `/lens/profile/:handle`
+  | `/lephoceen/chrono`
   | `/letterboxd/:username/watchlist`
   | `/lfsyd/home`
   | `/lfsyd/old_home`
@@ -2510,6 +2521,7 @@ export type RoutePath =
   | `/sina/csj`
   | `/sina/discovery/:type`
   | `/sina/finance/china/:lid?`
+  | `/sina/finance/rollnews/:lid?`
   | `/sina/finance/stock/usstock/:cids?`
   | `/sina/rollnews/:lid?`
   | `/sina/sports/:type?`
@@ -2733,6 +2745,7 @@ export type RoutePath =
   | `/thepaper/channel/:id`
   | `/thepaper/factpaper/:status?`
   | `/thepaper/featured`
+  | `/thepaper/gov/:pphId`
   | `/thepaper/list/:id`
   | `/thepaper/sidebar/:sec?`
   | `/thepaper/user/:pphId`
