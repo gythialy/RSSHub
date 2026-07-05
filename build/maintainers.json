@@ -8432,6 +8432,12 @@
   "/swpu/scs/:code": [
     "CYTMWIA"
   ],
+  "/sxhm/announcement": [
+    "magazian"
+  ],
+  "/sxhm/temporary": [
+    "magazian"
+  ],
   "/sycl/:feed?": [
     "mocusez"
   ],
@@ -9756,13 +9762,13 @@
   "/xueqiu/hots": [
     "hillerliao"
   ],
+  "/xueqiu/stock_info/:id/:type?": [
+    "YuYang"
+  ],
   "/xueqiu/user/:id/:type?": [
     "imlonghao"
   ],
   "/xueqiu/stock_comments/:id": [],
-  "/xueqiu/stock_info/:id/:type?": [
-    "YuYang"
-  ],
   "/xueqiu/today": [
     "nczitzk"
   ],

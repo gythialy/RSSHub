@@ -118552,6 +118552,60 @@ export default {
     "url": "swpu.edu.cn",
     "lang": "zh-CN"
   },
+  "sxhm": {
+    "routes": {
+      "/announcement": {
+        "path": "/announcement",
+        "categories": [
+          "travel"
+        ],
+        "example": "/sxhm/announcement",
+        "parameters": {},
+        "name": "Announcements",
+        "maintainers": [
+          "magazian"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.sxhm.com/info/announcement.html"
+            ],
+            "target": "/announcement"
+          }
+        ],
+        "location": "announcement.ts",
+        "module": () => import('@/routes/sxhm/announcement.ts')
+      },
+      "/temporary": {
+        "path": "/temporary",
+        "categories": [
+          "travel"
+        ],
+        "example": "/sxhm/temporary",
+        "parameters": {},
+        "name": "Special Exhibition",
+        "maintainers": [
+          "magazian"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.sxhm.com/Temporary.html"
+            ],
+            "target": "/temporary"
+          }
+        ],
+        "location": "temporary.tsx",
+        "module": () => import('@/routes/sxhm/temporary.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Shaanxi History Museum",
+    "url": "www.sxhm.com/",
+    "zh": {
+      "name": "陕西历史博物馆"
+    }
+  },
   "sycl": {
     "routes": {
       "/:feed?": {
@@ -128887,7 +128941,6 @@ export default {
           "university"
         ],
         "example": "/uestc/auto",
-        "parameters": {},
         "features": {
           "requireConfig": false,
           "requirePuppeteer": true,
@@ -137209,6 +137262,41 @@ export default {
         "location": "hots.ts",
         "module": () => import('@/routes/xueqiu/hots.ts')
       },
+      "/stock_info/:id/:type?": {
+        "path": "/stock_info/:id/:type?",
+        "categories": [
+          "finance"
+        ],
+        "example": "/xueqiu/stock_info/SZ000002",
+        "parameters": {
+          "id": "股票代码（需要带上交易所）",
+          "type": "动态的类型, 不填则为股票公告"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "xueqiu.com/S/:id",
+              "xueqiu.com/s/:id"
+            ],
+            "target": "/stock_info/:id"
+          }
+        ],
+        "name": "股票信息",
+        "maintainers": [
+          "YuYang"
+        ],
+        "description": "| 全部 | 讨论    | 交易  | 资讯 | 公告         |\n| ---- | ------- | ----- | ---- | ------------ |\n| all  | discuss | trans | news | announcement |",
+        "location": "stock-info.ts",
+        "module": () => import('@/routes/xueqiu/stock-info.ts')
+      },
       "/user/:id/:type?": {
         "path": "/user/:id/:type?",
         "categories": [
@@ -137271,41 +137359,6 @@ export default {
         "maintainers": [],
         "location": "stock-comments.tsx",
         "module": () => import('@/routes/xueqiu/stock-comments.tsx')
-      },
-      "/stock_info/:id/:type?": {
-        "path": "/stock_info/:id/:type?",
-        "categories": [
-          "finance"
-        ],
-        "example": "/xueqiu/stock_info/SZ000002",
-        "parameters": {
-          "id": "股票代码（需要带上交易所）",
-          "type": "动态的类型, 不填则为股票公告"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "xueqiu.com/S/:id",
-              "xueqiu.com/s/:id"
-            ],
-            "target": "/stock_info/:id"
-          }
-        ],
-        "name": "股票信息",
-        "maintainers": [
-          "YuYang"
-        ],
-        "description": "| 公告         | 新闻 | 研报     |\n| ------------ | ---- | -------- |\n| announcement | news | research |",
-        "location": "stock-info.ts",
-        "module": () => import('@/routes/xueqiu/stock-info.ts')
       },
       "/today": {
         "path": "/today",
