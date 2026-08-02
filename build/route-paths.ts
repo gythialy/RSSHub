@@ -2202,7 +2202,6 @@ export type RoutePath =
   | `/olevod/vodlist`
   | `/ollama/blog`
   | `/ollama/library`
-  | `/omegascans/series/:id`
   | `/oncc/:language/:channel?`
   | `/oncc/money18/:id?`
   | `/onehu/`
@@ -3179,7 +3178,7 @@ export type RoutePath =
   | `/xidian/cs/:category?`
   | `/xidian/gr/:category?`
   | `/xidian/jwc/:category?`
-  | `/ximalaya/:type/:id/:all?/:shownote?`
+  | `/ximalaya/:type/:id/:all/:shownote?`
   | `/xinpianchang/:params?`
   | `/xinpianchang/discover/:params?`
   | `/xinpianchang/rank/:category?`
