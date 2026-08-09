@@ -158,6 +158,20 @@
       }
     ]
   },
+  "freebuf.com": {
+    "_name": "FreeBuf",
+    ".": [
+      {
+        "title": "文章",
+        "docs": "https://docs.rsshub.app/routes/blog",
+        "source": [
+          "/articles/:type/*.html",
+          "/articles/:type"
+        ],
+        "target": "/freebuf/articles/:type"
+      }
+    ]
+  },
   "alipan.com": {
     "_name": "阿里云盘",
     "www": [
@@ -617,20 +631,6 @@
       }
     ]
   },
-  "freebuf.com": {
-    "_name": "FreeBuf",
-    ".": [
-      {
-        "title": "文章",
-        "docs": "https://docs.rsshub.app/routes/blog",
-        "source": [
-          "/articles/:type/*.html",
-          "/articles/:type"
-        ],
-        "target": "/freebuf/articles/:type"
-      }
-    ]
-  },
   "furaffinity.net": {
     "_name": "Furaffinity",
     ".": [
@@ -769,6 +769,43 @@
       }
     ]
   },
+  "gitee.com": {
+    "_name": "Gitee",
+    ".": [
+      {
+        "title": "仓库提交",
+        "docs": "https://docs.rsshub.app/routes/programming",
+        "source": [
+          "/:owner/:repo/commits"
+        ],
+        "target": "/gitee/commits/:owner/:repo"
+      },
+      {
+        "title": "仓库动态",
+        "docs": "https://docs.rsshub.app/routes/programming",
+        "source": [
+          "/:owner/:repo"
+        ],
+        "target": "/gitee/events/:owner/:repo"
+      },
+      {
+        "title": "仓库 Releases",
+        "docs": "https://docs.rsshub.app/routes/programming",
+        "source": [
+          "/:owner/:repo/releases"
+        ],
+        "target": "/gitee/releases/:owner/:repo"
+      },
+      {
+        "title": "用户公开动态",
+        "docs": "https://docs.rsshub.app/routes/programming",
+        "source": [
+          "/:username"
+        ],
+        "target": "/gitee/events/:username"
+      }
+    ]
+  },
   "grupoanimal.mx": {
     "_name": "Grupo Animal",
     "www": [
@@ -787,6 +824,19 @@
           "/politica"
         ],
         "target": "/grupoanimal/grupoanimal/politica"
+      }
+    ]
+  },
+  "huawei.com": {
+    "_name": "华为开发者联盟",
+    "developer": [
+      {
+        "title": "HarmonyOS 示例代码",
+        "docs": "https://docs.rsshub.app/routes/programming",
+        "source": [
+          "/consumer/cn/samples"
+        ],
+        "target": "/huawei/huawei/developer/harmonyos/sample-code"
       }
     ]
   },
@@ -888,6 +938,19 @@
           "/:lang/news"
         ],
         "target": "/isct/news/:lang"
+      }
+    ]
+  },
+  "jetbrains.com": {
+    "_name": "JetBrains",
+    "youtrack": [
+      {
+        "title": "YouTrack Issue Comments",
+        "docs": "https://docs.rsshub.app/routes/programming",
+        "source": [
+          "/issue/:issueId"
+        ],
+        "target": "/jetbrains/youtrack/comments/:issueId"
       }
     ]
   },
@@ -3081,43 +3144,6 @@
       }
     ]
   },
-  "gitee.com": {
-    "_name": "Gitee",
-    ".": [
-      {
-        "title": "仓库提交",
-        "docs": "https://docs.rsshub.app/routes/programming",
-        "source": [
-          "/:owner/:repo/commits"
-        ],
-        "target": "/gitee/commits/:owner/:repo"
-      },
-      {
-        "title": "仓库动态",
-        "docs": "https://docs.rsshub.app/routes/programming",
-        "source": [
-          "/:owner/:repo"
-        ],
-        "target": "/gitee/events/:owner/:repo"
-      },
-      {
-        "title": "仓库 Releases",
-        "docs": "https://docs.rsshub.app/routes/programming",
-        "source": [
-          "/:owner/:repo/releases"
-        ],
-        "target": "/gitee/releases/:owner/:repo"
-      },
-      {
-        "title": "用户公开动态",
-        "docs": "https://docs.rsshub.app/routes/programming",
-        "source": [
-          "/:username"
-        ],
-        "target": "/gitee/events/:username"
-      }
-    ]
-  },
   "gocn.vip": {
     "_name": "GoCN",
     ".": [
@@ -3183,19 +3209,6 @@
           "/"
         ],
         "target": "/hnu/careers"
-      }
-    ]
-  },
-  "huawei.com": {
-    "_name": "华为开发者联盟",
-    "developer": [
-      {
-        "title": "HarmonyOS 示例代码",
-        "docs": "https://docs.rsshub.app/routes/programming",
-        "source": [
-          "/consumer/cn/samples"
-        ],
-        "target": "/huawei/huawei/developer/harmonyos/sample-code"
       }
     ]
   },
@@ -3293,19 +3306,6 @@
           "/3-2-1"
         ],
         "target": "/jamesclear/3-2-1"
-      }
-    ]
-  },
-  "jetbrains.com": {
-    "_name": "JetBrains",
-    "youtrack": [
-      {
-        "title": "YouTrack Issue Comments",
-        "docs": "https://docs.rsshub.app/routes/programming",
-        "source": [
-          "/issue/:issueId"
-        ],
-        "target": "/jetbrains/youtrack/comments/:issueId"
       }
     ]
   },
@@ -5357,6 +5357,19 @@
       }
     ]
   },
+  "wuzhongmuseum.com": {
+    "_name": "Museum of Wu",
+    "www": [
+      {
+        "title": "Exhibition",
+        "docs": "https://docs.rsshub.app/routes/travel",
+        "source": [
+          "/portal/exhibition"
+        ],
+        "target": "/wuzhongmuseum/exhibition"
+      }
+    ]
+  },
   "yoasobi-music.jp": {
     "_name": "Yoasobi Official",
     "www": [
@@ -7034,7 +7047,7 @@
         "source": [
           "/:params"
         ],
-        "target": "/1lou(_,url)=>{url=new URL(url);return`/1lou${url.href.replace(rootUrl,\"\")}`}"
+        "target": "/1lou(_,url)=>{const parsedUrl=new URL(url);return`/1lou${parsedUrl.href.replace(rootUrl,\"\")}`}"
       }
     ]
   },
@@ -13825,7 +13838,7 @@
         "source": [
           "/news/roll.asp"
         ],
-        "target": "/c114(_,url)=>{url=new URL(url);const original=url.searchParams.get(\"o\");return`/roll${original?`/${original}`:\"\"}`}"
+        "target": "/c114(_,url)=>{const original=new URL(url).searchParams.get(\"o\");return`/roll${original?`/${original}`:\"\"}`}"
       }
     ]
   },
@@ -14178,7 +14191,7 @@
         "source": [
           "/dzp_news.aspx"
         ],
-        "target": "/cbpanet(_,url)=>{url=new URL(url);const bigId=url.searchParams.get(\"bigid\");const smallId=url.searchParams.get(\"smallid\");return`/dzp_news${bigId?`/${bigId}${smallId?`/${smallId}`:\"\"}`:\"\"}`}"
+        "target": "/cbpanet(_,url)=>{const{searchParams}=new URL(url);const bigId=searchParams.get(\"bigid\");const smallId=searchParams.get(\"smallid\");return`/dzp_news${bigId?`/${bigId}${smallId?`/${smallId}`:\"\"}`:\"\"}`}"
       },
       {
         "title": "协会 - 协会介绍",
@@ -14811,7 +14824,7 @@
           "/portal/cn/hybzs_list.jsp",
           "/portal/cn/fangyizhuanqu_list.jsp"
         ],
-        "target": "/ccfa(_,url)=>{url=new URL(url);const type=url.searchParams.get(\"type\");return type?`/${type}`:\"\"}"
+        "target": "/ccfa(_,url)=>{const type=new URL(url).searchParams.get(\"type\");return type?`/${type}`:\"\"}"
       },
       {
         "title": "协会动态",
@@ -17401,7 +17414,7 @@
         "source": [
           "/news/:category"
         ],
-        "target": "/counter-strike(params,url)=>{url=new URL(url);const category=params.category;const language=url.searchParams.get(\"l\");return`/news${category?`/${category}${language?`/${language}`:\"\"}`:\"\"}`}"
+        "target": "/counter-strike(params,url)=>{const parsedUrl=new URL(url);const category=params.category;const language=parsedUrl.searchParams.get(\"l\");return`/news${category?`/${category}${language?`/${language}`:\"\"}`:\"\"}`}"
       }
     ]
   },
@@ -17414,7 +17427,7 @@
         "source": [
           "/news.php"
         ],
-        "target": "/cpcaauto(_,url)=>{url=new URL(url);const types=url.searchParams.get(\"types\");const id=url.searchParams.get(\"id\");return types?`/${types}${id?`/${id}`:\"\"}`:\"\"}"
+        "target": "/cpcaauto(_,url)=>{const{searchParams}=new URL(url);const types=searchParams.get(\"types\");const id=searchParams.get(\"id\");return types?`/${types}${id?`/${id}`:\"\"}`:\"\"}"
       },
       {
         "title": "行业新闻 - 国内乘用车",
@@ -20480,7 +20493,7 @@
         "source": [
           "/academic/index.aspx"
         ],
-        "target": "/eshukan(_,url)=>{url=new URL(url);const id=url.searchParams.get(\"id\");return`/academic${id?`/${id}`:\"\"}`}"
+        "target": "/eshukan(_,url)=>{const{searchParams}=new URL(url);const id=searchParams.get(\"id\");return`/academic${id?`/${id}`:\"\"}`}"
       }
     ]
   },
@@ -21100,7 +21113,7 @@
         "source": [
           "/forum.php"
         ],
-        "target": "/flyert(_,url)=>{const params=url.searchParams.entries().toArray().map(([key,value])=>key+\"=\"+value).join(\"&\");return`/forum${params?`/${encodeURIComponent(params)}`:\"\"}`}"
+        "target": "/flyert(_,url)=>{const params=new URL(url).searchParams.entries().toArray().map(([key,value])=>key+\"=\"+value).join(\"&\");return`/forum${params?`/${encodeURIComponent(params)}`:\"\"}`}"
       }
     ]
   },
@@ -21638,6 +21651,15 @@
         "target": "/github/branches/:user/:repo"
       },
       {
+        "title": "Issue / Pull Request comments",
+        "docs": "https://docs.rsshub.app/routes/programming",
+        "source": [
+          "/:user/:repo/:type",
+          "/:user/:repo/:type/:number"
+        ],
+        "target": "/github/comments/:user/:repo/:number?"
+      },
+      {
         "title": "Repo Contributors",
         "docs": "https://docs.rsshub.app/routes/programming",
         "source": [
@@ -21645,6 +21667,16 @@
           "/:user/:repo"
         ],
         "target": "/github/contributors/:user/:repo"
+      },
+      {
+        "title": "Repo Discussions",
+        "docs": "https://docs.rsshub.app/routes/programming",
+        "source": [
+          "/:user/:repo/discussions",
+          "/:user/:repo/discussions/:id",
+          "/:user/:repo"
+        ],
+        "target": "/github/discussion/:user/:repo"
       },
       {
         "title": "File Commits",
@@ -21661,6 +21693,16 @@
           "/:user"
         ],
         "target": "/github/user/followers/:user"
+      },
+      {
+        "title": "Repo Issues",
+        "docs": "https://docs.rsshub.app/routes/programming",
+        "source": [
+          "/:user/:repo/issues",
+          "/:user/:repo/issues/:id",
+          "/:user/:repo"
+        ],
+        "target": "/github/issue/:user/:repo"
       },
       {
         "title": "Notifications",
@@ -21685,6 +21727,16 @@
           "/:user"
         ],
         "target": "/github/feed/:user"
+      },
+      {
+        "title": "Repo Pull Requests",
+        "docs": "https://docs.rsshub.app/routes/programming",
+        "source": [
+          "/:user/:repo/pulls",
+          "/:user/:repo/pulls/:id",
+          "/:user/:repo"
+        ],
+        "target": "/github/pull/:user/:repo"
       },
       {
         "title": "Repository Event",
@@ -21726,45 +21778,6 @@
           "/:username"
         ],
         "target": "/github/user_event/:username"
-      },
-      {
-        "title": "Issue / Pull Request comments",
-        "docs": "https://docs.rsshub.app/routes/programming",
-        "source": [
-          "/:user/:repo/:type",
-          "/:user/:repo/:type/:number"
-        ],
-        "target": "/github/comments/:user/:repo/:number?"
-      },
-      {
-        "title": "Repo Discussions",
-        "docs": "https://docs.rsshub.app/routes/programming",
-        "source": [
-          "/:user/:repo/discussions",
-          "/:user/:repo/discussions/:id",
-          "/:user/:repo"
-        ],
-        "target": "/github/discussion/:user/:repo"
-      },
-      {
-        "title": "Repo Issues",
-        "docs": "https://docs.rsshub.app/routes/programming",
-        "source": [
-          "/:user/:repo/issues",
-          "/:user/:repo/issues/:id",
-          "/:user/:repo"
-        ],
-        "target": "/github/issue/:user/:repo"
-      },
-      {
-        "title": "Repo Pull Requests",
-        "docs": "https://docs.rsshub.app/routes/programming",
-        "source": [
-          "/:user/:repo/pulls",
-          "/:user/:repo/pulls/:id",
-          "/:user/:repo"
-        ],
-        "target": "/github/pull/:user/:repo"
       },
       {
         "title": "Github Advisory Database RSS",
@@ -34776,24 +34789,27 @@
   },
   "people.com.cn": {
     "_name": "人民网",
-    "liuyan": [
+    "paper": [
       {
-        "title": "领导留言板",
+        "title": "人民日报电子版",
         "docs": "https://docs.rsshub.app/routes/traditional-media",
         "source": [
-          "/"
+          "/rmrb/pc/layout/index.html"
         ],
-        "target": "/people/liuyan/:id/:state?"
+        "target": "/people/paper"
       }
-    ],
-    ".": [
+    ]
+  },
+  "people.cn": {
+    "_name": "人民网",
+    "jhsjk": [
       {
         "title": "习近平系列重要讲话",
         "docs": "https://docs.rsshub.app/routes/traditional-media",
         "source": [
           "/"
         ],
-        "target": "/people/:site?/:category?"
+        "target": "/people/xjpjh"
       }
     ]
   },
@@ -40856,9 +40872,10 @@
         "title": "图书馆通知公告",
         "docs": "https://docs.rsshub.app/routes/university",
         "source": [
-          "/tzgg/:category"
+          "/tzgg/:category",
+          "/tzgg.htm"
         ],
-        "target": "/tsinghua/lib/tzgg/:category"
+        "target": "/tsinghua/lib/tzgg/:category?"
       },
       {
         "title": "图书馆资源动态",
@@ -45777,6 +45794,16 @@
   },
   "cq.gov.cn": {
     "_name": "重庆市人民政府",
+    "gzw": [
+      {
+        "title": "国有资产监督管理委员会",
+        "docs": "https://docs.rsshub.app/routes/government",
+        "source": [
+          "/*category"
+        ],
+        "target": "/gov/chongqing/gzw/*category"
+      }
+    ],
     "rlsbj": [
       {
         "title": "人力社保局 - 人事考试通知",
@@ -46531,7 +46558,7 @@
         "source": [
           "/list"
         ],
-        "target": "/gov/jgjcndrc(_,url)=>{url=new URL(url);const columnId=url.searchParams.get(\"clmId\");const subColumnId=url.searchParams.get(\"sclmId\");return`/jgjcndrc${columnId?`/${columnId}${subColumnId?`/${subColumnId}`:\"\"}`:\"\"}`}"
+        "target": "/gov/jgjcndrc(_,url)=>{const{searchParams}=new URL(url);const columnId=searchParams.get(\"clmId\");const subColumnId=searchParams.get(\"sclmId\");return`/jgjcndrc${columnId?`/${columnId}${subColumnId?`/${subColumnId}`:\"\"}`:\"\"}`}"
       }
     ]
   },
@@ -51415,6 +51442,14 @@
   "tmtpost.com": {
     "_name": "钛媒体",
     "www": [
+      {
+        "title": "快报",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/"
+        ],
+        "target": "/tmtpost/nictation"
+      },
       {
         "title": "最新",
         "docs": "https://docs.rsshub.app/routes/new-media",

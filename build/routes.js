@@ -837,6 +837,47 @@ export default {
     "url": "www.instagram.com",
     "lang": "en"
   },
+  "freebuf": {
+    "routes": {
+      "/articles/:type": {
+        "path": "/articles/:type",
+        "categories": [
+          "blog"
+        ],
+        "example": "/freebuf/articles/web",
+        "parameters": {
+          "type": "文章类别"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "freebuf.com/articles/:type/*.html",
+              "freebuf.com/articles/:type"
+            ]
+          }
+        ],
+        "name": "文章",
+        "maintainers": [
+          "trganda"
+        ],
+        "description": "::: tip\nFreebuf 的文章页面带有反爬虫机制，所以目前无法获取文章的完整内容。\n\n站点位于阿里云 WAF 之后，请求频繁的 IP 可能触发 405 JS 质询，此时路由会自动计算 `acw_sc__v2` Cookie 并重试。\n:::",
+        "location": "index.ts",
+        "module": () => import('@/routes/freebuf/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "FreeBuf",
+    "url": "freebuf.com",
+    "lang": "zh-CN"
+  },
   "alipan": {
     "routes": {
       "/files/:share_id/:parent_file_id?": {
@@ -1417,6 +1458,30 @@ export default {
     "name": "chlinlearn 的技术博客",
     "url": "daily-blog.chlinlearn.top",
     "lang": "zh-CN"
+  },
+  "chub": {
+    "routes": {
+      "/characters": {
+        "path": "/characters",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/chub/characters",
+        "name": "Characters",
+        "maintainers": [
+          "flameleaf"
+        ],
+        "features": {
+          "nsfw": true
+        },
+        "location": "characters.ts",
+        "module": () => import('@/routes/chub/characters.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Chub",
+    "url": "chub.ai",
+    "lang": "en"
   },
   "codefather": {
     "routes": {
@@ -2350,47 +2415,6 @@ export default {
     "url": "forwardfuture.com",
     "lang": "en"
   },
-  "freebuf": {
-    "routes": {
-      "/articles/:type": {
-        "path": "/articles/:type",
-        "categories": [
-          "blog"
-        ],
-        "example": "/freebuf/articles/web",
-        "parameters": {
-          "type": "文章类别"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "freebuf.com/articles/:type/*.html",
-              "freebuf.com/articles/:type"
-            ]
-          }
-        ],
-        "name": "文章",
-        "maintainers": [
-          "trganda"
-        ],
-        "description": "::: tip\nFreebuf 的文章页面带有反爬虫机制，所以目前无法获取文章的完整内容。\n:::",
-        "location": "index.ts",
-        "module": () => import('@/routes/freebuf/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "FreeBuf",
-    "url": "freebuf.com",
-    "lang": "zh-CN"
-  },
   "furaffinity": {
     "routes": {
       "/art/:folder/:username/:mode?": {
@@ -2911,6 +2935,141 @@ export default {
     },
     "lang": "zh-CN"
   },
+  "gitee": {
+    "routes": {
+      "/commits/:owner/:repo": {
+        "path": "/commits/:owner/:repo",
+        "categories": [
+          "programming"
+        ],
+        "example": "/gitee/commits/y_project/RuoYi",
+        "parameters": {
+          "owner": "用户名",
+          "repo": "仓库名"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "gitee.com/:owner/:repo/commits"
+            ]
+          }
+        ],
+        "name": "仓库提交",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "repos/commits.ts",
+        "module": () => import('@/routes/gitee/repos/commits.ts')
+      },
+      "/events/:owner/:repo": {
+        "path": "/events/:owner/:repo",
+        "categories": [
+          "programming"
+        ],
+        "example": "/gitee/events/y_project/RuoYi",
+        "parameters": {
+          "owner": "用户名",
+          "repo": "仓库名"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "gitee.com/:owner/:repo"
+            ]
+          }
+        ],
+        "name": "仓库动态",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "repos/events.ts",
+        "module": () => import('@/routes/gitee/repos/events.ts')
+      },
+      "/releases/:owner/:repo": {
+        "path": "/releases/:owner/:repo",
+        "categories": [
+          "programming"
+        ],
+        "example": "/gitee/releases/y_project/RuoYi",
+        "parameters": {
+          "owner": "用户名",
+          "repo": "仓库名"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "gitee.com/:owner/:repo/releases"
+            ]
+          }
+        ],
+        "name": "仓库 Releases",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "repos/releases.ts",
+        "module": () => import('@/routes/gitee/repos/releases.ts')
+      },
+      "/events/:username": {
+        "path": "/events/:username",
+        "categories": [
+          "programming"
+        ],
+        "example": "/gitee/events/y_project",
+        "parameters": {
+          "username": "用户名"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "gitee.com/:username"
+            ]
+          }
+        ],
+        "name": "用户公开动态",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "users/events.ts",
+        "module": () => import('@/routes/gitee/users/events.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Gitee",
+    "url": "gitee.com",
+    "lang": "zh-CN"
+  },
   "grupoanimal": {
     "routes": {
       "/estados": {
@@ -2981,6 +3140,43 @@ export default {
     "name": "Home Assistant",
     "url": "www.home-assistant.io",
     "lang": "en"
+  },
+  "huawei": {
+    "routes": {
+      "/developer/harmonyos/sample-code": {
+        "path": "/developer/harmonyos/sample-code",
+        "categories": [
+          "programming"
+        ],
+        "example": "/huawei/developer/harmonyos/sample-code",
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "developer.huawei.com/consumer/cn/samples"
+            ],
+            "target": "/huawei/developer/harmonyos/sample-code"
+          }
+        ],
+        "name": "HarmonyOS 示例代码",
+        "maintainers": [
+          "JiZhi-Error"
+        ],
+        "location": "developer/harmonyos/samplecode.ts",
+        "module": () => import('@/routes/huawei/developer/harmonyos/samplecode.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "华为开发者联盟",
+    "url": "developer.huawei.com",
+    "lang": "zh-CN"
   },
   "hudsonrivertrading": {
     "routes": {
@@ -3299,6 +3495,39 @@ export default {
     "ja": {
       "name": "東京科学大学"
     }
+  },
+  "jetbrains": {
+    "routes": {
+      "/youtrack/comments/:issueId": {
+        "path": "/youtrack/comments/:issueId",
+        "categories": [
+          "programming"
+        ],
+        "example": "/jetbrains/youtrack/comments/IJPL-174543",
+        "parameters": {
+          "issueId": "Issue ID (e.g., IJPL-174543)"
+        },
+        "radar": [
+          {
+            "source": [
+              "youtrack.jetbrains.com/issue/:issueId"
+            ],
+            "target": "/youtrack/comments/:issueId"
+          }
+        ],
+        "name": "YouTrack Issue Comments",
+        "maintainers": [
+          "NekoAria"
+        ],
+        "location": "comments.ts",
+        "module": () => import('@/routes/jetbrains/comments.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "JetBrains",
+    "url": "jetbrains.com",
+    "description": "JetBrains is a software development company that creates professional development tools and IDEs.",
+    "lang": "en"
   },
   "jl1mall": {
     "routes": {
@@ -4847,6 +5076,126 @@ export default {
     "apiRoutes": {},
     "name": "Ktown4u",
     "url": "ktown4u.com",
+    "lang": "en"
+  },
+  "lemmy": {
+    "routes": {
+      "/:community/:sort?": {
+        "path": "/:community/:sort?",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/lemmy/technology@lemmy.world/Hot",
+        "parameters": {
+          "community": "Lemmmy community, for example technology@lemmy.world",
+          "sort": {
+            "description": "Sort by",
+            "options": [
+              {
+                "value": "Active",
+                "label": "Active"
+              },
+              {
+                "value": "Hot",
+                "label": "Hot"
+              },
+              {
+                "value": "New",
+                "label": "New"
+              },
+              {
+                "value": "Old",
+                "label": "Old"
+              },
+              {
+                "value": "TopDay",
+                "label": "TopDay"
+              },
+              {
+                "value": "TopWeek",
+                "label": "TopWeek"
+              },
+              {
+                "value": "TopMonth",
+                "label": "TopMonth"
+              },
+              {
+                "value": "TopYear",
+                "label": "TopYear"
+              },
+              {
+                "value": "TopAll",
+                "label": "TopAll"
+              },
+              {
+                "value": "MostComments",
+                "label": "MostComments"
+              },
+              {
+                "value": "NewComments",
+                "label": "NewComments"
+              },
+              {
+                "value": "TopHour",
+                "label": "TopHour"
+              },
+              {
+                "value": "TopSixHour",
+                "label": "TopSixHour"
+              },
+              {
+                "value": "TopTwelveHour",
+                "label": "TopTwelveHour"
+              },
+              {
+                "value": "TopThreeMonths",
+                "label": "TopThreeMonths"
+              },
+              {
+                "value": "TopSixMonths",
+                "label": "TopSixMonths"
+              },
+              {
+                "value": "TopNineMonths",
+                "label": "TopNineMonths"
+              },
+              {
+                "value": "Controversial",
+                "label": "Controversial"
+              },
+              {
+                "value": "Scaled",
+                "label": "Scaled"
+              }
+            ],
+            "default": "Active"
+          }
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "ALLOW_USER_SUPPLY_UNSAFE_DOMAIN",
+              "description": ""
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Community",
+        "maintainers": [
+          "wb14123",
+          "pseudoyu"
+        ],
+        "location": "index.ts",
+        "module": () => import('@/routes/lemmy/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Lemmy",
+    "url": "join-lemmy.org",
     "lang": "en"
   },
   "likeshop": {
@@ -7306,7 +7655,7 @@ export default {
           "ladeng07"
         ],
         "url": "aqicn.org",
-        "descriptions": "\n|   参数   | 污染成分 |\n| -------- | -------- |\n|   pm25   |  PM2.5   |\n|   pm10   |  PM10    |\n|   o3     |  O3      |\n|   no2    |  NO2     |\n|   so2    |  SO2     |\n|   co     |  CO      |\n\n举例: [https://rsshub.app/aqicn/beijing/pm25,pm10](https://rsshub.app/aqicn/beijing/pm25,pm10)\n\n1. 显示单个污染成分，例如「pm25」, [https://rsshub.app/aqicn/beijing/pm25](https://rsshub.app/aqicn/beijing/pm25)\n2. 逗号分隔显示多个污染成分，例如「pm25,pm10」，[https://rsshub.app/aqicn/beijing/pm25,pm10](https://rsshub.app/aqicn/beijing/pm25,pm10)\n3. 城市子站 ID 获取方法：右键显示网页源代码，搜索 \"idx\" （带双冒号），后面的 ID 就是子站的 ID，如你给的链接 ID 是 4258，RSS 地址就是 [https://rsshub.app/aqicn/4258](https://rsshub.app/aqicn/4258)\n",
+        "description": "| 参数 | 污染成分 |\n| ---- | -------- |\n| pm25 | PM2.5    |\n| pm10 | PM10     |\n| o3   | O3       |\n| no2  | NO2      |\n| so2  | SO2      |\n| co   | CO       |\n\n举例: <https://rsshub.app/aqicn/beijing/pm25,pm10>\n\n1. 显示单个污染成分，例如「pm25」, <https://rsshub.app/aqicn/beijing/pm25>\n2. 逗号分隔显示多个污染成分，例如「pm25,pm10」，<https://rsshub.app/aqicn/beijing/pm25,pm10>\n3. 城市子站 ID 获取方法：右键显示网页源代码，搜索 \"idx\" （带双冒号），后面的 ID 就是子站的 ID，如你给的链接 ID 是 4258，RSS 地址就是 <https://rsshub.app/aqicn/4258>",
         "location": "aqi.ts",
         "module": () => import('@/routes/aqicn/aqi.ts')
       }
@@ -7935,30 +8284,6 @@ export default {
     "name": "差评",
     "url": "chaping.cn",
     "lang": "zh-CN"
-  },
-  "chub": {
-    "routes": {
-      "/characters": {
-        "path": "/characters",
-        "categories": [
-          "new-media"
-        ],
-        "example": "/chub/characters",
-        "name": "Characters",
-        "maintainers": [
-          "flameleaf"
-        ],
-        "features": {
-          "nsfw": true
-        },
-        "location": "characters.ts",
-        "module": () => import('@/routes/chub/characters.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Chub",
-    "url": "chub.ai",
-    "lang": "en"
   },
   "cn-healthcare": {
     "routes": {
@@ -9500,141 +9825,6 @@ export default {
     "url": "gitcode.com",
     "lang": "zh-CN"
   },
-  "gitee": {
-    "routes": {
-      "/commits/:owner/:repo": {
-        "path": "/commits/:owner/:repo",
-        "categories": [
-          "programming"
-        ],
-        "example": "/gitee/commits/y_project/RuoYi",
-        "parameters": {
-          "owner": "用户名",
-          "repo": "仓库名"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "gitee.com/:owner/:repo/commits"
-            ]
-          }
-        ],
-        "name": "仓库提交",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "location": "repos/commits.ts",
-        "module": () => import('@/routes/gitee/repos/commits.ts')
-      },
-      "/events/:owner/:repo": {
-        "path": "/events/:owner/:repo",
-        "categories": [
-          "programming"
-        ],
-        "example": "/gitee/events/y_project/RuoYi",
-        "parameters": {
-          "owner": "用户名",
-          "repo": "仓库名"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "gitee.com/:owner/:repo"
-            ]
-          }
-        ],
-        "name": "仓库动态",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "location": "repos/events.ts",
-        "module": () => import('@/routes/gitee/repos/events.ts')
-      },
-      "/releases/:owner/:repo": {
-        "path": "/releases/:owner/:repo",
-        "categories": [
-          "programming"
-        ],
-        "example": "/gitee/releases/y_project/RuoYi",
-        "parameters": {
-          "owner": "用户名",
-          "repo": "仓库名"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "gitee.com/:owner/:repo/releases"
-            ]
-          }
-        ],
-        "name": "仓库 Releases",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "location": "repos/releases.ts",
-        "module": () => import('@/routes/gitee/repos/releases.ts')
-      },
-      "/events/:username": {
-        "path": "/events/:username",
-        "categories": [
-          "programming"
-        ],
-        "example": "/gitee/events/y_project",
-        "parameters": {
-          "username": "用户名"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "gitee.com/:username"
-            ]
-          }
-        ],
-        "name": "用户公开动态",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "location": "users/events.ts",
-        "module": () => import('@/routes/gitee/users/events.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Gitee",
-    "url": "gitee.com",
-    "lang": "zh-CN"
-  },
   "gocn": {
     "routes": {
       "/jobs": {
@@ -9877,43 +10067,6 @@ export default {
     "apiRoutes": {},
     "name": "湖南大学",
     "url": "scc.hnu.edu.cn",
-    "lang": "zh-CN"
-  },
-  "huawei": {
-    "routes": {
-      "/developer/harmonyos/sample-code": {
-        "path": "/developer/harmonyos/sample-code",
-        "categories": [
-          "programming"
-        ],
-        "example": "/huawei/developer/harmonyos/sample-code",
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "developer.huawei.com/consumer/cn/samples"
-            ],
-            "target": "/huawei/developer/harmonyos/sample-code"
-          }
-        ],
-        "name": "HarmonyOS 示例代码",
-        "maintainers": [
-          "JiZhi-Error"
-        ],
-        "location": "developer/harmonyos/samplecode.ts",
-        "module": () => import('@/routes/huawei/developer/harmonyos/samplecode.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "华为开发者联盟",
-    "url": "developer.huawei.com",
     "lang": "zh-CN"
   },
   "huoxian": {
@@ -10294,39 +10447,6 @@ export default {
     ],
     "lang": "en"
   },
-  "jetbrains": {
-    "routes": {
-      "/youtrack/comments/:issueId": {
-        "path": "/youtrack/comments/:issueId",
-        "categories": [
-          "programming"
-        ],
-        "example": "/jetbrains/youtrack/comments/IJPL-174543",
-        "parameters": {
-          "issueId": "Issue ID (e.g., IJPL-174543)"
-        },
-        "radar": [
-          {
-            "source": [
-              "youtrack.jetbrains.com/issue/:issueId"
-            ],
-            "target": "/youtrack/comments/:issueId"
-          }
-        ],
-        "name": "YouTrack Issue Comments",
-        "maintainers": [
-          "NekoAria"
-        ],
-        "location": "comments.ts",
-        "module": () => import('@/routes/jetbrains/comments.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "JetBrains",
-    "url": "jetbrains.com",
-    "description": "JetBrains is a software development company that creates professional development tools and IDEs.",
-    "lang": "en"
-  },
   "jiaoliudao": {
     "routes": {
       "/": {
@@ -10697,126 +10817,6 @@ export default {
     "name": "Konachan.com Anime Wallpapers",
     "url": "konachan.com",
     "description": "konachan post",
-    "lang": "en"
-  },
-  "lemmy": {
-    "routes": {
-      "/:community/:sort?": {
-        "path": "/:community/:sort?",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/lemmy/technology@lemmy.world/Hot",
-        "parameters": {
-          "community": "Lemmmy community, for example technology@lemmy.world",
-          "sort": {
-            "description": "Sort by",
-            "options": [
-              {
-                "value": "Active",
-                "label": "Active"
-              },
-              {
-                "value": "Hot",
-                "label": "Hot"
-              },
-              {
-                "value": "New",
-                "label": "New"
-              },
-              {
-                "value": "Old",
-                "label": "Old"
-              },
-              {
-                "value": "TopDay",
-                "label": "TopDay"
-              },
-              {
-                "value": "TopWeek",
-                "label": "TopWeek"
-              },
-              {
-                "value": "TopMonth",
-                "label": "TopMonth"
-              },
-              {
-                "value": "TopYear",
-                "label": "TopYear"
-              },
-              {
-                "value": "TopAll",
-                "label": "TopAll"
-              },
-              {
-                "value": "MostComments",
-                "label": "MostComments"
-              },
-              {
-                "value": "NewComments",
-                "label": "NewComments"
-              },
-              {
-                "value": "TopHour",
-                "label": "TopHour"
-              },
-              {
-                "value": "TopSixHour",
-                "label": "TopSixHour"
-              },
-              {
-                "value": "TopTwelveHour",
-                "label": "TopTwelveHour"
-              },
-              {
-                "value": "TopThreeMonths",
-                "label": "TopThreeMonths"
-              },
-              {
-                "value": "TopSixMonths",
-                "label": "TopSixMonths"
-              },
-              {
-                "value": "TopNineMonths",
-                "label": "TopNineMonths"
-              },
-              {
-                "value": "Controversial",
-                "label": "Controversial"
-              },
-              {
-                "value": "Scaled",
-                "label": "Scaled"
-              }
-            ],
-            "default": "Active"
-          }
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "ALLOW_USER_SUPPLY_UNSAFE_DOMAIN",
-              "description": ""
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "Community",
-        "maintainers": [
-          "wb14123",
-          "pseudoyu"
-        ],
-        "location": "index.ts",
-        "module": () => import('@/routes/lemmy/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Lemmy",
-    "url": "join-lemmy.org",
     "lang": "en"
   },
   "lens": {
@@ -18961,6 +18961,40 @@ export default {
     "url": "wise.com",
     "lang": "en"
   },
+  "wuzhongmuseum": {
+    "routes": {
+      "/exhibition/:type?": {
+        "path": "/exhibition/:type?",
+        "categories": [
+          "travel"
+        ],
+        "example": "/wuzhongmuseum/exhibition",
+        "parameters": {
+          "type": "Exhibition type, supported values: short (特别展览), long (常设展览), online (线上展览). Default: all exhibitions."
+        },
+        "name": "Exhibition",
+        "maintainers": [
+          "magazian"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.wuzhongmuseum.com/portal/exhibition"
+            ],
+            "target": "/exhibition"
+          }
+        ],
+        "location": "exhibition.tsx",
+        "module": () => import('@/routes/wuzhongmuseum/exhibition.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Museum of Wu",
+    "url": "www.wuzhongmuseum.com",
+    "zh": {
+      "name": "吴文化博物馆"
+    }
+  },
   "xkb": {
     "routes": {
       "/:channel": {
@@ -20207,7 +20241,7 @@ export default {
         "parameters": {},
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": false,
+          "requirePuppeteer": true,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -20239,7 +20273,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": false,
+          "requirePuppeteer": true,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -20275,6 +20309,14 @@ export default {
             "target": ""
           }
         ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": true,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
         "name": "精选资讯",
         "maintainers": [
           "nczitzk"
@@ -20292,7 +20334,7 @@ export default {
         "parameters": {},
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": false,
+          "requirePuppeteer": true,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -24698,7 +24740,7 @@ export default {
           "supportBT": false,
           "supportPodcast": false,
           "supportScihub": false,
-          "nfsw": true
+          "nsfw": true
         },
         "radar": [
           {
@@ -38585,8 +38627,6 @@ export default {
         "example": "/bupt/jwc/tzgg",
         "parameters": {
           "type": {
-            "type": "string",
-            "optional": false,
             "description": "信息类型，可选值：tzgg（通知公告），xwzx（新闻资讯）"
           }
         },
@@ -58437,7 +58477,7 @@ export default {
         "parameters": {
           "type": "通知类型，留空则获取所有分类"
         },
-        "feature": {
+        "features": {
           "requireConfig": false,
           "requirePuppeteer": false,
           "antiCrawler": false,
@@ -58858,6 +58898,34 @@ export default {
         "location": "branches.ts",
         "module": () => import('@/routes/github/branches.ts')
       },
+      "/comments/:user/:repo/:number?": {
+        "path": "/comments/:user/:repo/:number?",
+        "categories": [
+          "programming"
+        ],
+        "example": "/github/comments/DIYgod/RSSHub/8116",
+        "parameters": {
+          "user": "User / Org name",
+          "repo": "Repo name",
+          "number": "Issue or pull number (if omitted: all)"
+        },
+        "radar": [
+          {
+            "source": [
+              "github.com/:user/:repo/:type",
+              "github.com/:user/:repo/:type/:number"
+            ],
+            "target": "/comments/:user/:repo/:number?"
+          }
+        ],
+        "name": "Issue / Pull Request comments",
+        "maintainers": [
+          "TonyRL",
+          "FliegendeWurst"
+        ],
+        "location": "comments.ts",
+        "module": () => import('@/routes/github/comments.ts')
+      },
       "/contributors/:user/:repo/:order?/:anon?": {
         "path": "/contributors/:user/:repo/:order?/:anon?",
         "categories": [
@@ -58893,6 +58961,76 @@ export default {
         ],
         "location": "contributors.ts",
         "module": () => import('@/routes/github/contributors.ts')
+      },
+      "/discussion/:user/:repo/:state?/:category?": {
+        "path": "/discussion/:user/:repo/:state?/:category?",
+        "categories": [
+          "programming"
+        ],
+        "example": "/github/discussion/DIYgod/RSSHub",
+        "parameters": {
+          "user": "User name",
+          "repo": "Repo name",
+          "state": {
+            "description": "The state of discussions",
+            "default": "open",
+            "options": [
+              {
+                "label": "Open",
+                "value": "open"
+              },
+              {
+                "label": "Closed",
+                "value": "closed"
+              },
+              {
+                "label": "Answered",
+                "value": "answered"
+              },
+              {
+                "label": "Unanswered",
+                "value": "unanswered"
+              },
+              {
+                "label": "Locked",
+                "value": "locked"
+              },
+              {
+                "label": "Unlocked",
+                "value": "unlocked"
+              },
+              {
+                "label": "All",
+                "value": "all"
+              }
+            ]
+          },
+          "category": "Category Name (case-sensitive). Default: `null`."
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "GITHUB_ACCESS_TOKEN",
+              "description": "GitHub Access Token"
+            }
+          ]
+        },
+        "radar": [
+          {
+            "source": [
+              "github.com/:user/:repo/discussions",
+              "github.com/:user/:repo/discussions/:id",
+              "github.com/:user/:repo"
+            ],
+            "target": "/discussion/:user/:repo"
+          }
+        ],
+        "name": "Repo Discussions",
+        "maintainers": [
+          "waynzh"
+        ],
+        "location": "discussions.ts",
+        "module": () => import('@/routes/github/discussions.ts')
       },
       "/file/:user/:repo/:branch/:filepath{.+}": {
         "path": "/file/:user/:repo/:branch/:filepath{.+}",
@@ -58982,6 +59120,54 @@ export default {
         ],
         "location": "gist.ts",
         "module": () => import('@/routes/github/gist.ts')
+      },
+      "/issue/:user/:repo/:state?/:labels?": {
+        "path": "/issue/:user/:repo/:state?/:labels?",
+        "categories": [
+          "programming"
+        ],
+        "view": 5,
+        "example": "/github/issue/DIYgod/RSSHub/open",
+        "parameters": {
+          "user": "GitHub username",
+          "repo": "GitHub repo name",
+          "state": {
+            "description": "the state of the issues.",
+            "default": "open",
+            "options": [
+              {
+                "label": "Open",
+                "value": "open"
+              },
+              {
+                "label": "Closed",
+                "value": "closed"
+              },
+              {
+                "label": "All",
+                "value": "all"
+              }
+            ]
+          },
+          "labels": "a list of comma separated label names"
+        },
+        "radar": [
+          {
+            "source": [
+              "github.com/:user/:repo/issues",
+              "github.com/:user/:repo/issues/:id",
+              "github.com/:user/:repo"
+            ],
+            "target": "/issue/:user/:repo"
+          }
+        ],
+        "name": "Repo Issues",
+        "maintainers": [
+          "HenryQW",
+          "AndreyMZ"
+        ],
+        "location": "issue.ts",
+        "module": () => import('@/routes/github/issue.ts')
       },
       "/notifications": {
         "path": "/notifications",
@@ -59217,6 +59403,61 @@ export default {
         ],
         "location": "private-feed.ts",
         "module": () => import('@/routes/github/private-feed.ts')
+      },
+      "/pull/:user/:repo/:state?/:labels?": {
+        "path": "/pull/:user/:repo/:state?/:labels?",
+        "categories": [
+          "programming"
+        ],
+        "example": "/github/pull/DIYgod/RSSHub",
+        "parameters": {
+          "user": "GitHub username",
+          "repo": "GitHub repo name",
+          "state": {
+            "description": "the state of pull requests.",
+            "default": "open",
+            "options": [
+              {
+                "label": "Open",
+                "value": "open"
+              },
+              {
+                "label": "Closed",
+                "value": "closed"
+              },
+              {
+                "label": "All",
+                "value": "all"
+              }
+            ]
+          },
+          "labels": "a list of comma separated label names"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "github.com/:user/:repo/pulls",
+              "github.com/:user/:repo/pulls/:id",
+              "github.com/:user/:repo"
+            ],
+            "target": "/pull/:user/:repo"
+          }
+        ],
+        "name": "Repo Pull Requests",
+        "maintainers": [
+          "hashman",
+          "TonyRL"
+        ],
+        "location": "pulls.ts",
+        "module": () => import('@/routes/github/pulls.ts')
       },
       "/repo_event/:owner/:repo/:types?": {
         "path": "/repo_event/:owner/:repo/:types?",
@@ -59570,207 +59811,6 @@ export default {
         ],
         "location": "user-event.ts",
         "module": () => import('@/routes/github/user-event.ts')
-      },
-      "/comments/:user/:repo/:number?": {
-        "path": "/comments/:user/:repo/:number?",
-        "categories": [
-          "programming"
-        ],
-        "example": "/github/comments/DIYgod/RSSHub/8116",
-        "parameters": {
-          "user": "User / Org name",
-          "repo": "Repo name",
-          "number": "Issue or pull number (if omitted: all)"
-        },
-        "radar": [
-          {
-            "source": [
-              "github.com/:user/:repo/:type",
-              "github.com/:user/:repo/:type/:number"
-            ],
-            "target": "/comments/:user/:repo/:number?"
-          }
-        ],
-        "name": "Issue / Pull Request comments",
-        "maintainers": [
-          "TonyRL",
-          "FliegendeWurst"
-        ],
-        "location": "comments.ts",
-        "module": () => import('@/routes/github/comments.ts')
-      },
-      "/discussion/:user/:repo/:state?/:category?": {
-        "path": "/discussion/:user/:repo/:state?/:category?",
-        "categories": [
-          "programming"
-        ],
-        "example": "/github/discussion/DIYgod/RSSHub",
-        "parameters": {
-          "user": "User name",
-          "repo": "Repo name",
-          "state": {
-            "description": "The state of discussions",
-            "default": "open",
-            "options": [
-              {
-                "label": "Open",
-                "value": "open"
-              },
-              {
-                "label": "Closed",
-                "value": "closed"
-              },
-              {
-                "label": "Answered",
-                "value": "answered"
-              },
-              {
-                "label": "Unanswered",
-                "value": "unanswered"
-              },
-              {
-                "label": "Locked",
-                "value": "locked"
-              },
-              {
-                "label": "Unlocked",
-                "value": "unlocked"
-              },
-              {
-                "label": "All",
-                "value": "all"
-              }
-            ]
-          },
-          "category": "Category Name (case-sensitive). Default: `null`."
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "GITHUB_ACCESS_TOKEN",
-              "description": "GitHub Access Token"
-            }
-          ]
-        },
-        "radar": [
-          {
-            "source": [
-              "github.com/:user/:repo/discussions",
-              "github.com/:user/:repo/discussions/:id",
-              "github.com/:user/:repo"
-            ],
-            "target": "/discussion/:user/:repo"
-          }
-        ],
-        "name": "Repo Discussions",
-        "maintainers": [
-          "waynzh"
-        ],
-        "location": "discussions.ts",
-        "module": () => import('@/routes/github/discussions.ts')
-      },
-      "/issue/:user/:repo/:state?/:labels?": {
-        "path": "/issue/:user/:repo/:state?/:labels?",
-        "categories": [
-          "programming"
-        ],
-        "view": 5,
-        "example": "/github/issue/DIYgod/RSSHub/open",
-        "parameters": {
-          "user": "GitHub username",
-          "repo": "GitHub repo name",
-          "state": {
-            "description": "the state of the issues.",
-            "default": "open",
-            "options": [
-              {
-                "label": "Open",
-                "value": "open"
-              },
-              {
-                "label": "Closed",
-                "value": "closed"
-              },
-              {
-                "label": "All",
-                "value": "all"
-              }
-            ]
-          },
-          "labels": "a list of comma separated label names"
-        },
-        "radar": [
-          {
-            "source": [
-              "github.com/:user/:repo/issues",
-              "github.com/:user/:repo/issues/:id",
-              "github.com/:user/:repo"
-            ],
-            "target": "/issue/:user/:repo"
-          }
-        ],
-        "name": "Repo Issues",
-        "maintainers": [
-          "HenryQW",
-          "AndreyMZ"
-        ],
-        "location": "issue.ts",
-        "module": () => import('@/routes/github/issue.ts')
-      },
-      "/pull/:user/:repo/:state?/:labels?": {
-        "path": "/pull/:user/:repo/:state?/:labels?",
-        "categories": [
-          "programming"
-        ],
-        "example": "/github/pull/DIYgod/RSSHub",
-        "parameters": {
-          "user": "GitHub username",
-          "repo": "GitHub repo name",
-          "state": {
-            "description": "the state of pull requests.",
-            "default": "open",
-            "options": [
-              {
-                "label": "Open",
-                "value": "open"
-              },
-              {
-                "label": "Closed",
-                "value": "closed"
-              },
-              {
-                "label": "All",
-                "value": "all"
-              }
-            ]
-          },
-          "labels": "a list of comma separated label names"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "github.com/:user/:repo/pulls",
-              "github.com/:user/:repo/pulls/:id",
-              "github.com/:user/:repo"
-            ],
-            "target": "/pull/:user/:repo"
-          }
-        ],
-        "name": "Repo Pull Requests",
-        "maintainers": [
-          "hashman",
-          "TonyRL"
-        ],
-        "location": "pulls.ts",
-        "module": () => import('@/routes/github/pulls.ts')
       },
       "/advisor/data/:type?/:category?": {
         "path": "/advisor/data/:type?/:category?",
@@ -65683,24 +65723,6 @@ export default {
         "url": "ak.arknights.jp/news",
         "location": "arknights/japan.ts",
         "module": () => import('@/routes/hypergryph/arknights/japan.ts')
-      },
-      "/arknights/announce/:platform?/:group?": {
-        "path": "/arknights/announce/:platform?/:group?",
-        "categories": [
-          "game"
-        ],
-        "example": "/hypergryph/arknights/announce",
-        "parameters": {
-          "platform": "平台，默认为 Android",
-          "group": "分组，默认为 ALL"
-        },
-        "name": "明日方舟 - 游戏内公告",
-        "maintainers": [
-          "swwind"
-        ],
-        "description": "平台\n\n|  安卓服 | iOS 服 |   B 服   |\n| :-----: | :----: | :------: |\n| Android |   IOS  | Bilibili |\n\n分组\n\n| 全部 | 系统公告 | 活动公告 |\n| :--: | :------: | :------: |\n|  ALL |  SYSTEM  | ACTIVITY |",
-        "location": "arknights/announce.ts",
-        "module": () => import('@/routes/hypergryph/arknights/announce.ts')
       },
       "/arknights/arktca": {
         "path": "/arknights/arktca",
@@ -89323,17 +89345,6 @@ export default {
   },
   "people": {
     "routes": {
-      "/:site?/:category{.+}?": {
-        "path": "/:site?/:category{.+}?",
-        "name": "首页头条",
-        "maintainers": [
-          "nczitzk",
-          "pseudoyu"
-        ],
-        "example": "/people",
-        "location": "index.ts",
-        "module": () => import('@/routes/people/index.ts')
-      },
       "/liuyan/:id/:state?": {
         "path": "/liuyan/:id/:state?",
         "categories": [
@@ -89352,21 +89363,52 @@ export default {
           "supportPodcast": false,
           "supportScihub": false
         },
-        "radar": [
-          {
-            "source": [
-              "liuyan.people.com.cn/"
-            ]
-          }
-        ],
         "name": "领导留言板",
         "maintainers": [
-          "nczitzk"
+          "nczitzk",
+          "pseudoyu"
         ],
         "url": "liuyan.people.com.cn/",
         "description": "| 全部 | 待回复 | 办理中 | 已办理 |\n| ---- | ------ | ------ | ------ |\n| 1    | 2      | 3      | 4      |",
         "location": "liuyan.ts",
         "module": () => import('@/routes/people/liuyan.ts')
+      },
+      "/:site?/:category{.+}?": {
+        "path": "/:site?/:category{.+}?",
+        "name": "首页头条",
+        "maintainers": [
+          "nczitzk",
+          "pseudoyu"
+        ],
+        "example": "/people",
+        "location": "index.ts",
+        "module": () => import('@/routes/people/index.ts')
+      },
+      "/paper/:page?": {
+        "path": "/paper/:page?",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/people/paper",
+        "parameters": {
+          "page": "版面编号，如 `01`；使用 `all` 或留空获取全部版面"
+        },
+        "radar": [
+          {
+            "source": [
+              "paper.people.com.cn/rmrb/pc/layout/index.html"
+            ],
+            "target": "/paper"
+          }
+        ],
+        "name": "人民日报电子版",
+        "maintainers": [
+          "pseudoyu"
+        ],
+        "url": "paper.people.com.cn/rmrb/pc/layout/index.html",
+        "description": "获取当日《人民日报》全部版面或指定版面的文章。",
+        "location": "paper.ts",
+        "module": () => import('@/routes/people/paper.ts')
       },
       "/xjpjh/:keyword?/:year?": {
         "path": "/xjpjh/:keyword?/:year?",
@@ -89389,16 +89431,16 @@ export default {
         "radar": [
           {
             "source": [
-              "people.com.cn/"
+              "jhsjk.people.cn/"
             ],
-            "target": "/:site?/:category?"
+            "target": "/xjpjh"
           }
         ],
         "name": "习近平系列重要讲话",
         "maintainers": [
           "LogicJake"
         ],
-        "url": "people.com.cn/",
+        "url": "jhsjk.people.cn",
         "location": "xjpjh.ts",
         "module": () => import('@/routes/people/xjpjh.ts')
       }
@@ -101443,7 +101485,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": false,
+          "requirePuppeteer": true,
           "antiCrawler": true,
           "supportBT": true,
           "supportPodcast": false,
@@ -105916,14 +105958,15 @@ export default {
   },
   "tsinghua": {
     "routes": {
-      "/lib/tzgg/:category": {
-        "path": "/lib/tzgg/:category",
+      "/lib/tzgg/:category?": {
+        "path": "/lib/tzgg/:category?",
+        "url": "lib.tsinghua.edu.cn",
         "categories": [
           "university"
         ],
         "example": "/tsinghua/lib/tzgg/qtkx",
         "parameters": {
-          "category": "分类，可在对应分类页 URL 中找到"
+          "category": "分类，可在对应分类页 URL 中找到，留空则获取全局通知公告"
         },
         "features": {
           "requireConfig": false,
@@ -105936,13 +105979,15 @@ export default {
         "radar": [
           {
             "source": [
-              "lib.tsinghua.edu.cn/tzgg/:category"
+              "lib.tsinghua.edu.cn/tzgg/:category",
+              "lib.tsinghua.edu.cn/tzgg.htm"
             ]
           }
         ],
         "name": "图书馆通知公告",
         "maintainers": [
-          "linsenwang"
+          "linsenwang",
+          "Aquarius-Situla"
         ],
         "location": "lib/tzgg.ts",
         "module": () => import('@/routes/tsinghua/lib/tzgg.ts')
@@ -106037,7 +106082,7 @@ export default {
     },
     "apiRoutes": {},
     "name": "清华大学",
-    "url": "tsinghua.edu.cn",
+    "url": "www.tsinghua.edu.cn",
     "categories": [
       "university"
     ],
@@ -119637,7 +119682,7 @@ export default {
           "finance"
         ],
         "view": 0,
-        "example": "/bloomberg/bbiz",
+        "example": "/bloomberg/business",
         "parameters": {
           "site": {
             "description": "Site ID, can be found below",
@@ -119647,11 +119692,11 @@ export default {
                 "label": "News"
               },
               {
-                "value": "bpol",
+                "value": "politics",
                 "label": "Politics"
               },
               {
-                "value": "bbiz",
+                "value": "business",
                 "label": "Business"
               },
               {
@@ -119663,32 +119708,28 @@ export default {
                 "label": "Technology"
               },
               {
-                "value": "green",
-                "label": "Green"
-              },
-              {
                 "value": "wealth",
                 "label": "Wealth"
-              },
-              {
-                "value": "pursuits",
-                "label": "Pursuits"
               },
               {
                 "value": "bview",
                 "label": "Opinion"
               },
               {
-                "value": "equality",
-                "label": "Equality"
-              },
-              {
                 "value": "businessweek",
                 "label": "Businessweek"
               },
               {
-                "value": "citylab",
-                "label": "CityLab"
+                "value": "economics",
+                "label": "Economics"
+              },
+              {
+                "value": "industries",
+                "label": "Industries"
+              },
+              {
+                "value": "crypto",
+                "label": "Crypto"
               }
             ]
           }
@@ -119705,7 +119746,7 @@ export default {
         "maintainers": [
           "bigfei"
         ],
-        "description": "| Site ID      | Title        |\n| ------------ | ------------ |\n| /            | News         |\n| bpol         | Politics     |\n| bbiz         | Business     |\n| markets      | Markets      |\n| technology   | Technology   |\n| green        | Green        |\n| wealth       | Wealth       |\n| pursuits     | Pursuits     |\n| bview        | Opinion      |\n| equality     | Equality     |\n| businessweek | Businessweek |\n| citylab      | CityLab      |",
+        "description": "| Site ID      | Title        |\n| ------------ | ------------ |\n| /            | News         |\n| politics     | Politics     |\n| business     | Business     |\n| markets      | Markets      |\n| technology   | Technology   |\n| wealth       | Wealth       |\n| bview        | Opinion      |\n| businessweek | Businessweek |\n| economics    | Economics    |\n| industries   | Industries   |\n| crypto       | Crypto       |\n\nLegacy site IDs `bpol` and `bbiz` still work as aliases of `politics` and `business`.",
         "location": "index.ts",
         "module": () => import('@/routes/bloomberg/index.ts')
       }
@@ -124621,7 +124662,9 @@ export default {
         ],
         "radar": [
           {
-            "source": "gzw.cq.gov.cn/*category",
+            "source": [
+              "gzw.cq.gov.cn/*category"
+            ],
             "target": "/gzw/*category"
           }
         ],
@@ -130141,7 +130184,7 @@ export default {
           "ciaranchen"
         ],
         "url": "www.gov.cn/",
-        "description": "|               选项              |                       意义                       |              备注              |\n| :-----------------------------: | :----------------------------------------------: | :----------------------------: |\n|              orpro              |             包含以下任意一个关键词。             |          用空格分隔。          |\n|              allpro             |                包含以下全部关键词                |                                |\n|              notpro             |                 不包含以下关键词                 |                                |\n|              inpro              |                完整不拆分的关键词                |                                |\n|           searchfield           | title: 搜索词在标题中；content: 搜索词在正文中。 |  默认为空，即网页的任意位置。  |\n| pubmintimeYear, pubmintimeMonth |                    从某年某月                    | 单独使用月份参数无法只筛选月份 |\n| pubmaxtimeYear, pubmaxtimeMonth |                    到某年某月                    | 单独使用月份参数无法只筛选月份 |\n|              colid              |                       栏目                       |      比较复杂，不建议使用      |",
+        "description": "|               选项              |                       意义                       |                    备注                    |\n| :-----------------------------: | :----------------------------------------------: | :----------------------------------------: |\n|              orpro              |             包含以下任意一个关键词。             |                用空格分隔。                |\n|              allpro             |                包含以下全部关键词                |                                            |\n|              notpro             |                 不包含以下关键词                 |                                            |\n|              inpro              |                完整不拆分的关键词                |                                            |\n|           searchfield           | title: 搜索词在标题中；content: 搜索词在正文中。 | 上游已不支持仅正文，content 将搜索全部位置 |\n| pubmintimeYear, pubmintimeMonth |                    从某年某月                    |       单独使用月份参数无法只筛选月份       |\n| pubmaxtimeYear, pubmaxtimeMonth |                    到某年某月                    |       单独使用月份参数无法只筛选月份       |\n|              colid              |                       栏目                       |            上游新接口已不再支持            |",
         "location": "govall.ts",
         "module": () => import('@/routes/gov/zhengce/govall.ts')
       },
@@ -142377,6 +142420,7 @@ export default {
     "routes": {
       "/:id/:params?": {
         "path": "/:id/:params?",
+        "example": "/test/1",
         "name": "Test",
         "maintainers": [
           "DIYgod",
@@ -143110,11 +143154,13 @@ export default {
           "supportPodcast": false,
           "supportScihub": false
         },
-        "radar": {
-          "source": [
-            "www.tmtpost.com"
-          ]
-        },
+        "radar": [
+          {
+            "source": [
+              "www.tmtpost.com"
+            ]
+          }
+        ],
         "name": "快报",
         "maintainers": [
           "defp"
