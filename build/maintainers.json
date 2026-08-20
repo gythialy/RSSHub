@@ -1600,6 +1600,14 @@
   "/jin10/:important?": [
     "laampui"
   ],
+  "/kpopping/community/:filter{.+}?": [
+    "nczitzk",
+    "pinapelz"
+  ],
+  "/kpopping/kpics/:filter{.+}?": [
+    "nczitzk",
+    "pinapelz"
+  ],
   "/lanqiao/questions/:id": [
     "huhuhang"
   ],
@@ -1629,6 +1637,9 @@
   ],
   "/mi/crowdfunding": [
     "DIYgod",
+    "nuomi1"
+  ],
+  "/mi/newproducts": [
     "nuomi1"
   ],
   "/misskey/notes/featured/:site": [
@@ -2098,6 +2109,9 @@
   "/ahjzu/news": [
     "Yuk-0v0"
   ],
+  "/ahstu/:type?": [
+    "JizzCruiy"
+  ],
   "/ai-bot/daily-ai-news": [
     "redwood9"
   ],
@@ -2358,8 +2372,9 @@
   "/bad/:path{.+}?": [
     "nczitzk"
   ],
-  "/baidu/gushitong/index": [
-    "CaoMeiYouRen"
+  "/baidu/gushitong/index/:market?": [
+    "CaoMeiYouRen",
+    "hutianyu2006"
   ],
   "/baidu/tieba/forum/good/:kw/:cid?/:sortBy?": [
     "u3u",
@@ -5017,12 +5032,6 @@
   "/kpmg/insights/:lang?": [
     "LogicJake"
   ],
-  "/kpopping/kpics/:filter{.+}?": [
-    "nczitzk"
-  ],
-  "/kpopping/news/:filter{.+}?": [
-    "nczitzk"
-  ],
   "/kunchengblog/essay": [
     "nczitzk"
   ],
@@ -7462,6 +7471,9 @@
   "/tsinghua/news/:category?": [
     "TonyRL"
   ],
+  "/tsinghua/thuhs/:category?": [
+    "Aquarius-Situla"
+  ],
   "/ttv/:category?": [
     "dzx-dzx"
   ],
@@ -9186,6 +9198,10 @@
   "/gov/mgs/:path{.+}": [
     "ShuiHuo"
   ],
+  "/gov/miit/zcwj": [
+    "Yoge-Code",
+    "hutianyu2006"
+  ],
   "/gov/miit/wjfb/:ministry": [
     "Fatpandac"
   ],
@@ -9196,9 +9212,6 @@
     "Fatpandac"
   ],
   "/gov/miit/zcjd": [
-    "Yoge-Code"
-  ],
-  "/gov/miit/zcwj": [
     "Yoge-Code"
   ],
   "/gov/mmht/:path{.+}": [

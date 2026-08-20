@@ -138,6 +138,7 @@ export type RoutePath =
   | `/agora0/pen0`
   | `/agri/:category{.+}?`
   | `/ahjzu/news`
+  | `/ahstu/:type?`
   | `/ai-bot/daily-ai-news`
   | `/aiaa/journal/:journalID`
   | `/aibase/daily`
@@ -256,7 +257,7 @@ export type RoutePath =
   | `/baai/hub/events`
   | `/backlinko/blog`
   | `/bad/:path{.+}?`
-  | `/baidu/gushitong/index`
+  | `/baidu/gushitong/index/:market?`
   | `/baidu/search/:keyword`
   | `/baidu/tieba/forum/:kw/:sortBy?`
   | `/baidu/tieba/forum/good/:kw/:cid?/:sortBy?`
@@ -1736,8 +1737,8 @@ export type RoutePath =
   | `/kovidgoyal/kitty/changelog`
   | `/koyso/:category?/:sort?`
   | `/kpmg/insights/:lang?`
+  | `/kpopping/community/:filter{.+}?`
   | `/kpopping/kpics/:filter{.+}?`
-  | `/kpopping/news/:filter{.+}?`
   | `/ktown4u/artistBrandlist/:grpNo/:grpNo2?`
   | `/kuaidi100/company`
   | `/kuaidi100/track/:number/:id/:phone?`
@@ -1918,6 +1919,7 @@ export type RoutePath =
   | `/mhlw/monthly-labour-survey`
   | `/mi/crowdfunding`
   | `/mi/golden`
+  | `/mi/newproducts`
   | `/microsoft/edge/addon/:crxid`
   | `/microsoft/mcr/product/*`
   | `/mihoyo/bbs/follow-list/:uid`
@@ -2946,6 +2948,7 @@ export type RoutePath =
   | `/tsinghua/lib/tzgg/:category?`
   | `/tsinghua/lib/zydt/:category?`
   | `/tsinghua/news/:category?`
+  | `/tsinghua/thuhs/:category?`
   | `/ttv/:category?`
   | `/tumblr/posts/:blog`
   | `/tumblr/tagged/:tag`

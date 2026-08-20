@@ -6158,6 +6158,27 @@
       }
     ]
   },
+  "kpopping.com": {
+    "_name": "kpopping",
+    ".": [
+      {
+        "title": "Community",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/community"
+        ],
+        "target": "/kpopping/community"
+      },
+      {
+        "title": "Pics",
+        "docs": "https://docs.rsshub.app/routes/picture",
+        "source": [
+          "/kpics"
+        ],
+        "target": "/kpopping/kpics"
+      }
+    ]
+  },
   "lanqiao.cn": {
     "_name": "蓝桥云课",
     ".": [
@@ -9802,6 +9823,19 @@
       }
     ]
   },
+  "ahstu.edu.cn": {
+    "_name": "安徽科技工程大学",
+    "www": [
+      {
+        "title": "官网通知与新闻",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/index/:type.htm"
+        ],
+        "target": "/ahstu/:type"
+      }
+    ]
+  },
   "ai-bot.cn": {
     "_name": "AI工具集",
     ".": [
@@ -12271,14 +12305,14 @@
   },
   "baidu.com": {
     "_name": "百度",
-    "gushitong": [
+    "finance": [
       {
         "title": "首页指数",
         "docs": "https://docs.rsshub.app/routes/finance",
         "source": [
           "/"
         ],
-        "target": "/baidu/gushitong/index"
+        "target": "/baidu/gushitong/index/:market?"
       }
     ],
     "tieba": [
@@ -26163,27 +26197,6 @@
           "/cn/zh/home/insights.html"
         ],
         "target": "/kpmg/insights/zh"
-      }
-    ]
-  },
-  "kpopping.com": {
-    "_name": "kpopping",
-    ".": [
-      {
-        "title": "Pics",
-        "docs": "https://docs.rsshub.app/routes/picture",
-        "source": [
-          "/kpics/:filter"
-        ],
-        "target": "/kpoppingparams=>{const filter=params.filter;return`/kpopping/kpics${filter?`/${filter}`:\"\"}`}"
-      },
-      {
-        "title": "News",
-        "docs": "https://docs.rsshub.app/routes/new-media",
-        "source": [
-          "/news/:filter"
-        ],
-        "target": "/kpoppingparams=>{const filter=params.filter;return`/kpopping/news${filter?`/${filter}`:\"\"}`}"
       }
     ]
   },
@@ -40918,6 +40931,19 @@
           "/news/:category"
         ],
         "target": "/tsinghua(_,url)=>`/tsinghua/news/${new URL(url).pathname.split(\"/\").pop()?.replace(\".htm\",\"\")}`"
+      }
+    ]
+  },
+  "qhfz.edu.cn": {
+    "_name": "清华大学",
+    "www": [
+      {
+        "title": "附属中学",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/:category.htm"
+        ],
+        "target": "/tsinghua/thuhs/:category?"
       }
     ]
   },
