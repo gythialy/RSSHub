@@ -1991,6 +1991,29 @@
       }
     ]
   },
+  "jma.go.jp": {
+    "_name": "気象庁 Japan Meteorological Agency",
+    "www": [
+      {
+        "title": "天気図",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/bosai/weather_map/"
+        ],
+        "target": "/jma/wxchart/daily"
+      }
+    ],
+    "www.data": [
+      {
+        "title": "天気図",
+        "docs": "https://docs.rsshub.app/routes/forecast",
+        "source": [
+          "/yoho/wxchart/quickmonthly.html"
+        ],
+        "target": "/jma/wxchart/monthly"
+      }
+    ]
+  },
   "joneslanglasalle.com.cn": {
     "_name": "Jones Lang LaSalle",
     ".": [
@@ -3799,6 +3822,35 @@
       }
     ]
   },
+  "everia.club": {
+    "_name": "EVERIA.CLUB",
+    ".": [
+      {
+        "title": "Latest",
+        "docs": "https://docs.rsshub.app/routes/picture",
+        "source": [
+          "/"
+        ],
+        "target": "/everia/"
+      },
+      {
+        "title": "Images with category",
+        "docs": "https://docs.rsshub.app/routes/picture",
+        "source": [
+          "/category/:category"
+        ],
+        "target": "/everia/category/:category"
+      },
+      {
+        "title": "Images with tag",
+        "docs": "https://docs.rsshub.app/routes/picture",
+        "source": [
+          "/tag/:tag"
+        ],
+        "target": "/everia/tag/:tag"
+      }
+    ]
+  },
   "fantia.jp": {
     "_name": "Fantia",
     ".": [
@@ -4035,6 +4087,19 @@
           "/mall/r/w/reportNew/report-list.html"
         ],
         "target": "/nanhua(_,url)=>{const params=new URL(url).searchParams;const type1=params.get(\"type1\");const type2=params.get(\"type2\");return type1&&type2?`/nanhua/report/${encodeURIComponent(type1)}/${encodeURIComponent(type2)}`:\"\"}"
+      }
+    ]
+  },
+  "onlyfans.com": {
+    "_name": "OnlyFans",
+    ".": [
+      {
+        "title": "Creator Posts",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/:username"
+        ],
+        "target": "/onlyfans/:username"
       }
     ]
   },
@@ -4317,6 +4382,20 @@
           "/:column"
         ],
         "target": "/tkww/:column"
+      }
+    ]
+  },
+  "metro.tokyo.jp": {
+    "_name": "Toei Transportation",
+    "www.kotsu": [
+      {
+        "title": "都営地下鉄 各駅乗降人員",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/subway/kanren/passengers.html",
+          "/dataset/t000018d0000000030"
+        ],
+        "target": "/toei/ridership"
       }
     ]
   },
@@ -4846,6 +4925,20 @@
       }
     ]
   },
+  "gamebase.com.tw": {
+    "_name": "遊戲基地 Gamebase",
+    "news": [
+      {
+        "title": "新聞",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/news",
+          "/news/:type"
+        ],
+        "target": "/gamebase(params,url)=>{const type=params.type;const urlObj=new URL(url);const category=urlObj.searchParams.get(\"type\")??void 0;return`/gamebase/news${type?`/${type}${category?`/${category}`:\"\"}`:\"\"}`}"
+      }
+    ]
+  },
   "gettr.com": {
     "_name": "GETTR",
     ".": [
@@ -5345,7 +5438,7 @@
       }
     ]
   },
-  "shanghaimuseum.net": {
+  "shanghaimuseum.cn": {
     "_name": "Shanghai Museum",
     "www": [
       {
@@ -5452,19 +5545,6 @@
           "/v3/program/:programId"
         ],
         "target": "/tingtingfm/program/:programId"
-      }
-    ]
-  },
-  "toutiao.com": {
-    "_name": "今日头条",
-    "www": [
-      {
-        "title": "头条主页",
-        "docs": "https://docs.rsshub.app/routes/new-media",
-        "source": [
-          "/c/user/token/:token"
-        ],
-        "target": "/toutiao/user/token/:token"
       }
     ]
   },
@@ -5606,6 +5686,27 @@
           "/portal/exhibition"
         ],
         "target": "/wuzhongmuseum/exhibition"
+      }
+    ]
+  },
+  "yinxubwg.cn": {
+    "_name": "Yinxu Museum",
+    "www": [
+      {
+        "title": "Notice",
+        "docs": "https://docs.rsshub.app/routes/travel",
+        "source": [
+          "/yxgw/notice"
+        ],
+        "target": "/yinxubwg/notice"
+      },
+      {
+        "title": "Exhibition Information",
+        "docs": "https://docs.rsshub.app/routes/travel",
+        "source": [
+          "/yxgw/exhibitionIndex"
+        ],
+        "target": "/yinxubwg/exhibitionIndex/:type"
       }
     ]
   },
@@ -7348,19 +7449,6 @@
           "/archives/category/internet-users"
         ],
         "target": "/199it/archives/category/internet-users"
-      }
-    ]
-  },
-  "1lou.me": {
-    "_name": "BT 之家 1LOU 站",
-    ".": [
-      {
-        "title": "通用",
-        "docs": "https://docs.rsshub.app/routes/multimedia",
-        "source": [
-          "/:params"
-        ],
-        "target": "/1lou(_,url)=>{const parsedUrl=new URL(url);return`/1lou${parsedUrl.href.replace(rootUrl,\"\")}`}"
       }
     ]
   },
@@ -9425,6 +9513,19 @@
       }
     ]
   },
+  "98zhibo.com": {
+    "_name": "98直播吧",
+    "www": [
+      {
+        "title": "足球集锦",
+        "docs": "https://docs.rsshub.app/routes/sport",
+        "source": [
+          "/zuqiujijin/"
+        ],
+        "target": "/98zhibo/zuqiujijin"
+      }
+    ]
+  },
   "a9vg.com": {
     "_name": "A9VG 电玩部落",
     "www": [
@@ -9590,6 +9691,29 @@
       }
     ]
   },
+  "abc-tenpo.com": {
+    "_name": "ABC Tenpo",
+    "www": [
+      {
+        "title": "新着物件",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/property/search",
+          "/feature/new_arrival",
+          "/"
+        ],
+        "target": "/abc-tenpo/property"
+      },
+      {
+        "title": "エリア別賃料相場",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/feature/rent"
+        ],
+        "target": "/abc-tenpo/rent-benchmark"
+      }
+    ]
+  },
   "ahhhhfs.com": {
     "_name": "A 姐分享",
     ".": [
@@ -9720,6 +9844,14 @@
   "acfun.cn": {
     "_name": "AcFun",
     "www": [
+      {
+        "title": "用户文章",
+        "docs": "https://docs.rsshub.app/routes/anime",
+        "source": [
+          "/u/:id"
+        ],
+        "target": "/acfun/user/article/:id"
+      },
       {
         "title": "用户投稿",
         "docs": "https://docs.rsshub.app/routes/anime",
@@ -12667,14 +12799,6 @@
           "/p/:id"
         ],
         "target": "/baidu/tieba/post/:id"
-      },
-      {
-        "title": "帖子动态",
-        "docs": "https://docs.rsshub.app/routes/bbs",
-        "source": [
-          "/p/:id"
-        ],
-        "target": "/baidu/tieba/post/lz/:id"
       }
     ]
   },
@@ -14043,6 +14167,20 @@
       }
     ]
   },
+  "bukenavi.jp": {
+    "_name": "Bukenavi",
+    ".": [
+      {
+        "title": "新着物件",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/:region/object/list",
+          "/:region"
+        ],
+        "target": "/bukenavi/object/:region"
+      }
+    ]
+  },
   "bulianglin.com": {
     "_name": "不良林",
     ".": [
@@ -14363,6 +14501,27 @@
           "/site/isde/:lang"
         ],
         "target": "/canada.ca/news/:lang/departmentofindustry"
+      }
+    ]
+  },
+  "canalmuseum.org.cn": {
+    "_name": "The Grand Canal Museum of Beijing",
+    "www": [
+      {
+        "title": "NEWS",
+        "docs": "https://docs.rsshub.app/routes/travel",
+        "source": [
+          "/consulting.html"
+        ],
+        "target": "/canalmuseum/consulting/tzgg"
+      },
+      {
+        "title": "临时展览",
+        "docs": "https://docs.rsshub.app/routes/travel",
+        "source": [
+          "/lszl.html"
+        ],
+        "target": "/canalmuseum/lszl"
       }
     ]
   },
@@ -21149,35 +21308,6 @@
       }
     ]
   },
-  "everia.club": {
-    "_name": "EVERIA.CLUB",
-    ".": [
-      {
-        "title": "Images with category",
-        "docs": "https://docs.rsshub.app/routes/picture",
-        "source": [
-          "/category/:category"
-        ],
-        "target": "/everia/category/:category"
-      },
-      {
-        "title": "Latest",
-        "docs": "https://docs.rsshub.app/routes/picture",
-        "source": [
-          "/"
-        ],
-        "target": "/everia/"
-      },
-      {
-        "title": "Images with tag",
-        "docs": "https://docs.rsshub.app/routes/picture",
-        "source": [
-          "/tag/:tag"
-        ],
-        "target": "/everia/tag/:tag"
-      }
-    ]
-  },
   "expats.cz": {
     "_name": "Expats.cz",
     "www": [
@@ -21868,20 +21998,6 @@
           "/"
         ],
         "target": "/gameapps/"
-      }
-    ]
-  },
-  "gamebase.com.tw": {
-    "_name": "遊戲基地 Gamebase",
-    "news": [
-      {
-        "title": "新聞",
-        "docs": "https://docs.rsshub.app/routes/game",
-        "source": [
-          "/news",
-          "/news/:type"
-        ],
-        "target": "/gamebase(params,url)=>{const type=params.type;const urlObj=new URL(url);const category=urlObj.searchParams.get(\"type\")??void 0;return`/gamebase/news${type?`/${type}${category?`/${category}`:\"\"}`:\"\"}`}"
       }
     ]
   },
@@ -25107,6 +25223,19 @@
       }
     ]
   },
+  "icity.ly": {
+    "_name": "iCity",
+    "art": [
+      {
+        "title": "iMuseum 城市展览",
+        "docs": "https://docs.rsshub.app/routes/travel",
+        "source": [
+          "/:city"
+        ],
+        "target": "/icity/imuseum/:city"
+      }
+    ]
+  },
   "idai.ly": {
     "_name": "iDaily",
     ".": [
@@ -25586,6 +25715,36 @@
       }
     ]
   },
+  "inshokuten.com": {
+    "_name": "Inshokuten.com",
+    "www": [
+      {
+        "title": "新着物件",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/bukken/:region/bukkens/list",
+          "/bukken/:region/bukkens/list/local-:area"
+        ],
+        "target": "/inshokutenparams=>`/bukken/${params.area??params.region}`"
+      },
+      {
+        "title": "賃料相場",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/bukken/kanto/market/rent/line/:area"
+        ],
+        "target": "/inshokuten/rent-benchmark/:area"
+      },
+      {
+        "title": "賃料相場",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/bukken/kanto/market/rent/station/:line"
+        ],
+        "target": "/inshokuten/rent-benchmark/23ward/:line"
+      }
+    ]
+  },
   "instructables.com": {
     "_name": "Instructables",
     ".": [
@@ -25596,6 +25755,20 @@
           "/projects"
         ],
         "target": "/instructables/projects"
+      }
+    ]
+  },
+  "inuki-ichiba.jp": {
+    "_name": "Inuki Ichiba",
+    ".": [
+      {
+        "title": "新着物件",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/sp_rent/1",
+          "/"
+        ],
+        "target": "/inuki-ichiba/rent"
       }
     ]
   },
@@ -25873,6 +26046,33 @@
           "/"
         ],
         "target": "/iqnew/latest"
+      }
+    ]
+  },
+  "iracing.com": {
+    "_name": "iRacing",
+    "www": [
+      {
+        "title": "News",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/category/news/sim-racing-news"
+        ],
+        "target": "/iracing/news"
+      }
+    ]
+  },
+  "iri-search.net": {
+    "_name": "iri-search",
+    "www": [
+      {
+        "title": "新着物件",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/estate_search",
+          "/"
+        ],
+        "target": "/iri-search/estate"
       }
     ]
   },
@@ -26196,6 +26396,19 @@
           "/tag_report/report"
         ],
         "target": "/jbma/report/tag_report/report"
+      }
+    ]
+  },
+  "jfnet.or.jp": {
+    "_name": "Japan Foodservice Association",
+    "www": [
+      {
+        "title": "外食産業市場動向調査（月次）",
+        "docs": "https://docs.rsshub.app/routes/finance",
+        "source": [
+          "/industry_report"
+        ],
+        "target": "/jfnet/industry-report"
       }
     ]
   },
@@ -26551,6 +26764,20 @@
       }
     ]
   },
+  "jreast.co.jp": {
+    "_name": "JR East",
+    "www": [
+      {
+        "title": "各駅の乗車人員",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/company/data/passenger/",
+          "/passenger/"
+        ],
+        "target": "/jreast/ridership"
+      }
+    ]
+  },
   "jseea.cn": {
     "_name": "江苏省教育考试院",
     ".": [
@@ -26652,6 +26879,19 @@
           "/:lang/article/list/:category"
         ],
         "target": "/kcna/:lang/:category"
+      }
+    ]
+  },
+  "keio.co.jp": {
+    "_name": "Keio Corporation",
+    "www": [
+      {
+        "title": "駅別 一日平均乗降人員",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/company/corporate/corporate_manual/number-of-passengers.html"
+        ],
+        "target": "/keio/ridership"
       }
     ]
   },
@@ -27791,6 +28031,19 @@
           "/"
         ],
         "target": "/magnumphotos/magazine"
+      }
+    ]
+  },
+  "maldita.es": {
+    "_name": "Maldita.es",
+    ".": [
+      {
+        "title": "Latest Updates",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/:category/"
+        ],
+        "target": "/maldita/updates/:category"
       }
     ]
   },
@@ -30433,6 +30686,19 @@
       }
     ]
   },
+  "shmh.gov.cn": {
+    "_name": "Minhang Museum",
+    "minhangmuseum": [
+      {
+        "title": "临时展览",
+        "docs": "https://docs.rsshub.app/routes/travel",
+        "source": [
+          "/weixin/interim/list.htm"
+        ],
+        "target": "/minhangmuseum/interim"
+      }
+    ]
+  },
   "missav.ws": {
     "_name": "MissAV",
     ".": [
@@ -30808,6 +31074,19 @@
           "/"
         ],
         "target": "/myfigurecollection/:category?/:language?"
+      }
+    ]
+  },
+  "namoc.cn": {
+    "_name": "National Art Museum of China",
+    "www": [
+      {
+        "title": "Exhibitions",
+        "docs": "https://docs.rsshub.app/routes/travel",
+        "source": [
+          "/namoc/zhanlan/zl_list.shtml"
+        ],
+        "target": "/namoc/zhanlan"
       }
     ]
   },
@@ -33108,6 +33387,19 @@
           "/"
         ],
         "target": "/odaily/user/:id"
+      }
+    ]
+  },
+  "odakyu.jp": {
+    "_name": "Odakyu Electric Railway",
+    "www": [
+      {
+        "title": "駅別乗降人員",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/company/railroad/users/"
+        ],
+        "target": "/odakyu/ridership"
       }
     ]
   },
@@ -37616,6 +37908,19 @@
       }
     ]
   },
+  "schwabnetwork.com": {
+    "_name": "Schwab Network",
+    ".": [
+      {
+        "title": "市场新闻",
+        "docs": "https://docs.rsshub.app/routes/finance",
+        "source": [
+          "/markets"
+        ],
+        "target": "/schwabnetwork/markets"
+      }
+    ]
+  },
   "science.org": {
     "_name": "Science Magazine",
     ".": [
@@ -38771,7 +39076,7 @@
     "apps": [
       {
         "title": "App reviews",
-        "docs": "https://docs.rsshub.app/routes/other",
+        "docs": "https://docs.rsshub.app/routes/programming",
         "source": [
           "/:handle"
         ],
@@ -38779,11 +39084,33 @@
       },
       {
         "title": "App store search",
-        "docs": "https://docs.rsshub.app/routes/other",
+        "docs": "https://docs.rsshub.app/routes/programming",
         "source": [
           "/search"
         ],
         "target": "/shopify(_params,url)=>{const searchParams=new URL(url).searchParams;if(!searchParams.has(\"q\")){return\"\"}return`/shopify/apps/search/${searchParams.get(\"q\")}`}"
+      }
+    ]
+  },
+  "shopify.engineering": {
+    "_name": "Shopify",
+    ".": [
+      {
+        "title": "Engineering",
+        "docs": "https://docs.rsshub.app/routes/programming",
+        "source": [
+          "/",
+          "/latest"
+        ],
+        "target": "/shopify/engineering"
+      },
+      {
+        "title": "Engineering",
+        "docs": "https://docs.rsshub.app/routes/programming",
+        "source": [
+          "/topics/:topic"
+        ],
+        "target": "/shopify/engineering/:topic"
       }
     ]
   },
@@ -39196,6 +39523,20 @@
       }
     ]
   },
+  "sonomama.net": {
+    "_name": "Sonomama",
+    "www": [
+      {
+        "title": "新着物件",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/app/",
+          "/"
+        ],
+        "target": "/sonomama/property"
+      }
+    ]
+  },
   "sony.com": {
     "_name": "Sony",
     ".": [
@@ -39232,6 +39573,20 @@
           "/:channel/:id"
         ],
         "target": "/soundofhope/:channel/:id"
+      }
+    ]
+  },
+  "south-plus.net": {
+    "_name": "South Plus",
+    ".": [
+      {
+        "title": "论坛帖子",
+        "docs": "https://docs.rsshub.app/routes/bbs",
+        "source": [
+          "/thread.php",
+          "/thread.php"
+        ],
+        "target": "/south-plus/forum/:fid"
       }
     ]
   },
@@ -41073,6 +41428,61 @@
       }
     ]
   },
+  "temponw.com": {
+    "_name": "Temponw",
+    "www": [
+      {
+        "title": "新着物件",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/result",
+          "/"
+        ],
+        "target": "/temponw/estates"
+      }
+    ]
+  },
+  "temposmart.jp": {
+    "_name": "Temposmart",
+    "www": [
+      {
+        "title": "新着物件",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/estates/pref/:pref"
+        ],
+        "target": "/temposmart/estates/:pref"
+      }
+    ]
+  },
+  "tenant-shop.com": {
+    "_name": "Tenant Shop Network",
+    "www": [
+      {
+        "title": "新着物件",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/chintai_biz/pa-:pa/shin-1",
+          "/chintai_biz/pa-:pa"
+        ],
+        "target": "/tenant-shop/chintai/:pa"
+      }
+    ]
+  },
+  "tenant-shop.jp": {
+    "_name": "Tenant Shop Network",
+    "www": [
+      {
+        "title": "新着物件",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/chintai_biz/pa-:pa/shin-1",
+          "/chintai_biz/pa-:pa"
+        ],
+        "target": "/tenant-shop/chintai/:pa"
+      }
+    ]
+  },
   "tencent.com": {
     "_name": "腾讯",
     "cloud": [
@@ -41744,6 +42154,33 @@
       }
     ]
   },
+  "tokyometro.jp": {
+    "_name": "Tokyo Metro",
+    "www": [
+      {
+        "title": "各駅の乗降人員ランキング",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/corporate/enterprise/passenger_rail/transportation/passengers/:page"
+        ],
+        "target": "/tokyometro/ridership"
+      }
+    ]
+  },
+  "tokyu.co.jp": {
+    "_name": "Tokyu Railways",
+    "www": [
+      {
+        "title": "駅別乗降人員",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/railway/company/business/passengers/:year",
+          "/railway/company/business/passengers/"
+        ],
+        "target": "/tokyu/ridership/:year"
+      }
+    ]
+  },
   "topys.cn": {
     "_name": "TOPYS",
     ".": [
@@ -41792,6 +42229,35 @@
           "/category/:category"
         ],
         "target": "/toranoana/news/:category"
+      }
+    ]
+  },
+  "toutiao.com": {
+    "_name": "今日头条",
+    "www": [
+      {
+        "title": "头条主页",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/c/user/token/:token"
+        ],
+        "target": "/toutiao/user/token/:token"
+      },
+      {
+        "title": "频道",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/ch/:category"
+        ],
+        "target": "/toutiao/channel/:category"
+      },
+      {
+        "title": "推荐",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/"
+        ],
+        "target": "/toutiao/channel/recommend"
       }
     ]
   },
@@ -43737,14 +44203,6 @@
         "target": "/xueqiu/user_stock/:id"
       },
       {
-        "title": "用户专栏",
-        "docs": "https://docs.rsshub.app/routes/finance",
-        "source": [
-          "/:id/column"
-        ],
-        "target": "/xueqiu/column/:id"
-      },
-      {
         "title": "组合最新调仓信息",
         "docs": "https://docs.rsshub.app/routes/finance",
         "source": [
@@ -43785,6 +44243,14 @@
           "/u/:id"
         ],
         "target": "/xueqiu/user/:id"
+      },
+      {
+        "title": "用户专栏",
+        "docs": "https://docs.rsshub.app/routes/finance",
+        "source": [
+          "/:id/column"
+        ],
+        "target": "/xueqiu/column/:id"
       },
       {
         "title": "股票评论",
@@ -44712,6 +45178,27 @@
       }
     ]
   },
+  "1lou.me": {
+    "_name": "BT 之家 1LOU 站",
+    ".": [
+      {
+        "title": "通用",
+        "docs": "https://docs.rsshub.app/routes/multimedia",
+        "source": [
+          "/:params"
+        ],
+        "target": "/1lou(_,url)=>{const parsedUrl=new URL(url);return`/1lou${parsedUrl.href.replace(rootUrl,\"\")}`}"
+      },
+      {
+        "title": "搜索",
+        "docs": "https://docs.rsshub.app/routes/multimedia",
+        "source": [
+          "/search"
+        ],
+        "target": "/1lou(_,url)=>{const parsedUrl=new URL(url);const searchParams=parsedUrl.searchParams;const query=searchParams.get(\"q\")||parsedUrl.pathname.match(/\\/search-(.+)-\\d+\\.htm/)?.[1]||\"\";return`/1lou/search/${query}`}"
+      }
+    ]
+  },
   "36kr.com": {
     "_name": "36kr",
     ".": [
@@ -45483,6 +45970,19 @@
           "/authors/:id/:slug"
         ],
         "target": "/bloomberg/authors/:id/:slug"
+      }
+    ]
+  },
+  "br-klassik.de": {
+    "_name": "BR-Klassik",
+    "www": [
+      {
+        "title": "Aktuell (News & Kritik)",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/aktuell/index.html"
+        ],
+        "target": "/br-klassik/aktuell"
       }
     ]
   },
@@ -51363,11 +51863,12 @@
   },
   "openai.com": {
     "_name": "OpenAI",
-    "cookbook": [
+    "developers": [
       {
         "title": "Cookbook",
         "docs": "https://docs.rsshub.app/routes/programming",
         "source": [
+          "/cookbook",
           "/"
         ],
         "target": "/openai/cookbook"
@@ -53736,6 +54237,81 @@
       }
     ]
   },
+  "pixiv.net": {
+    "_name": "pixiv",
+    "www": [
+      {
+        "title": "User Bookmark",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/users/:id/bookmarks/artworks",
+          "/en/users/:id/bookmarks/artworks"
+        ],
+        "target": "/pixiv/user/bookmarks/:id"
+      },
+      {
+        "title": "Following timeline",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/bookmark_new_illust.php"
+        ],
+        "target": "/pixiv/user/illustfollows"
+      },
+      {
+        "title": "User Activity",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/users/:id",
+          "/en/users/:id"
+        ],
+        "target": "/pixiv/user/:id"
+      },
+      {
+        "title": "Novel Series",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/novel/series/:id"
+        ],
+        "target": "/pixiv/novel/series/:id"
+      },
+      {
+        "title": "User Novels (簡介 Basic info)",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/users/:id/novels",
+          "/users/:id",
+          "/en/users/:id/novels",
+          "/en/users/:id"
+        ],
+        "target": "/pixiv/user/novels/:id"
+      },
+      {
+        "title": "User Novels (全文 Full text)",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/users/:id/novels",
+          "/users/:id",
+          "/en/users/:id/novels",
+          "/en/users/:id"
+        ],
+        "target": "/pixiv/user/novels/:id/true"
+      }
+    ]
+  },
+  "ryo.lu": {
+    "_name": "Ryo Lu",
+    ".": [
+      {
+        "title": "Journal",
+        "docs": "https://docs.rsshub.app/routes/blog",
+        "source": [
+          "/journal",
+          "/"
+        ],
+        "target": "/ryo.lu/journal"
+      }
+    ]
+  },
   "taptap.cn": {
     "_name": "TapTap",
     ".": [
@@ -53837,67 +54413,6 @@
           "/"
         ],
         "target": "/google/research"
-      }
-    ]
-  },
-  "pixiv.net": {
-    "_name": "pixiv",
-    "www": [
-      {
-        "title": "User Bookmark",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/users/:id/bookmarks/artworks",
-          "/en/users/:id/bookmarks/artworks"
-        ],
-        "target": "/pixiv/user/bookmarks/:id"
-      },
-      {
-        "title": "Following timeline",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/bookmark_new_illust.php"
-        ],
-        "target": "/pixiv/user/illustfollows"
-      },
-      {
-        "title": "User Activity",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/users/:id",
-          "/en/users/:id"
-        ],
-        "target": "/pixiv/user/:id"
-      },
-      {
-        "title": "Novel Series",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/novel/series/:id"
-        ],
-        "target": "/pixiv/novel/series/:id"
-      },
-      {
-        "title": "User Novels (簡介 Basic info)",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/users/:id/novels",
-          "/users/:id",
-          "/en/users/:id/novels",
-          "/en/users/:id"
-        ],
-        "target": "/pixiv/user/novels/:id"
-      },
-      {
-        "title": "User Novels (全文 Full text)",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/users/:id/novels",
-          "/users/:id",
-          "/en/users/:id/novels",
-          "/en/users/:id"
-        ],
-        "target": "/pixiv/user/novels/:id/true"
       }
     ]
   },
