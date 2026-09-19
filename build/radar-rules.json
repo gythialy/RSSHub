@@ -5997,14 +5997,6 @@
           "/web8/index.html"
         ],
         "target": "/ff14/zh"
-      },
-      {
-        "title": "最终幻想 14 国服",
-        "docs": "https://docs.rsshub.app/routes/game",
-        "source": [
-          "/web8/index.html"
-        ],
-        "target": "/ff14/zh"
       }
     ]
   },
@@ -8756,6 +8748,21 @@
       }
     ]
   },
+  "35mmc.com": {
+    "_name": "35mmc",
+    "www": [
+      {
+        "title": "Posts",
+        "docs": "https://docs.rsshub.app/routes/picture",
+        "source": [
+          "/category/:category",
+          "/category/:parent/:category",
+          "/"
+        ],
+        "target": "/35mmc/:category?"
+      }
+    ]
+  },
   "3dmgame.com": {
     "_name": "3DMGame",
     ".": [
@@ -9694,6 +9701,14 @@
   "abc-tenpo.com": {
     "_name": "ABC Tenpo",
     "www": [
+      {
+        "title": "物件詳細",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/property/view/:id"
+        ],
+        "target": "/abc-tenpo/detail/:id"
+      },
       {
         "title": "新着物件",
         "docs": "https://docs.rsshub.app/routes/other",
@@ -12702,6 +12717,19 @@
       }
     ]
   },
+  "athome.co.jp": {
+    "_name": "at home",
+    "www": [
+      {
+        "title": "貸店舗",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/rent_store/:pref/:city/list"
+        ],
+        "target": "/athome/rent-store/:pref/:city"
+      }
+    ]
+  },
   "augmentcode.com": {
     "_name": "Augment Code",
     ".": [
@@ -14171,6 +14199,14 @@
     "_name": "Bukenavi",
     ".": [
       {
+        "title": "物件詳細",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/:region/object/:id"
+        ],
+        "target": "/bukenavi/detail/:id/:region"
+      },
+      {
         "title": "新着物件",
         "docs": "https://docs.rsshub.app/routes/other",
         "source": [
@@ -14501,6 +14537,20 @@
           "/site/isde/:lang"
         ],
         "target": "/canada.ca/news/:lang/departmentofindustry"
+      }
+    ]
+  },
+  "usen.com": {
+    "_name": "Canaeru",
+    "canaeru": [
+      {
+        "title": "居抜き・貸店舗物件",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/bukken/:pref/search/:city",
+          "/bukken/:pref/search"
+        ],
+        "target": "/canaeru/:pref"
       }
     ]
   },
@@ -25194,6 +25244,27 @@
           "/xw/xxyw.htm"
         ],
         "target": "/hzcu/news/latest"
+      }
+    ]
+  },
+  "i-tenpo.com": {
+    "_name": "Inukitenpo",
+    "www": [
+      {
+        "title": "物件詳細",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/t:id"
+        ],
+        "target": "/i-tenpo/detail/:id"
+      },
+      {
+        "title": "居抜き物件",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/:pref/:city/:type"
+        ],
+        "target": "/i-tenpo/:pref/:city/:type"
       }
     ]
   },
