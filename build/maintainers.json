@@ -464,9 +464,6 @@
   "/rebase/geekdaily": [
     "gaoyifan"
   ],
-  "/rockstargames/socialclub/events/:game?": [
-    "kookxiang"
-  ],
   "/rss3/:account/:network?/:tag?": [
     "DIYgod",
     "pseudoyu"
@@ -1040,9 +1037,6 @@
   "/fantia/user/:id": [
     "nczitzk"
   ],
-  "/fortnite/news/:options?": [
-    "lyqluis"
-  ],
   "/gamer520/:category?/:order?": [
     "xzzpig"
   ],
@@ -1176,6 +1170,12 @@
   "/qutoutiao/category/:cid": [
     "alphardex",
     "LogicJake"
+  ],
+  "/rockstargames/socialclub/events/:game?": [
+    "kookxiang"
+  ],
+  "/rockstargames/newswire": [
+    "dapexyz"
   ],
   "/skebetter/illust/:type": [
     "SnowAgar25"
@@ -2477,6 +2477,12 @@
   ],
   "/ahjzu/news": [
     "Yuk-0v0"
+  ],
+  "/ahm/news/abxw": [
+    "magazian"
+  ],
+  "/ahm/exhibition/xztj": [
+    "magazian"
   ],
   "/ahmu/news": [
     "Origami404"
@@ -4670,6 +4676,9 @@
   "/fosshub/:id": [
     "nczitzk"
   ],
+  "/fraenkelgallery/:type?": [
+    "IvanWng97"
+  ],
   "/freecomputerbooks/:category?": [
     "cubroe"
   ],
@@ -5878,6 +5887,9 @@
   ],
   "/kmust/jwc/:type?": [
     "geekrainy"
+  ],
+  "/komica/:host/:board/:category?": [
+    "TonyRL"
   ],
   "/kongfz/people/:id": [
     "nczitzk"
@@ -9338,6 +9350,9 @@
   "/xueqiu/hots": [
     "hillerliao"
   ],
+  "/xueqiu/status/:uid/:id": [
+    "ruesin"
+  ],
   "/xueqiu/stock_info/:id/:type?": [
     "YuYang"
   ],
@@ -9933,10 +9948,10 @@
   "/bilibili/mall/new/:category?": [
     "DIYgod"
   ],
-  "/bilibili/readlist/:listid": [
+  "/bilibili/manga/update/:comicid": [
     "hoilc"
   ],
-  "/bilibili/manga/update/:comicid": [
+  "/bilibili/readlist/:listid": [
     "hoilc"
   ],
   "/bilibili/bangumi/media/:mediaid/:embed?": [
@@ -12301,9 +12316,6 @@
   "/zhihu/xhu/zhuanlan/:id": [
     "JimenezLi"
   ],
-  "/zhihu/zhuanlan/:id": [
-    "DIYgod"
-  ],
   "/zhihu/people/activities/:id": [
     "DIYgod"
   ],
@@ -12340,6 +12352,9 @@
   "/zhihu/xhu/topic/:topicId": [
     "JimenezLi"
   ],
+  "/zhihu/zhuanlan/:id": [
+    "DIYgod"
+  ],
   "/finology/bullets": [
     "Rjnishant530"
   ],
@@ -12351,6 +12366,9 @@
   ],
   "/finology/tag/:topic": [
     "Rjnishant530"
+  ],
+  "/fortnite/news/:options?": [
+    "lyqluis"
   ],
   "/pixiv/user/bookmarks/:id": [
     "EYHN"
