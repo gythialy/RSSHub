@@ -1071,6 +1071,37 @@ export default {
     "description": "News from the official site of men's professional tennis.",
     "lang": "en"
   },
+  "autotrader": {
+    "routes": {
+      "/:query": {
+        "path": "/:query",
+        "categories": [
+          "other"
+        ],
+        "example": "/autotrader/radius=50&postcode=sw1a1aa&price-to=9000&year-from=2012&body-type=Hatchback&transmission=Automatic&exclude-writeoff-categories=on",
+        "parameters": {
+          "query": "the search query"
+        },
+        "features": {
+          "requirePuppeteer": false
+        },
+        "description": "1. Conduct a search with desired filters on AutoTrader\n2. Copy everything in the URL after `?`, for example: `https://www.autotrader.co.uk/car-search?radius=50&postcode=sw1a1aa&price-to=9000&year-from=2012&body-type=Hatchback&transmission=Automatic&exclude-writeoff-categories=on` will produce `radius=50&postcode=sw1a1aa&price-to=9000&year-from=2012&body-type=Hatchback&transmission=Automatic&exclude-writeoff-categories=on`",
+        "name": "Search",
+        "maintainers": [
+          "HenryQW"
+        ],
+        "location": "index.ts",
+        "module": () => import('@/routes/autotrader/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "AutoTrader",
+    "url": "www.autotrader.co.uk",
+    "categories": [
+      "other"
+    ],
+    "lang": "en"
+  },
   "azurlane": {
     "routes": {
       "/news/:server/:type?": {
@@ -11715,37 +11746,6 @@ export default {
     "name": "zyw",
     "url": "hot.zyw.asia",
     "lang": "zh-CN"
-  },
-  "autotrader": {
-    "routes": {
-      "/:query": {
-        "path": "/:query",
-        "categories": [
-          "other"
-        ],
-        "example": "/autotrader/radius=50&postcode=sw1a1aa&price-to=9000&year-from=2012&body-type=Hatchback&transmission=Automatic&exclude-writeoff-categories=on",
-        "parameters": {
-          "query": "the search query"
-        },
-        "features": {
-          "requirePuppeteer": true
-        },
-        "description": "1. Conduct a search with desired filters on AutoTrader\n2. Copy everything in the URL after `?`, for example: `https://www.autotrader.co.uk/car-search?radius=50&postcode=sw1a1aa&price-to=9000&year-from=2012&body-type=Hatchback&transmission=Automatic&exclude-writeoff-categories=on` will produce `radius=50&postcode=sw1a1aa&price-to=9000&year-from=2012&body-type=Hatchback&transmission=Automatic&exclude-writeoff-categories=on`",
-        "name": "Search",
-        "maintainers": [
-          "HenryQW"
-        ],
-        "location": "index.ts",
-        "module": () => import('@/routes/autotrader/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "AutoTrader",
-    "url": "www.autotrader.co.uk",
-    "categories": [
-      "other"
-    ],
-    "lang": "en"
   },
   "bt0": {
     "routes": {
@@ -22578,7 +22578,7 @@ export default {
               "optional": true
             }
           ],
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "nsfw": true
         },
         "location": "index.ts",
@@ -22744,7 +22744,7 @@ export default {
         "parameters": {},
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -22776,7 +22776,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -22814,7 +22814,7 @@ export default {
         ],
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -22837,7 +22837,7 @@ export default {
         "parameters": {},
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -23650,7 +23650,7 @@ export default {
           "CaoMeiYouRen233"
         ],
         "features": {
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "nsfw": true
         },
         "radar": [
@@ -25590,352 +25590,6 @@ export default {
     "url": "thewirehindi.com",
     "lang": "hi"
   },
-  "twitter": {
-    "routes": {
-      "/trends/:woeid?": {
-        "path": "/trends/:woeid?",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/twitter/trends/23424856",
-        "parameters": {
-          "woeid": "Yahoo! Where On Earth ID. default to woeid=1 (World Wide)"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "Trends",
-        "maintainers": [
-          "sakamossan"
-        ],
-        "location": "trends.ts",
-        "module": () => import('@/routes/twitter/trends.ts')
-      },
-      "/home_latest/:routeParams?": {
-        "path": "/home_latest/:routeParams?",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/twitter/home_latest",
-        "features": {
-          "requireConfig": [
-            {
-              "name": "TWITTER_AUTH_TOKEN",
-              "description": "Please see above for details."
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "Home latest timeline",
-        "maintainers": [
-          "DIYgod",
-          "CaoMeiYouRen"
-        ],
-        "radar": [
-          {
-            "source": [
-              "x.com/home"
-            ],
-            "target": "/home_latest"
-          }
-        ],
-        "location": "home-latest.ts",
-        "module": () => import('@/routes/twitter/home-latest.ts')
-      },
-      "/home/:routeParams?": {
-        "path": "/home/:routeParams?",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/twitter/home",
-        "features": {
-          "requireConfig": [
-            {
-              "name": "TWITTER_AUTH_TOKEN",
-              "description": "Please see above for details."
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "Home timeline",
-        "maintainers": [
-          "DIYgod",
-          "CaoMeiYouRen"
-        ],
-        "radar": [
-          {
-            "source": [
-              "x.com/home"
-            ],
-            "target": "/home"
-          }
-        ],
-        "location": "home.ts",
-        "module": () => import('@/routes/twitter/home.ts')
-      },
-      "/keyword/:keyword/:routeParams?": {
-        "path": "/keyword/:keyword/:routeParams?",
-        "categories": [
-          "social-media"
-        ],
-        "view": 1,
-        "example": "/twitter/keyword/RSSHub",
-        "parameters": {
-          "keyword": "keyword",
-          "routeParams": "extra parameters, see the table above"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "TWITTER_AUTH_TOKEN",
-              "description": "Please see above for details."
-            },
-            {
-              "name": "TWITTER_THIRD_PARTY_API",
-              "description": "Please see above for details."
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "Keyword",
-        "maintainers": [
-          "DIYgod",
-          "yindaheng98",
-          "Rongronggg9",
-          "pseudoyu"
-        ],
-        "radar": [
-          {
-            "source": [
-              "x.com/search"
-            ]
-          }
-        ],
-        "location": "keyword.ts",
-        "module": () => import('@/routes/twitter/keyword.ts')
-      },
-      "/likes/:id/:routeParams?": {
-        "path": "/likes/:id/:routeParams?",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/twitter/likes/DIYgod",
-        "parameters": {
-          "id": "username",
-          "routeParams": "extra parameters, see the table above"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "TWITTER_AUTH_TOKEN",
-              "description": "Please see above for details."
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "User likes",
-        "maintainers": [
-          "xyqfer"
-        ],
-        "location": "likes.ts",
-        "module": () => import('@/routes/twitter/likes.ts')
-      },
-      "/list/:id/:routeParams?": {
-        "path": "/list/:id/:routeParams?",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/twitter/list/1502570462752219136",
-        "parameters": {
-          "id": "list id, get from url",
-          "routeParams": "extra parameters, see the table above"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "TWITTER_AUTH_TOKEN",
-              "description": "Please see above for details."
-            },
-            {
-              "name": "TWITTER_THIRD_PARTY_API",
-              "description": "Please see above for details."
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "List timeline",
-        "maintainers": [
-          "DIYgod",
-          "xyqfer",
-          "pseudoyu"
-        ],
-        "radar": [
-          {
-            "source": [
-              "x.com/i/lists/:id"
-            ],
-            "target": "/list/:id"
-          }
-        ],
-        "location": "list.ts",
-        "module": () => import('@/routes/twitter/list.ts')
-      },
-      "/media/:id/:routeParams?": {
-        "path": "/media/:id/:routeParams?",
-        "categories": [
-          "social-media"
-        ],
-        "view": 2,
-        "example": "/twitter/media/_RSSHub",
-        "parameters": {
-          "id": "username; in particular, if starts with `+`, it will be recognized as a [unique ID](https://github.com/DIYgod/RSSHub/issues/12221), e.g. `+44196397`",
-          "routeParams": "extra parameters, see the table above."
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "TWITTER_AUTH_TOKEN",
-              "description": "Please see above for details."
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "User media",
-        "maintainers": [
-          "DIYgod",
-          "yindaheng98",
-          "Rongronggg9"
-        ],
-        "radar": [
-          {
-            "source": [
-              "x.com/:id/media"
-            ],
-            "target": "/media/:id"
-          }
-        ],
-        "location": "media.ts",
-        "module": () => import('@/routes/twitter/media.ts')
-      },
-      "/tweet/:id/status/:status/:original?": {
-        "path": "/tweet/:id/status/:status/:original?",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/twitter/tweet/DIYgod/status/1650844643997646852",
-        "parameters": {
-          "id": "username; in particular, if starts with `+`, it will be recognized as a [unique ID](https://github.com/DIYgod/RSSHub/issues/12221), e.g. `+44196397`",
-          "status": "tweet ID",
-          "original": "extra parameters, data type of return, if the value is not `0`/`false` and `config.isPackage` is `true`, return the original data of twitter"
-        },
-        "features": {
-          "requireConfig": [],
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "Tweet Details",
-        "maintainers": [
-          "LarchLiu",
-          "Rongronggg9"
-        ],
-        "location": "tweet.ts",
-        "module": () => import('@/routes/twitter/tweet.ts')
-      },
-      "/user/:id/:routeParams?": {
-        "path": "/user/:id/:routeParams?",
-        "categories": [
-          "social-media"
-        ],
-        "view": 1,
-        "example": "/twitter/user/_RSSHub",
-        "parameters": {
-          "id": "username; in particular, if starts with `+`, it will be recognized as a [unique ID](https://github.com/DIYgod/RSSHub/issues/12221), e.g. `+44196397`",
-          "routeParams": "extra parameters, see the table above"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "TWITTER_AUTH_TOKEN",
-              "description": "Please see above for details."
-            },
-            {
-              "name": "TWITTER_THIRD_PARTY_API",
-              "description": "Use third-party API to query twitter data",
-              "optional": true
-            },
-            {
-              "name": "TWITTER_CONSUMER_KEY",
-              "description": "Please see above for details."
-            },
-            {
-              "name": "TWITTER_CONSUMER_SECRET",
-              "description": "Please see above for details."
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "User timeline",
-        "maintainers": [
-          "DIYgod",
-          "yindaheng98",
-          "Rongronggg9",
-          "CaoMeiYouRen",
-          "pseudoyu"
-        ],
-        "radar": [
-          {
-            "source": [
-              "x.com/:id"
-            ],
-            "target": "/user/:id"
-          }
-        ],
-        "location": "user.ts",
-        "module": () => import('@/routes/twitter/user.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "X (Twitter)",
-    "url": "x.com",
-    "description": "Specify options (in the format of query string) in parameter `routeParams` to control some extra features for Tweets\n\n| Key                               | Description                                                                                                                          | Accepts                | Defaults to                               |\n| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- | ----------------------------------------- |\n| `readable`                        | Enable readable layout                                                                                                               | `0`/`1`/`true`/`false` | `false`                                   |\n| `authorNameBold`                  | Display author name in bold                                                                                                          | `0`/`1`/`true`/`false` | `false`                                   |\n| `showAuthorInTitle`               | Show author name in title                                                                                                            | `0`/`1`/`true`/`false` | `false` (`true` in `/twitter/followings`) |\n| `showAuthorAsTitleOnly`           | Show only author name as title                                                                                                       | `0`/`1`/`true`/`false` | `false`                                   |\n| `showAuthorInDesc`                | Show author name in description (RSS body)                                                                                           | `0`/`1`/`true`/`false` | `false` (`true` in `/twitter/followings`) |\n| `showQuotedAuthorAvatarInDesc`    | Show avatar of quoted Tweet's author in description (RSS body) (Not recommended if your RSS reader extracts images from description) | `0`/`1`/`true`/`false` | `false`                                   |\n| `showAuthorAvatarInDesc`          | Show avatar of author in description (RSS body) (Not recommended if your RSS reader extracts images from description)                | `0`/`1`/`true`/`false` | `false`                                   |\n| `showEmojiForRetweetAndReply`     | Use \"🔁\" instead of \"RT\", \"↩️\" & \"💬\" instead of \"Re\"                                                                                | `0`/`1`/`true`/`false` | `false`                                   |\n| `showSymbolForRetweetAndReply`    | Use \" RT \" instead of \"\", \" Re \" instead of \"\"                                                                                       | `0`/`1`/`true`/`false` | `true`                                    |\n| `showRetweetTextInTitle`          | Show quote comments in title (if `false`, only the retweeted tweet will be shown in the title)                                       | `0`/`1`/`true`/`false` | `true`                                    |\n| `addLinkForPics`                  | Add clickable links for Tweet pictures                                                                                               | `0`/`1`/`true`/`false` | `false`                                   |\n| `showTimestampInDescription`      | Show timestamp in description                                                                                                        | `0`/`1`/`true`/`false` | `false`                                   |\n| `showQuotedInTitle`               | Show quoted tweet in title                                                                                                           | `0`/`1`/`true`/`false` | `false`                                   |\n| `widthOfPics`                     | Width of Tweet pictures                                                                                                              | Unspecified/Integer    | Unspecified                               |\n| `heightOfPics`                    | Height of Tweet pictures                                                                                                             | Unspecified/Integer    | Unspecified                               |\n| `sizeOfAuthorAvatar`              | Size of author's avatar                                                                                                              | Integer                | `48`                                      |\n| `sizeOfQuotedAuthorAvatar`        | Size of quoted tweet's author's avatar                                                                                               | Integer                | `24`                                      |\n| `includeReplies`                  | Include replies, only available in `/twitter/user`                                                                                   | `0`/`1`/`true`/`false` | `false`                                   |\n| `includeRts`                      | Include retweets, only available in `/twitter/user`                                                                                  | `0`/`1`/`true`/`false` | `true`                                    |\n| `forceWebApi`                     | Force using Web API even if Developer API is configured, only available in `/twitter/user` and `/twitter/keyword`                    | `0`/`1`/`true`/`false` | `false`                                   |\n| `count`                           | `count` parameter passed to Twitter API, only available in `/twitter/user`                                                           | Unspecified/Integer    | Unspecified                               |\n| `onlyMedia`                       | Only get tweets with a media                                                                                                         | `0`/`1`/`true`/`false` | `false`                                   |\n| `mediaNumber `                    | Number the medias                                                                                                                    | `0`/`1`/`true`/`false` | `false`                                   |\n| `showEmojiForSubscriberOnly`      | Use \"🔒\" as prefix for subscriber-only posts                                                                                         | `0`/`1`/`true`/`false` | `false`                                   |\n| `showSymbolForSubscriberOnly`     | Use \"\\[Subscribers Only]\" as prefix for subscriber-only posts                                                                        | `0`/`1`/`true`/`false` | `true`                                    |\n| `showFullPrefixForSubscriberOnly` | Use \"🔒 \\[Subscribers Only]\" as prefix for subscriber-only posts                                                                     | `0`/`1`/`true`/`false` | `false`                                   |\n\nSpecify different option values than default values to improve readability. The URL\n\n```\nhttps://rsshub.app/twitter/user/durov/readable=1&authorNameBold=1&showAuthorInTitle=1&showAuthorInDesc=1&showQuotedAuthorAvatarInDesc=1&showAuthorAvatarInDesc=1&showEmojiForRetweetAndReply=1&showRetweetTextInTitle=0&addLinkForPics=1&showTimestampInDescription=1&showQuotedInTitle=1&heightOfPics=150\n```\n\ngenerates\n\n<img loading=\"lazy\" src=\"/img/readable-twitter.png\" alt=\"Readable Twitter RSS of Durov\" />\n\nCurrently supports two authentication methods:\n\n- Using `TWITTER_AUTH_TOKEN` (recommended): Configure a comma-separated list of `auth_token` cookies of logged-in Twitter Web. RSSHub will use this information to directly access Twitter's web API to obtain data.\n\n~~- Using `TWITTER_USERNAME` `TWITTER_PASSWORD` and `TWITTER_AUTHENTICATION_SECRET`: Configure a comma-separated list of Twitter username and password. RSSHub will use this information to log in to Twitter and obtain data using the mobile API. Please note that if you have not logged in with the current IP address before, it is easy to trigger Twitter's risk control mechanism.~~ This no longer works since mobile client attestation has been implemented in October 2025.\n\n- Using `TWITTER_CONSUMER_KEY` and `TWITTER_CONSUMER_SECRET`: Configure a comma-separated list of Twitter API keys and secrets. RSSHub will use this information to access Twitter's Pay-Per-Use developer API to obtain data.\n- OPTIONAL: Using `TWITTER_ACCESS_TOKEN` and `TWITTER_ACCESS_SECRET`: Configure a comma-separated list of Twitter API access tokens and secrets. RSSHub will use this information to access Twitter's Pay-Per-Use developer API with user authentication to obtain data. If not provided, RSSHub will only use app authentication, which may only access to public information.",
-    "lang": "en"
-  },
   "utgd": {
     "routes": {
       "/category/:category?": {
@@ -26587,7 +26241,7 @@ export default {
         "url": "javtrailers.com/casts",
         "features": {
           "nsfw": true,
-          "requirePuppeteer": true
+          "requirePuppeteer": false
         },
         "location": "casts.ts",
         "module": () => import('@/routes/javtrailers/casts.ts')
@@ -26597,7 +26251,7 @@ export default {
         "categories": [
           "multimedia"
         ],
-        "example": "/javtrailers/categories/50001755",
+        "example": "/javtrailers/categories/hi-def",
         "parameters": {
           "category": "Category name, can be found in the URL of the category page"
         },
@@ -26615,7 +26269,7 @@ export default {
         "url": "javtrailers.com/categories",
         "features": {
           "nsfw": true,
-          "requirePuppeteer": true
+          "requirePuppeteer": false
         },
         "location": "categories.ts",
         "module": () => import('@/routes/javtrailers/categories.ts')
@@ -26642,7 +26296,7 @@ export default {
         ],
         "features": {
           "nsfw": true,
-          "requirePuppeteer": true
+          "requirePuppeteer": false
         },
         "location": "studios.ts",
         "module": () => import('@/routes/javtrailers/studios.ts')
@@ -35082,7 +34736,7 @@ export default {
           "order": "Ordering, `newest`, `famous` or `picks`, `newest` by default"
         },
         "features": {
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": true
         },
         "name": "Poems",
@@ -35200,7 +34854,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": true,
           "supportBT": false,
           "supportPodcast": false,
@@ -35234,7 +34888,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": true,
           "supportBT": false,
           "supportPodcast": false,
@@ -51900,6 +51554,7 @@ export default {
     "apiRoutes": {},
     "name": "Coomer",
     "url": "coomer.st",
+    "description": "::: tip\nThe route uses `https://coomer.st` and `https://img.coomer.st` by default. Self-hosted instances can override them with the `COOMER_ROOT_URL` and `COOMER_ASSETS_URL` environment variables. If only `COOMER_ROOT_URL` is set, the asset URL is inferred by adding the `img.` subdomain.\n:::",
     "lang": "en"
   },
   "copymanga": {
@@ -69615,7 +69270,7 @@ export default {
           }
         ],
         "features": {
-          "requirePuppeteer": true
+          "requirePuppeteer": false
         },
         "description": "| 缺省   | all  | closed | disclosed | patching |\n| ------ | ---- | ------ | --------- | -------- |\n| 活動中 | 全部 | 關閉   | 公開      | 修補中   |",
         "location": "zeroday.tsx",
@@ -70530,7 +70185,7 @@ export default {
         ],
         "url": "hottoys.com.hk/",
         "features": {
-          "requirePuppeteer": true
+          "requirePuppeteer": false
         },
         "location": "index.ts",
         "module": () => import('@/routes/hottoys/index.ts')
@@ -71458,6 +71113,23 @@ export default {
   },
   "huggingface": {
     "routes": {
+      "/datasets/:author": {
+        "path": "/datasets/:author",
+        "name": "Datasets by author",
+        "categories": [
+          "programming"
+        ],
+        "example": "/huggingface/datasets/HuggingFaceFW",
+        "parameters": {
+          "author": "Hugging Face username or organization name"
+        },
+        "maintainers": [
+          "Cod1doc"
+        ],
+        "description": "The 20 most recently created datasets from a Hugging Face user or organization.",
+        "location": "datasets.ts",
+        "module": () => import('@/routes/huggingface/datasets.ts')
+      },
       "/activity/:user/likes": {
         "path": "/activity/:user/likes",
         "categories": [
@@ -78770,6 +78442,7 @@ export default {
     "apiRoutes": {},
     "name": "Kemono",
     "url": "kemono.cr",
+    "description": "::: tip\nThe route uses `https://kemono.cr` and `https://img.kemono.cr` by default. Self-hosted instances can override them with the `KEMONO_ROOT_URL` and `KEMONO_ASSETS_URL` environment variables. If only `KEMONO_ROOT_URL` is set, the asset URL is inferred by adding the `img.` subdomain.\n:::",
     "lang": "en"
   },
   "kenshin": {
@@ -85850,7 +85523,7 @@ export default {
         "example": "/missav/new",
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -85860,14 +85533,14 @@ export default {
         "radar": [
           {
             "source": [
-              "missav.ws/dm514/new",
+              "missav.ws/dm539/new",
               "missav.ws/new",
               "missav.ws/"
             ]
           },
           {
             "source": [
-              "missav.ai/dm514/new",
+              "missav.ai/dm539/new",
               "missav.ai/new",
               "missav.ai/"
             ]
@@ -99224,6 +98897,52 @@ export default {
     "description": "Perplexity - AI-powered search and discovery engine",
     "lang": "en"
   },
+  "petapixel": {
+    "routes": {
+      "/:category?": {
+        "path": "/:category?",
+        "categories": [
+          "picture"
+        ],
+        "view": 0,
+        "example": "/petapixel/news",
+        "parameters": {
+          "category": "Category slug, see the table below or the URL of a topic page. All posts by default"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "petapixel.com/topic/:category",
+              "petapixel.com/"
+            ]
+          }
+        ],
+        "name": "Posts",
+        "maintainers": [
+          "IvanWng97"
+        ],
+        "description": "The official feed only carries excerpts; this route returns the full post with all images.\n\n| Category    | Slug           |\n| ----------- | -------------- |\n| News        | `news`         |\n| Equipment   | `equipment`    |\n| Culture     | `culture`      |\n| Inspiration | `inspiration`  |\n| Spotlight   | `spotlight`    |\n| Finds       | `finds`        |\n| Technology  | `technology-2` |\n| Industry    | `industry`     |\n| Software    | `software`     |\n| Educational | `educational`  |\n| Tips        | `tips`         |\n| Ideas       | `ideas`        |\n| Editorial   | `editorial`    |\n| Mobile      | `mobile`       |",
+        "location": "index.tsx",
+        "module": () => import('@/routes/petapixel/index.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "PetaPixel",
+    "url": "petapixel.com",
+    "categories": [
+      "picture"
+    ],
+    "description": "Photography and camera news, reviews and inspiration.",
+    "lang": "en"
+  },
   "peterwunder": {
     "routes": {
       "/achievements": {
@@ -101285,7 +101004,7 @@ export default {
         "example": "/publico/ciencias",
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -101319,7 +101038,7 @@ export default {
         "example": "/publico/culturas",
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -101353,7 +101072,7 @@ export default {
         "example": "/publico/economia",
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -101387,7 +101106,7 @@ export default {
         "example": "/publico/internacional",
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -101421,7 +101140,7 @@ export default {
         "example": "/publico/mujer",
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -101455,7 +101174,7 @@ export default {
         "example": "/publico/opinion",
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -101489,7 +101208,7 @@ export default {
         "example": "/publico/politica",
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -101518,7 +101237,7 @@ export default {
         "example": "/publico/public",
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -101552,7 +101271,7 @@ export default {
         "example": "/publico/sociedad",
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -101581,7 +101300,7 @@ export default {
         "example": "/publico/tremending",
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -105221,7 +104940,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": true,
           "supportBT": false,
           "supportPodcast": false,
@@ -115848,6 +115567,33 @@ export default {
         "location": "index.ts",
         "module": () => import('@/routes/threads/index.ts')
       },
+      "/:user/post/:id/:routeParams?": {
+        "path": "/:user/post/:id/:routeParams?",
+        "categories": [
+          "social-media"
+        ],
+        "view": 1,
+        "example": "/threads/@zuck/post/Ddt7cL5EfUG",
+        "parameters": {
+          "user": "Username",
+          "id": "Post ID, the last segment of the post URL",
+          "routeParams": "Extra parameters, in the format of query string. Accepts the same options as User timeline"
+        },
+        "radar": [
+          {
+            "source": [
+              "www.threads.com/:user/post/:id"
+            ],
+            "target": "/:user/post/:id"
+          }
+        ],
+        "name": "Post & Replies",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "post.ts",
+        "module": () => import('@/routes/threads/post.ts')
+      },
       "/search/:keyword/:routeParams?": {
         "path": "/search/:keyword/:routeParams?",
         "categories": [
@@ -118315,16 +118061,52 @@ export default {
   },
   "uber": {
     "routes": {
-      "/blog/:compat?": {
-        "path": "/blog/:compat?",
+      "/blog/:category?": {
+        "path": "/blog/:category?",
         "categories": [
           "blog"
         ],
         "example": "/uber/blog",
+        "parameters": {
+          "category": {
+            "description": "Category slug from `/blog/engineering/:category`. Defaults to all engineering articles.",
+            "options": [
+              {
+                "value": "uber-ai",
+                "label": "AI / ML"
+              },
+              {
+                "value": "backend",
+                "label": "Backend"
+              },
+              {
+                "value": "culture",
+                "label": "Culture"
+              },
+              {
+                "value": "data",
+                "label": "Data"
+              },
+              {
+                "value": "mobile",
+                "label": "Mobile"
+              },
+              {
+                "value": "security",
+                "label": "Security"
+              },
+              {
+                "value": "web",
+                "label": "Web"
+              }
+            ]
+          }
+        },
         "features": {
           "requireConfig": false,
           "requirePuppeteer": false,
           "antiCrawler": false,
+          "supportRadar": true,
           "supportBT": false,
           "supportPodcast": false,
           "supportScihub": false
@@ -118332,19 +118114,27 @@ export default {
         "radar": [
           {
             "source": [
-              "www.uber.com/:language/blog/engineering"
+              "eng.uber.com/",
+              "www.uber.com/:country/:language/blog/engineering"
             ],
             "target": "/blog"
+          },
+          {
+            "source": [
+              "www.uber.com/:country/:language/blog/engineering/:category"
+            ],
+            "target": "/blog/:category"
           }
         ],
         "name": "Engineering",
         "maintainers": [
-          "hulb"
+          "hulb",
+          "zhsama"
         ],
-        "url": "www.uber.com/en-HK/blog/engineering",
-        "description": "The English blog on any of Uber's regional sites (e.g., [www.uber.com/en-JP/blog](http://www.uber.com/en-JP/blog)) is the same engineering blog provided by this route, so language selection is not supported. This route is not for the public news blog on specific regional sites (e.g., [www.uber.com/ja-JP/blog](http://www.uber.com/ja-JP/blog)).",
+        "url": "www.uber.com/us/en/blog/engineering",
+        "description": "The optional category parameter uses the slug from an Uber Engineering category URL. Deprecated numeric `maxPage` values remain accepted and return the overview feed.",
         "zh": {
-          "description": "uber 的任何区域站点的英文 blog（例如 [www.uber.com/en-JP/blog](http://www.uber.com/en-JP/blog)）都是相同的内容，正是本路由提供的 engineering blog，因此本路由不提供语言选择；本路由不是 uber 在特定区域站点的公开新闻 blog（例如 [www.uber.com/ja-JP/blog](http://www.uber.com/ja-JP/blog)）"
+          "description": "可选的分类参数使用 Uber Engineering 分类 URL 中的 slug。已弃用的数字 `maxPage` 参数仍然兼容，并返回全部文章。"
         },
         "location": "blog.ts",
         "module": () => import('@/routes/uber/blog.ts')
@@ -124455,6 +124245,35 @@ export default {
     "url": "xmanhua.com",
     "lang": "zh-CN"
   },
+  "xmlcom": {
+    "routes": {
+      "/": {
+        "path": "/",
+        "categories": [
+          "programming"
+        ],
+        "example": "/xmlcom",
+        "name": "Articles and News",
+        "maintainers": [
+          "AboutRSS"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.xml.com/"
+            ]
+          }
+        ],
+        "description": "The official Atom feed (/feed/all/) truncates every entry to a 128 character summary and carries no category tags. This route fetches the full body from each detail page and extracts the tags of that page into category.",
+        "location": "index.ts",
+        "module": () => import('@/routes/xmlcom/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "XML.com",
+    "url": "www.xml.com",
+    "lang": "en"
+  },
   "xmnn": {
     "routes": {
       "/epaper/:id?": {
@@ -124642,10 +124461,6 @@ export default {
             {
               "name": "XSIJISHE_COOKIE",
               "description": ""
-            },
-            {
-              "name": "XSIJISHE_USER_AGENT",
-              "description": ""
             }
           ],
           "requirePuppeteer": false,
@@ -124689,13 +124504,9 @@ export default {
             {
               "name": "XSIJISHE_COOKIE",
               "description": ""
-            },
-            {
-              "name": "XSIJISHE_USER_AGENT",
-              "description": ""
             }
           ],
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": true,
           "supportBT": false,
           "supportPodcast": false,
@@ -125462,7 +125273,7 @@ export default {
         ],
         "features": {
           "antiCrawler": true,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "requireConfig": [
             {
               "optional": true,
@@ -125495,7 +125306,7 @@ export default {
         ],
         "features": {
           "antiCrawler": true,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "requireConfig": [
             {
               "optional": true,
@@ -134633,7 +134444,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": true,
           "supportBT": false,
           "supportPodcast": false,
@@ -134664,7 +134475,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -134689,7 +134500,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": true,
           "supportBT": false,
           "supportPodcast": false,
@@ -134711,7 +134522,7 @@ export default {
         "parameters": {},
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -135310,6 +135121,115 @@ export default {
     ],
     "description": "::: tip\n\n- 可以通过头条新闻 + 参数过滤的形式获得早报、专题等内容。\n\n:::",
     "lang": "zh-CN"
+  },
+  "dr": {
+    "routes": {
+      "/:category?": {
+        "path": "/:category?",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/dr/senestenyt",
+        "parameters": {
+          "category": {
+            "description": "DR-sektion, se tabellen nedenfor. Standarden er `senestenyt` (Kort nyt)",
+            "options": [
+              {
+                "value": "senestenyt",
+                "label": "Seneste nyt (Kort nyt)"
+              },
+              {
+                "value": "indland",
+                "label": "Indland"
+              },
+              {
+                "value": "udland",
+                "label": "Udland"
+              },
+              {
+                "value": "penge",
+                "label": "Penge"
+              },
+              {
+                "value": "politik",
+                "label": "Politik"
+              },
+              {
+                "value": "sporten",
+                "label": "Sport"
+              },
+              {
+                "value": "viden",
+                "label": "Viden"
+              }
+            ]
+          }
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.dr.dk/nyheder"
+            ],
+            "target": "/senestenyt"
+          },
+          {
+            "source": [
+              "www.dr.dk/nyheder/indland"
+            ],
+            "target": "/indland"
+          },
+          {
+            "source": [
+              "www.dr.dk/nyheder/udland"
+            ],
+            "target": "/udland"
+          },
+          {
+            "source": [
+              "www.dr.dk/nyheder/penge"
+            ],
+            "target": "/penge"
+          },
+          {
+            "source": [
+              "www.dr.dk/nyheder/politik"
+            ],
+            "target": "/politik"
+          },
+          {
+            "source": [
+              "www.dr.dk/sporten"
+            ],
+            "target": "/sporten"
+          },
+          {
+            "source": [
+              "www.dr.dk/nyheder/viden"
+            ],
+            "target": "/viden"
+          }
+        ],
+        "name": "Nyheder",
+        "maintainers": [
+          "cufezhusy"
+        ],
+        "description": "DRs nyheder, baseret på de officielle RSS-feeds. RSSHub forsøger at hente den fulde artikeltekst fra dr.dk. Hvis den fulde tekst ikke kan hentes, bruges beskrivelsen fra den officielle RSS-feed.\n\n| Kategori   | Beskrivelse            |\n| ---------- | ---------------------- |\n| senestenyt | Seneste nyt (Kort nyt) |\n| indland    | Indland                |\n| udland     | Udland                 |\n| penge      | Penge                  |\n| politik    | Politik                |\n| sporten    | Sport                  |\n| viden      | Viden                  |",
+        "location": "index.ts",
+        "module": () => import('@/routes/dr/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "DR (Danmarks Radio)",
+    "url": "dr.dk",
+    "lang": "da"
   },
   "dribbble": {
     "routes": {
@@ -146418,7 +146338,8 @@ export default {
         "description": "分类\n\n| 有碼     | 無碼       | 歐美    |\n| -------- | ---------- | ------- |\n| censored | uncensored | western |\n\n排序\n\n| 发布日期排序 | 磁鏈更新排序 |\n| ------------ | ------------ |\n| 1            | 2            |\n\n过滤\n\n| 全部 | 可下载 | 含字幕 | 含短評 |\n| ---- | ------ | ------ | ------ |\n| 0    | 1      | 2      | 3      |",
         "features": {
           "nsfw": true,
-          "requirePuppeteer": true
+          "requirePuppeteer": false,
+          "antiCrawler": true
         },
         "location": "index.ts",
         "module": () => import('@/routes/javdb/index.ts')
@@ -160661,6 +160582,37 @@ export default {
         "location": "pin/people.ts",
         "module": () => import('@/routes/zhihu/pin/people.ts')
       },
+      "/daily": {
+        "path": "/daily",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/zhihu/daily",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "daily.zhihu.com/*"
+            ]
+          }
+        ],
+        "name": "知乎日报",
+        "maintainers": [
+          "DHPO",
+          "pseudoyu"
+        ],
+        "url": "daily.zhihu.com/*",
+        "location": "daily.ts",
+        "module": () => import('@/routes/zhihu/daily.ts')
+      },
       "/xhu/people/answers/:hexId": {
         "path": "/xhu/people/answers/:hexId",
         "categories": [
@@ -160787,37 +160739,6 @@ export default {
         ],
         "location": "collection.ts",
         "module": () => import('@/routes/zhihu/collection.ts')
-      },
-      "/daily": {
-        "path": "/daily",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/zhihu/daily",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "daily.zhihu.com/*"
-            ]
-          }
-        ],
-        "name": "知乎日报",
-        "maintainers": [
-          "DHPO",
-          "pseudoyu"
-        ],
-        "url": "daily.zhihu.com/*",
-        "location": "daily.ts",
-        "module": () => import('@/routes/zhihu/daily.ts')
       },
       "/weekly": {
         "path": "/weekly",
@@ -161318,6 +161239,47 @@ export default {
     "url": "www.zhihu.com",
     "description": "::: tip\n自 2024 年 7 月，未登录状态下大部分路由[无法获取全文](https://github.com/DIYgod/RSSHub/issues/16260)。若有需要请在登陆知乎后寻找并添加包含`z_c0`的 Cookies 至环境变量`ZHIHU_COOKIES`。\n:::",
     "lang": "zh-CN"
+  },
+  "czechstepbystep": {
+    "routes": {
+      "/kratke-ceske-zpravy": {
+        "path": "/kratke-ceske-zpravy",
+        "categories": [
+          "study"
+        ],
+        "example": "/czechstepbystep/kratke-ceske-zpravy",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.czechstepbystep.cz/kategorie/kratke-ceske-zpravy"
+            ],
+            "target": "/kratke-ceske-zpravy"
+          }
+        ],
+        "name": "Krátké české zprávy",
+        "maintainers": [
+          "cmp0xff"
+        ],
+        "url": "www.czechstepbystep.cz/kategorie/kratke-ceske-zpravy",
+        "description": "Short Czech news (Krátké české zprávy) from CzechStepByStep including video, full transcript, online exercises, and worksheets.",
+        "location": "kratke-ceske-zpravy.ts",
+        "module": () => import('@/routes/czechstepbystep/kratke-ceske-zpravy.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "CzechStepByStep",
+    "url": "www.czechstepbystep.cz",
+    "lang": "cs"
   },
   "finology": {
     "routes": {
@@ -162476,7 +162438,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -162725,6 +162687,39 @@ export default {
         "location": "playlist.ts",
         "module": () => import('@/routes/youtube/playlist.ts')
       },
+      "/streams/:handle/:routeParams?": {
+        "path": "/streams/:handle/:routeParams?",
+        "categories": [
+          "live"
+        ],
+        "view": 3,
+        "example": "/youtube/streams/@GawrGura",
+        "parameters": {
+          "handle": "YouTube handle or channel id",
+          "routeParams": "Extra parameters, see the table below"
+        },
+        "radar": [
+          {
+            "source": [
+              "www.youtube.com/@:handle/streams"
+            ],
+            "target": "/streams/@:handle"
+          },
+          {
+            "source": [
+              "www.youtube.com/channel/:handle/streams"
+            ],
+            "target": "/streams/:handle"
+          }
+        ],
+        "name": "Live Streams",
+        "maintainers": [
+          "ouuan"
+        ],
+        "description": "::: tip Parameter\n\n| Name               | Description                                                                                 | Default |\n| ------------------ | ------------------------------------------------------------------------------------------- | ------- |\n| embed              | Whether to embed the video, fill in any value to disable embedding                          | embed   |\n| includeDescription | Whether to include the description of each stream, fill in any truthy value to include them | false   |\n\n:::\n\n::: tip\nUnlike [Live](#youtube-live), this route reads the channel's Live tab, so it also covers scheduled and finished streams, and it does not require an API key.\n\nEvery stream is categorized as `live`, `upcoming` or `completed`, so a single state can be picked out with the `filter_category` and `filterout_category` [common parameters](https://docs.rsshub.app/guide/parameters#filtering). For example, `/youtube/streams/@GawrGura?filterout_category=completed` only tracks streams that are live or about to start.\n\nThe Live tab does not carry the stream descriptions, so `includeDescription` costs one extra request per stream and is off by default.\n:::",
+        "location": "streams.ts",
+        "module": () => import('@/routes/youtube/streams.ts')
+      },
       "/user/:username/:routeParams?": {
         "path": "/user/:username/:routeParams?",
         "categories": [
@@ -162773,6 +162768,352 @@ export default {
     "apiRoutes": {},
     "name": "YouTube",
     "url": "youtube.com",
+    "lang": "en"
+  },
+  "twitter": {
+    "routes": {
+      "/trends/:woeid?": {
+        "path": "/trends/:woeid?",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/twitter/trends/23424856",
+        "parameters": {
+          "woeid": "Yahoo! Where On Earth ID. default to woeid=1 (World Wide)"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Trends",
+        "maintainers": [
+          "sakamossan"
+        ],
+        "location": "trends.ts",
+        "module": () => import('@/routes/twitter/trends.ts')
+      },
+      "/home_latest/:routeParams?": {
+        "path": "/home_latest/:routeParams?",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/twitter/home_latest",
+        "features": {
+          "requireConfig": [
+            {
+              "name": "TWITTER_AUTH_TOKEN",
+              "description": "Please see above for details."
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Home latest timeline",
+        "maintainers": [
+          "DIYgod",
+          "CaoMeiYouRen"
+        ],
+        "radar": [
+          {
+            "source": [
+              "x.com/home"
+            ],
+            "target": "/home_latest"
+          }
+        ],
+        "location": "home-latest.ts",
+        "module": () => import('@/routes/twitter/home-latest.ts')
+      },
+      "/home/:routeParams?": {
+        "path": "/home/:routeParams?",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/twitter/home",
+        "features": {
+          "requireConfig": [
+            {
+              "name": "TWITTER_AUTH_TOKEN",
+              "description": "Please see above for details."
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Home timeline",
+        "maintainers": [
+          "DIYgod",
+          "CaoMeiYouRen"
+        ],
+        "radar": [
+          {
+            "source": [
+              "x.com/home"
+            ],
+            "target": "/home"
+          }
+        ],
+        "location": "home.ts",
+        "module": () => import('@/routes/twitter/home.ts')
+      },
+      "/keyword/:keyword/:routeParams?": {
+        "path": "/keyword/:keyword/:routeParams?",
+        "categories": [
+          "social-media"
+        ],
+        "view": 1,
+        "example": "/twitter/keyword/RSSHub",
+        "parameters": {
+          "keyword": "keyword",
+          "routeParams": "extra parameters, see the table above"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "TWITTER_AUTH_TOKEN",
+              "description": "Please see above for details."
+            },
+            {
+              "name": "TWITTER_THIRD_PARTY_API",
+              "description": "Please see above for details."
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Keyword",
+        "maintainers": [
+          "DIYgod",
+          "yindaheng98",
+          "Rongronggg9",
+          "pseudoyu"
+        ],
+        "radar": [
+          {
+            "source": [
+              "x.com/search"
+            ]
+          }
+        ],
+        "location": "keyword.ts",
+        "module": () => import('@/routes/twitter/keyword.ts')
+      },
+      "/likes/:id/:routeParams?": {
+        "path": "/likes/:id/:routeParams?",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/twitter/likes/DIYgod",
+        "parameters": {
+          "id": "username",
+          "routeParams": "extra parameters, see the table above"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "TWITTER_AUTH_TOKEN",
+              "description": "Please see above for details."
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "User likes",
+        "maintainers": [
+          "xyqfer"
+        ],
+        "location": "likes.ts",
+        "module": () => import('@/routes/twitter/likes.ts')
+      },
+      "/list/:id/:routeParams?": {
+        "path": "/list/:id/:routeParams?",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/twitter/list/1502570462752219136",
+        "parameters": {
+          "id": "list id, get from url",
+          "routeParams": "extra parameters, see the table above"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "TWITTER_AUTH_TOKEN",
+              "description": "Please see above for details."
+            },
+            {
+              "name": "TWITTER_THIRD_PARTY_API",
+              "description": "Please see above for details."
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "List timeline",
+        "maintainers": [
+          "DIYgod",
+          "xyqfer",
+          "pseudoyu"
+        ],
+        "radar": [
+          {
+            "source": [
+              "x.com/i/lists/:id"
+            ],
+            "target": "/list/:id"
+          }
+        ],
+        "location": "list.ts",
+        "module": () => import('@/routes/twitter/list.ts')
+      },
+      "/media/:id/:routeParams?": {
+        "path": "/media/:id/:routeParams?",
+        "categories": [
+          "social-media"
+        ],
+        "view": 2,
+        "example": "/twitter/media/_RSSHub",
+        "parameters": {
+          "id": "username; in particular, if starts with `+`, it will be recognized as a [unique ID](https://github.com/DIYgod/RSSHub/issues/12221), e.g. `+44196397`",
+          "routeParams": "extra parameters, see the table above."
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "TWITTER_AUTH_TOKEN",
+              "description": "Please see above for details."
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "User media",
+        "maintainers": [
+          "DIYgod",
+          "yindaheng98",
+          "Rongronggg9"
+        ],
+        "radar": [
+          {
+            "source": [
+              "x.com/:id/media"
+            ],
+            "target": "/media/:id"
+          }
+        ],
+        "location": "media.ts",
+        "module": () => import('@/routes/twitter/media.ts')
+      },
+      "/tweet/:id/status/:status/:original?": {
+        "path": "/tweet/:id/status/:status/:original?",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/twitter/tweet/DIYgod/status/1650844643997646852",
+        "parameters": {
+          "id": "username; in particular, if starts with `+`, it will be recognized as a [unique ID](https://github.com/DIYgod/RSSHub/issues/12221), e.g. `+44196397`",
+          "status": "tweet ID",
+          "original": "extra parameters, data type of return, if the value is not `0`/`false` and `config.isPackage` is `true`, return the original data of twitter"
+        },
+        "features": {
+          "requireConfig": [],
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Tweet Details",
+        "maintainers": [
+          "LarchLiu",
+          "Rongronggg9"
+        ],
+        "location": "tweet.ts",
+        "module": () => import('@/routes/twitter/tweet.ts')
+      },
+      "/user/:id/:routeParams?": {
+        "path": "/user/:id/:routeParams?",
+        "categories": [
+          "social-media"
+        ],
+        "view": 1,
+        "example": "/twitter/user/_RSSHub",
+        "parameters": {
+          "id": "username; in particular, if starts with `+`, it will be recognized as a [unique ID](https://github.com/DIYgod/RSSHub/issues/12221), e.g. `+44196397`",
+          "routeParams": "extra parameters, see the table above"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "TWITTER_AUTH_TOKEN",
+              "description": "Please see above for details."
+            },
+            {
+              "name": "TWITTER_THIRD_PARTY_API",
+              "description": "Use third-party API to query twitter data",
+              "optional": true
+            },
+            {
+              "name": "TWITTER_CONSUMER_KEY",
+              "description": "Please see above for details."
+            },
+            {
+              "name": "TWITTER_CONSUMER_SECRET",
+              "description": "Please see above for details."
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "User timeline",
+        "maintainers": [
+          "DIYgod",
+          "yindaheng98",
+          "Rongronggg9",
+          "CaoMeiYouRen",
+          "pseudoyu"
+        ],
+        "radar": [
+          {
+            "source": [
+              "x.com/:id"
+            ],
+            "target": "/user/:id"
+          }
+        ],
+        "location": "user.ts",
+        "module": () => import('@/routes/twitter/user.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "X (Twitter)",
+    "url": "x.com",
+    "description": "Specify options (in the format of query string) in parameter `routeParams` to control some extra features for Tweets\n\n| Key                               | Description                                                                                                                          | Accepts                | Defaults to                               |\n| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- | ----------------------------------------- |\n| `readable`                        | Enable readable layout                                                                                                               | `0`/`1`/`true`/`false` | `false`                                   |\n| `authorNameBold`                  | Display author name in bold                                                                                                          | `0`/`1`/`true`/`false` | `false`                                   |\n| `showAuthorInTitle`               | Show author name in title                                                                                                            | `0`/`1`/`true`/`false` | `false` (`true` in `/twitter/followings`) |\n| `showAuthorAsTitleOnly`           | Show only author name as title                                                                                                       | `0`/`1`/`true`/`false` | `false`                                   |\n| `showAuthorInDesc`                | Show author name in description (RSS body)                                                                                           | `0`/`1`/`true`/`false` | `false` (`true` in `/twitter/followings`) |\n| `showQuotedAuthorAvatarInDesc`    | Show avatar of quoted Tweet's author in description (RSS body) (Not recommended if your RSS reader extracts images from description) | `0`/`1`/`true`/`false` | `false`                                   |\n| `showAuthorAvatarInDesc`          | Show avatar of author in description (RSS body) (Not recommended if your RSS reader extracts images from description)                | `0`/`1`/`true`/`false` | `false`                                   |\n| `showEmojiForRetweetAndReply`     | Use \"🔁\" instead of \"RT\", \"↩️\" & \"💬\" instead of \"Re\"                                                                                | `0`/`1`/`true`/`false` | `false`                                   |\n| `showSymbolForRetweetAndReply`    | Use \" RT \" instead of \"\", \" Re \" instead of \"\"                                                                                       | `0`/`1`/`true`/`false` | `true`                                    |\n| `showRetweetTextInTitle`          | Show quote comments in title (if `false`, only the retweeted tweet will be shown in the title)                                       | `0`/`1`/`true`/`false` | `true`                                    |\n| `addLinkForPics`                  | Add clickable links for Tweet pictures                                                                                               | `0`/`1`/`true`/`false` | `false`                                   |\n| `showTimestampInDescription`      | Show timestamp in description                                                                                                        | `0`/`1`/`true`/`false` | `false`                                   |\n| `showQuotedInTitle`               | Show quoted tweet in title                                                                                                           | `0`/`1`/`true`/`false` | `false`                                   |\n| `widthOfPics`                     | Width of Tweet pictures                                                                                                              | Unspecified/Integer    | Unspecified                               |\n| `heightOfPics`                    | Height of Tweet pictures                                                                                                             | Unspecified/Integer    | Unspecified                               |\n| `sizeOfAuthorAvatar`              | Size of author's avatar                                                                                                              | Integer                | `48`                                      |\n| `sizeOfQuotedAuthorAvatar`        | Size of quoted tweet's author's avatar                                                                                               | Integer                | `24`                                      |\n| `includeReplies`                  | Include replies, only available in `/twitter/user`                                                                                   | `0`/`1`/`true`/`false` | `false`                                   |\n| `includeRts`                      | Include retweets, only available in `/twitter/user`                                                                                  | `0`/`1`/`true`/`false` | `true`                                    |\n| `forceWebApi`                     | Force using Web API even if Developer API is configured, only available in `/twitter/user` and `/twitter/keyword`                    | `0`/`1`/`true`/`false` | `false`                                   |\n| `count`                           | `count` parameter passed to Twitter API, only available in `/twitter/user`                                                           | Unspecified/Integer    | Unspecified                               |\n| `onlyMedia`                       | Only get tweets with a media                                                                                                         | `0`/`1`/`true`/`false` | `false`                                   |\n| `mediaNumber `                    | Number the medias                                                                                                                    | `0`/`1`/`true`/`false` | `false`                                   |\n| `showEmojiForSubscriberOnly`      | Use \"🔒\" as prefix for subscriber-only posts                                                                                         | `0`/`1`/`true`/`false` | `false`                                   |\n| `showSymbolForSubscriberOnly`     | Use \"\\[Subscribers Only]\" as prefix for subscriber-only posts                                                                        | `0`/`1`/`true`/`false` | `true`                                    |\n| `showFullPrefixForSubscriberOnly` | Use \"🔒 \\[Subscribers Only]\" as prefix for subscriber-only posts                                                                     | `0`/`1`/`true`/`false` | `false`                                   |\n\nSpecify different option values than default values to improve readability. The URL\n\n```\nhttps://rsshub.app/twitter/user/durov/readable=1&authorNameBold=1&showAuthorInTitle=1&showAuthorInDesc=1&showQuotedAuthorAvatarInDesc=1&showAuthorAvatarInDesc=1&showEmojiForRetweetAndReply=1&showRetweetTextInTitle=0&addLinkForPics=1&showTimestampInDescription=1&showQuotedInTitle=1&heightOfPics=150\n```\n\ngenerates\n\n<img loading=\"lazy\" src=\"/img/readable-twitter.png\" alt=\"Readable Twitter RSS of Durov\" />\n\nCurrently supports two authentication methods:\n\n- Using `TWITTER_AUTH_TOKEN` (recommended): Configure a comma-separated list of `auth_token` cookies of logged-in Twitter Web. RSSHub will use this information to directly access Twitter's web API to obtain data.\n\n~~- Using `TWITTER_USERNAME` `TWITTER_PASSWORD` and `TWITTER_AUTHENTICATION_SECRET`: Configure a comma-separated list of Twitter username and password. RSSHub will use this information to log in to Twitter and obtain data using the mobile API. Please note that if you have not logged in with the current IP address before, it is easy to trigger Twitter's risk control mechanism.~~ This no longer works since mobile client attestation has been implemented in October 2025.\n\n- Using `TWITTER_CONSUMER_KEY` and `TWITTER_CONSUMER_SECRET`: Configure a comma-separated list of Twitter API keys and secrets. RSSHub will use this information to access Twitter's Pay-Per-Use developer API to obtain data.\n- OPTIONAL: Using `TWITTER_ACCESS_TOKEN` and `TWITTER_ACCESS_SECRET`: Configure a comma-separated list of Twitter API access tokens and secrets. RSSHub will use this information to access Twitter's Pay-Per-Use developer API with user authentication to obtain data. If not provided, RSSHub will only use app authentication, which may only access to public information.",
     "lang": "en"
   },
   "economist": {
