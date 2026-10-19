@@ -1439,6 +1439,9 @@
   "/mymusicsheet/user/sheets/:username/:iso?/:freeOnly?": [
     "Freddd13"
   ],
+  "/nanhua/index-research/:category?": [
+    "pseudoyu"
+  ],
   "/nanhua/report/:type1/:type2": [
     "TonyRL"
   ],
@@ -4559,6 +4562,9 @@
   "/github/advisor/data/:type?/:category?": [
     "sd0ric4"
   ],
+  "/github/commits/:user/:repo/:branch{.+}?": [
+    "gythialy"
+  ],
   "/github/pulse/:user/:repo/:period?": [
     "jameschensmith"
   ],
@@ -5750,6 +5756,12 @@
   "/lovelive-anime/news/:abbr?/:category?/:option?": [
     "axojhf",
     "zhaoweizhong"
+  ],
+  "/lowendtalk/discussion/:id": [
+    "nczitzk"
+  ],
+  "/lowendtalk/profile/:type/:username": [
+    "TonyRL"
   ],
   "/lrepacks/:category?": [
     "nczitzk"
@@ -7253,6 +7265,9 @@
   ],
   "/resonac/products": [
     "valuex"
+  ],
+  "/reuters/my-news": [
+    "dzx-dzx"
   ],
   "/reuters/:category/:topic?": [
     "LyleLee",
