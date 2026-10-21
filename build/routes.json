@@ -62796,7 +62796,7 @@
           "repo": "Repo name",
           "branch": "Branch name, defaults to the default branch of the repository"
         },
-        "description": "Commit list with the diff of every commit rendered inside the feed item.\n\nThe commit list is read from the official `https://github.com/:user/:repo/commits/:branch.atom` feed (no GitHub API token needed), and each commit's patch is fetched from `https://github.com/:user/:repo/commit/:sha.patch`.\n\nMerge commits are **included** by default. A merge commit's patch is identical to the patch of the commits it merged, so dropping them only removes duplicates.\n\nTo drop them, use the built-in filter, which runs after the feed cache and is therefore always correct: `?filterout_category=^merge$` — every merge commit carries the `merge` category. `?exclude_merge=true` (`1`, `yes` or the bare parameter) does the same inside the route, but RSSHub keys its feed cache by path only, so avoid mixing it with the same path requested without it within `CACHE_EXPIRE` (default 300s).\n\nLong diffs are truncated per file and per item, and the item links to the full patch on GitHub.",
+        "description": "Commit list with the diff of every commit rendered inside the feed item.\n\nThe commit list is read from the official `https://github.com/:user/:repo/commits/:branch.atom` feed (no GitHub API token needed), and each commit's patch is fetched from `https://github.com/:user/:repo/commit/:sha.patch`.\n\nEvery diff line is highlighted like a code review view: added lines get a green background, removed lines a red one, hunk headers a grey one, and inside a modified line the characters that really changed are emphasised.\n\nMerge commits are **included** by default. A merge commit's patch is identical to the patch of the commits it merged, so dropping them only removes duplicates.\n\nTo drop them, use the built-in filter, which runs after the feed cache and is therefore always correct: `?filterout_category=^merge$` — every merge commit carries the `merge` category. `?exclude_merge=true` (`1`, `yes` or the bare parameter) does the same inside the route, but RSSHub keys its feed cache by path only, so avoid mixing it with the same path requested without it within `CACHE_EXPIRE` (default 300s).\n\nLong diffs are truncated per file and per item, and the item links to the full patch on GitHub.",
         "features": {
           "requireConfig": false,
           "requirePuppeteer": false,
@@ -94703,6 +94703,38 @@
         "description": "Enhance the official EN RSS feed",
         "location": "rss.ts",
         "module": "() => import('@/routes/nytimes/rss.ts')"
+      },
+      "/wirecutter": {
+        "path": "/wirecutter",
+        "categories": [
+          "traditional-media"
+        ],
+        "view": 0,
+        "example": "/nytimes/wirecutter",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.nytimes.com/wirecutter",
+              "www.nytimes.com/wirecutter/reviews/:slug"
+            ]
+          }
+        ],
+        "name": "Wirecutter",
+        "maintainers": [
+          "IvanWng97"
+        ],
+        "description": "The official feed only carries the opening few paragraphs; this route returns the whole review, including the picks and their photos.",
+        "location": "wirecutter.ts",
+        "module": "() => import('@/routes/nytimes/wirecutter.ts')"
       }
     },
     "apiRoutes": {},
@@ -116092,7 +116124,7 @@
           "synchrone",
           "pseudoyu"
         ],
-        "description": "::: tip\nDue to Telegram restrictions, some channels involving pornography, copyright, and politics cannot be subscribed. You can confirm by visiting `https://t.me/s/:username`, it's recommended to deploy your own instance with telegram api configs (create your telegram application via `https://core.telegram.org/api/obtaining_api_id`, run this command `node ./lib/routes/telegram/scripts/get-telegram-session.mjs` to get `TELEGRAM_SESSION` and set it as Environment Variable).\nMTProto connections can use a SOCKS4/5 `PROXY_URI` (for example, `socks5://127.0.0.1:1080`) or the dedicated `TELEGRAM_PROXY_HOST`, `TELEGRAM_PROXY_PORT`, and `TELEGRAM_PROXY_SECRET` MTProxy settings, which take precedence. HTTP proxies only apply to the public web feed; use a SOCKS or MTProxy endpoint for authenticated MTProto feeds.\n\nWhen a reverse proxy removes a public URL prefix (for example, `/rss`), set its `X-Forwarded-Prefix` request header to that prefix so Telegram media links include it. Access-control `key` and `code` parameters are preserved in these media links.\n:::",
+        "description": "::: tip\nDue to Telegram restrictions, some channels involving pornography, copyright, and politics cannot be subscribed. You can confirm by visiting `https://t.me/s/:username`, it's recommended to deploy your own instance with telegram api configs (create your telegram application via `https://core.telegram.org/api/obtaining_api_id`, run this command `node ./lib/routes/telegram/scripts/get-telegram-session.mjs` to get `TELEGRAM_SESSION` and set it as Environment Variable).\nMTProto connections can use a SOCKS4/5 `PROXY_URI` (for example, `socks5://127.0.0.1:1080`) or the dedicated `TELEGRAM_PROXY_HOST`, `TELEGRAM_PROXY_PORT`, and `TELEGRAM_PROXY_SECRET` MTProxy settings, which take precedence. HTTP proxies only apply to the public web feed; use a SOCKS or MTProxy endpoint for authenticated MTProto feeds.\nWhen MTProto fails or gives no response within `REQUEST_TIMEOUT`, the route falls back to the public web feed. Cloudflare Workers deployments always use the public web feed.\n\nWhen a reverse proxy removes a public URL prefix (for example, `/rss`), set its `X-Forwarded-Prefix` request header to that prefix so Telegram media links include it. Access-control `key` and `code` parameters are preserved in these media links.\n:::",
         "location": "channel.ts",
         "module": "() => import('@/routes/telegram/channel.ts')"
       }

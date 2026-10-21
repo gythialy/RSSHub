@@ -2587,6 +2587,7 @@ export type RoutePath =
   | `/nytimes/book/:category?`
   | `/nytimes/daily_briefing_chinese`
   | `/nytimes/rss/:cat?`
+  | `/nytimes/wirecutter`
   | `/obsidian/plugins`
   | `/obsidian/publish/:id`
   | `/obsidian/themes`
