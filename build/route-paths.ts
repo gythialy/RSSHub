@@ -1597,7 +1597,7 @@ export type RoutePath =
   | `/gzhu/yjs`
   | `/gzmtu/jwc`
   | `/gzmtu/tsg`
-  | `/hackernews/:section?/:type?/:value?`
+  | `/hackernews/:section?/:type?/:value?/:minComments?`
   | `/hackerone/hacktivity`
   | `/hackerone/search/:search`
   | `/hackertalk/`
@@ -3964,6 +3964,10 @@ export type RoutePath =
   | `/zjgsu/xszq`
   | `/zjgtjy/:type?`
   | `/zjmuseum/exhibition/:type?`
+  | `/zjnu/academic`
+  | `/zjnu/general`
+  | `/zjnu/media`
+  | `/zjnu/news`
   | `/zjol/paper/:id?`
   | `/zju/career/:type`
   | `/zju/cse/:category?`

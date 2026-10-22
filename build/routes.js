@@ -65480,8 +65480,8 @@ export default {
   },
   "hackernews": {
     "routes": {
-      "/:section?/:type?/:value?": {
-        "path": "/:section?/:type?/:value?",
+      "/:section?/:type?/:value?/:minComments?": {
+        "path": "/:section?/:type?/:value?/:minComments?",
         "categories": [
           "programming"
         ],
@@ -65495,7 +65495,10 @@ export default {
             "description": "Content format, default to `sources`. `sources` links to original articles, `comments` fetches full comment threads, `comments_list` shows parent story with single comment"
           },
           "value": {
-            "description": "For `threads`/`submitted` sections, set user ID. For `over` section, set minimum points threshold (default 100). For other sections, appended as `?id=<value>` (e.g. `value=dang` → `?id=dang`)"
+            "description": "For `threads`/`submitted` sections, set user ID. For `over` section, set minimum points threshold (default 100). For other sections, appended as `?id=<value>` (e.g. `value=dang` → `?id=dang`). In story-listing sections (`index`, `best`, `front`, `active`, `newest`, `ask`, `show`, `shownew`, `asknew`, `noobstories`, `pool`, `classic`, `launches`, `news`, `invited`), a purely numeric value acts as minimum comment count instead (same as `minComments`)"
+          },
+          "minComments": {
+            "description": "Minimum comment count, items below it are filtered out. Works with any story-listing section, e.g. `/hackernews/over/sources/100/10`. For sections where `value` is unused (`index`, `best`, `front`, `active`, `newest`, `ask`, `show`, `shownew`, `asknew`, `noobstories`, `pool`, `classic`, `launches`, `news`, `invited`), the number may be placed in `value` instead, e.g. `/hackernews/index/sources/10`. Ignored on sections without story comment counts (`jobs`, `threads`, `newcomments`, `bestcomments`, `noobcomments`, `highlights`)"
           }
         },
         "features": {
@@ -65567,7 +65570,7 @@ export default {
           "nczitzk",
           "xie-dongping"
         ],
-        "description": "Subscribe to Hacker News content by section, user, or minimum points\n\nExamples:\n\n| HN100              | User submitted                       | User threads                       | Comments list                            |\n| ------------------ | ------------------------------------ | ---------------------------------- | ---------------------------------------- |\n| `/hackernews/over` | `/hackernews/submitted/sources/dang` | `/hackernews/threads/sources/dang` | `/hackernews/threads/comments_list/dang` |",
+        "description": "Subscribe to Hacker News content by section, user, minimum points, or minimum comments\n\nExamples:\n\n| HN100              | User submitted                       | User threads                       | Comments list                            | Min comments                   |\n| ------------------ | ------------------------------------ | ---------------------------------- | ---------------------------------------- | ------------------------------ |\n| `/hackernews/over` | `/hackernews/submitted/sources/dang` | `/hackernews/threads/sources/dang` | `/hackernews/threads/comments_list/dang` | `/hackernews/index/sources/10` |",
         "location": "index.ts",
         "module": () => import('@/routes/hackernews/index.ts')
       }
@@ -131642,6 +131645,102 @@ export default {
     "categories": [
       "university"
     ],
+    "lang": "zh-CN"
+  },
+  "zjnu": {
+    "routes": {
+      "/academic": {
+        "path": "/academic",
+        "categories": [
+          "university"
+        ],
+        "example": "/zjnu/academic",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "学术动态",
+        "maintainers": [
+          "gushen610140"
+        ],
+        "location": "academic/index.ts",
+        "module": () => import('@/routes/zjnu/academic/index.ts')
+      },
+      "/general": {
+        "path": "/general",
+        "categories": [
+          "university"
+        ],
+        "example": "/zjnu/general",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "综合新闻",
+        "maintainers": [
+          "gushen610140"
+        ],
+        "location": "general/index.ts",
+        "module": () => import('@/routes/zjnu/general/index.ts')
+      },
+      "/media": {
+        "path": "/media",
+        "categories": [
+          "university"
+        ],
+        "example": "/zjnu/media",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "媒体视角",
+        "maintainers": [
+          "gushen610140"
+        ],
+        "location": "media/index.ts",
+        "module": () => import('@/routes/zjnu/media/index.ts')
+      },
+      "/news": {
+        "path": "/news",
+        "categories": [
+          "university"
+        ],
+        "example": "/zjnu/news",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "浙师要闻",
+        "maintainers": [
+          "gushen610140"
+        ],
+        "location": "news/index.ts",
+        "module": () => import('@/routes/zjnu/news/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "浙江师范大学",
+    "url": "www.zjnu.edu.cn",
     "lang": "zh-CN"
   },
   "zjol": {
